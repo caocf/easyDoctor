@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:id="@+id/message_fragment_container"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
+    >
+
+<RelativeLayout
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:paddingRight="4dp"
+        android:paddingTop="14dp"
+        android:paddingLeft="16dp"
+        android:src="@drawable/ic_back"
+        android:id="@+id/message_back_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.netease.nim.common.ui.imageview.HeadImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="70dp"
+        android:layout_toRightOf="@id/message_back_img"
+        android:id="@+id/message_head_hiv"
+        android:src="@drawable/doctors_default_head"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+    <TextView
+        android:layout_alignTop="@id/message_head_hiv"
+        android:textColor="@color/text_body_strong"
+        android:textSize="@dimen/text_14"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/message_head_hiv"
+        android:text="韩国李医生"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/message_name_tv"/>
+
+    <TextView
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_body_weak"
+        android:textSize="@dimen/text_12"
+        android:layout_below="@id/message_name_tv"
+        android:layout_alignLeft="@id/message_name_tv"
+        android:text="厦门第一医院"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/message_hospital_tv"/>
+
+    <com.easyhoms.easydoctor.common.view.FlowLayout
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_below="@id/message_head_hiv"
+        android:id="@+id/message_doctor_tab_fl"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        app:horizontal_spacing="6dp"
+        android:layout_marginBottom="10dp"
+        app:vertical_spacing="4dp"/>
+</RelativeLayout>
+<View
+    style="@style/style_line"/>
+
+</LinearLayout>

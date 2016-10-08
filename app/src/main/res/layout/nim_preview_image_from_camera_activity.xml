@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:background="@color/bg_main_color"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical">
+
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        app:ma_title="@string/image_preview"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="16dp"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/imageViewPreview"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/buttonSend"
+        android:layout_marginBottom="20dp"
+        style="@style/style_login_tv"
+        android:text="@string/nim_send"
+        />
+
+</LinearLayout>

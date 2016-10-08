@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">PullToRefresh</string>
+
+    <string name="pull_to_refresh_pull">下拉刷新</string>
+    <string name="pull_to_refresh_up">上拉刷新</string>
+    <string name="pull_to_refresh_release">松开刷新</string>
+    <string name="pull_to_refresh_refreshing">加载中&#8230;</string>
+    <string name="pull_to_refresh_from_bottom_pull_label">@string/pull_to_refresh_up</string>
+    <string name="pull_to_refresh_from_bottom_release_label">@string/pull_to_refresh_release</string>
+    <string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing</string>
+
+    <string name="pull_to_refresh_pull_label" translatable="false">向下拉动可以刷新</string>
+    <string name="pull_to_refresh_release_label" translatable="false">松开可以刷新</string>
+    <string name="pull_to_refresh_refreshing_label" translatable="false">加载中&#8230;</string>
+    <string name="pull_to_refresh_tap_label" translatable="false">点击刷新</string>
+
+</resources>

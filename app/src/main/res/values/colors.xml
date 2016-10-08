@@ -3,4 +3,51 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="trans">#00000000</color>
+
+    <color name="main_color_blue">#4fb2ff</color>
+    <color name="main_color_yellow">#ffc527</color>
+    <color name="text_color">#3bafd9</color>
+    <color name="text_body_weak">#c7c7cd</color>
+    <color name="text_body_strong">#2a3c4c</color>
+    <color name="text_tip">#a8b4bd</color>
+
+    <color name="line">#e5e5e5</color>
+    <color name="line_yellow">#ffe293</color>
+    <color name="line_color">#dce3e8</color>
+
+    <color name="font_color_1">#ff333333</color>
+
+    <color name="nim_split_line_grey_color_d9d9d9">#d9d9d9</color>
+    <color name="remind">#cccccc</color>
+    <color name="text_center_black">#587da0</color>
+    <color name="red">#ff1300</color>
+    <color name="red_sex">#ff3824</color>
+    <color name="shadow">#edf3f8</color>
+    <color name="bg_main_color">#edf4fa</color>
+    <color name="popcolor">#007aff</color>
+    <color name="main_bottom_tv_grey">#6f8da6</color>
+    <color name="nim_message_time">@color/remind</color>
+    <color name="nim_message_item_left">#f2f2f2</color>
+    <color name="nim_message_item_right">@color/main_color_blue</color>
+    <color name="nim_message_input">@color/text_body_weak</color>
+
+    <color name="message_tab_color1">#ecaafa</color>
+    <color name="message_tab_color2">#a198f8</color>
+    <color name="message_tab_color3">@color/main_color_blue</color>
+    <color name="message_tab_color4">#3bd0d6</color>
+
+    <color name="tab_title_color">#8e8e93</color>
+    <color name="set_letter">#aabbce</color>
+    <color name="letter_red">#ff6242</color>
+    <color name="describe">#9cabaf</color>
+    <color name="bg_search">#e8e8e9</color>
+
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+
+    <color name="circle_border_width">#54ffffff</color>
 </resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+    <TextView
+        android:id="@+id/edit_title_tv"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:paddingBottom="12dp"
+        android:paddingLeft="8dp"
+        android:text="标题"
+        android:textColor="@color/text_body_strong"
+        android:textSize="@dimen/text_17"/>
+
+    <ImageView
+        android:id="@+id/edit_right_img"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="8.5dp"
+        android:src="@drawable/selector_login_eye_click"
+        android:visibility="visible"/>
+
+    <TextView
+        android:layout_alignParentRight="true"
+        android:id="@+id/edit_send_auth_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/edit_right_img"
+        android:gravity="bottom"
+        android:paddingBottom="12dp"
+        android:paddingRight="8.5dp"
+        android:text="@string/send_auth_code"
+        android:textColor="@color/main_color_blue"
+        android:textSize="@dimen/text_17"
+        android:visibility="visible"/>
+
+    <EditText
+        android:maxLength="16"
+        android:id="@+id/edit_content_et"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/edit_send_auth_tv"
+        android:layout_toRightOf="@id/edit_title_tv"
+        android:background="@color/trans"
+        android:gravity="bottom"
+        android:paddingBottom="12dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/text_body_strong"
+        android:textColorHint="@color/text_body_weak"
+        android:textCursorDrawable="@null"
+        android:textSize="@dimen/text_16"
+        tools:text="内容"/>
+
+    <View
+        android:id="@+id/bottom_line_dec"
+        style="@style/style_bottom_line"/>
+
+</RelativeLayout>

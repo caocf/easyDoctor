@@ -1,3 +1,271 @@
 <resources>
     <string name="app_name">EasyDoctor</string>
+    <string name="communication">沟通</string>
+    <string name="treatment">治疗</string>
+    <string name="my">我的</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+    <string name="exit_app">账号提示</string>
+    <string name="whether_exit_app">是否退出当前账号</string>
+    <string name="empty"/>
+
+    <string name="cure_uncured">未治疗</string>
+    <string name="cure_curing">治疗中</string>
+    <string name="cure_completed">治疗完成</string>
+    <string name="cure_all_hospital">所有医院</string>
+    <string name="cure_choose_hospital">选择医院</string>
+    <string name="cure_add_hospital">添加医院</string>
+
+    <!--通用-->
+    <string name="phone">手机号</string>
+    <string name="enter_phone">输入手机号码</string>
+    <string name="password">密码</string>
+    <string name="enter_password">6~16位字母或数字</string>
+    <string name="send_auth_code">发送验证码</string>
+    <string name="edit_after_seconds_resend">s后可以发送</string>
+    <string name="auth">验证码</string>
+    <string name="nick_name">昵称</string>
+    <string name="enter_nice_name">起个好听的名字吧</string>
+
+    <!--错误提示 start-->
+    <string name="name_empty">昵称不能为空</string>
+
+    <string name="phone_empty">手机号不能为空</string>
+    <string name="phone_error">手机号码错误,请重新输入</string>
+
+    <string name="auth_empty">验证码不能为空</string>
+    <string name="auth_error">验证码输入错误</string>
+
+    <string name="password_error">密码输入错误,请重新输入</string>
+    <string name="password_error_not_fit">两次密码不一致</string>
+    <string name="password_error_length">密码限制6～16位字符</string>
+    <string name="password_error_format">密码不能包含特殊符号</string>
+    <string name="password_error_format_length">密码应为6～16位字母或数字</string>
+    <!--错误提示 end-->
+
+    <string name="login">登录</string>
+    <string name="login_forget_password">忘记密码</string>
+    <string name="login_register">没有账号?请注册</string>
+    <string name="login_phone_will_be_account">手机号码将作为登录账号</string>
+
+    <string name="search_keyword">请输入关键词</string>
+    <string name="search">搜索</string>
+    <string name="auth_success">验证成功</string>
+    <string name="make_sure">确认</string>
+    <string name="setting_password">设置新密码</string>
+    <string name="edit_password">输入密码</string>
+    <string name="edit_password_again">再次输入密码</string>
+    <string name="new_password">新密码</string>
+
+    <string name="register">注册</string>
+    <string name="register_use_phone_register">请用手机号码注册</string>
+    <string name="register_next">下一步</string>
+    <string name="register_protocol">同意“名字”用户协议与隐身条款</string>
+    <string name="register_set_account_password">设置你的账户密码</string>
+    <string name="register_passwrod_error">使用6~16位字符</string>
+    <string name="register_passwrod_empty">密码不能为空</string>
+    <string name="register_passwrod_right">不包含特殊符号(!@#$)</string>
+
+    <string name="nim_choose">选择</string>
+    <string name="nim_picker_image_preview">预览</string>
+    <string name="nim_picker_image_send">发送</string>
+    <string name="nim_timer_default">默认时间</string>
+    <string name="nim_recording_cancel">取消</string>
+    <string name="nim_send">发送</string>
+    <string name="reset_account_password">请重新设置密码</string>
+    <string name="delete">删除</string>
+    <string name="nim_repeat_download_message">重新下载</string>
+    <string name="nim_repeat_send_has_blank">重新发送</string>
+    <string name="nim_repeat_send_message">重发</string>
+    <string name="phone_number_error">手机号格式错误</string>
+    <string name="my_setting">设置</string>
+    <string name="my_change_password">修改密码</string>
+    <string name="my_change_phone">更换手机</string>
+    <string name="my_email">我的邮箱</string>
+    <string name="my_hospital">我的医院</string>
+    <string name="auth_send_fail">验证码发送失败,请稍后重试</string>
+    <string name="net_error">网络异常,请连接网络</string>
+    <string name="auth_time_out">短信验证码过期</string>
+    <string name="auth_edit_error">短信验证码错误</string>
+    <string name="register_ok">注册成功</string>
+    <string name="nick_name_length_error">昵称不能超过6个字符</string>
+    <string name="user_oldword_get">通过旧密码找回</string>
+    <string name="user_phoneauth_get">通过手机验证码找回</string>
+    <string name="old_password">旧密码</string>
+    <string name="edit_old_password">输入旧密码</string>
+    <string name="edit_new_password">输入新密码</string>
+    <string name="edit_auth">输入验证码</string>
+    <string name="change_passwrod_from_old">通过旧密码修改</string>
+    <string name="change_password_from_auth">通过手机验证码修改</string>
+    <string name="login_ok">登录成功</string>
+    <string name="forget_reset_new_password">设置新密码</string>
+    <string name="reset_password_ok">设置密码成功</string>
+    <string name="my_passwd_twice_passwd_same">输入的两次密码一致,请重新修改</string>
+    <string name="my_passwd_old_error">旧密码输入错误,请重新输入</string>
+    <string name="my_passwd_new_error">新密码输入错误,请重新输入</string>
+    <string name="my_passwd_change_ok">密码修改成功</string>
+    <string name="granted_ok">授权成功</string>
+    <string name="granted_fail">授权失败</string>
+
+    <string name="phone_now">您当前的手机号为: </string>
+    <string name="edit_phone">输入新手机号</string>
+    <string name="my_change_bindphone">更换绑定手机</string>
+    <string name="submit">提交</string>
+    <string name="phone_same_error">请输入新的手机号</string>
+    <string name="success">更改成功</string>
+    <string name="change_user_message">修改个人资料</string>
+    <string name="set_clear">清空缓存</string>
+    <string name="clear">清空</string>
+    <string name="set_agreement">相关协议</string>
+    <string name="set_check">检查更新</string>
+    <string name="quit">退出</string>
+    <string name="edit_user_message">修改个人资料</string>
+    <string name="sex">性别</string>
+    <string name="birthday">生日</string>
+
+    <string name="doctor_bind_already">已绑定</string>
+    <string name="belong_hospital">所属医院</string>
+    <string name="message_system_info">系统通知</string>
+    <string name="message_contact_doctor_here">这里可以联系医生哦~</string>
+    <string name="cure_detail">治疗详情</string>
+    <string name="cure_all">总</string>
+    <string name="cure_left">剩</string>
+    <string name="long_text">厦门第一医院是一家集成很多高科技的欣欣医院,重大决策由众多人员决定.....</string>
+    <string name="hospital_top">医院置顶</string>
+    <string name="message_bind_hospital">绑定医院</string>
+    <string name="cure_appointment">预约</string>
+    <string name="cure_notice_one_hour">提前1小时提醒</string>
+    <string name="appoint_time">预约时间</string>
+    <string name="take_picture">拍照</string>
+
+    <string name="picture_fromlocal">从相册中选择</string>
+    <string name="subscribe_details">预约详情</string>
+    <string name="subscribe_success">预约成功</string>
+    <string name="subscribe_time">预约时间</string>
+    <string name="change_subscribe_time">更改预约时间</string>
+    <string name="cancel_subscribe_time">取消预约</string>
+    <string name="no_sdcard">没有sd卡</string>
+
+    <string name="complete">完成</string>
+
+    <string name="appoint_cure_count">治疗数量</string>
+
+    <string name="attestation">认证</string>
+
+    <string name="appoint">预约</string>
+    <string name="appoint_date">预约日期</string>
+    <string name="nim_send_again">重新发送</string>
+    <string name="hospital_binded">已绑定</string>
+    <string name="hospital_hint_search">请输入医院关键字</string>
+
+    <!-- 语音 -->
+    <string name="record_audio">按住 说话</string>
+    <string name="record_audio_end">松开  结束</string>
+    <string name="sdcard_not_exist_error">请插入SD卡</string>
+    <string name="recording_error">录音失败，请重试</string>
+    <string name="recording_init_failed">初始化录音失败</string>
+    <string name="recording_cancel">手指上滑，取消发送</string>
+    <string name="timer_default">00:00</string>
+    <string name="recording_cancel_tip">松开手指，取消发送</string>
+    <string name="recording_max_time">录音达到最大时间，是否发送？</string>
+    <string name="cancle_confirm">确定取消</string>
+    <string name="please_enter">请输入</string>
+    <string name="text_empty">输入文字不能为空</string>
+    <string name="women">女</string>
+    <string name="man">男</string>
+
+    <string name="alert_confirm_clear">确认清除</string>
+    <string name="alert_clear_all_cach">是否清除所有缓存</string>
+    <string name="alert_clear_cach">清除</string>
+    <string name="upload_ok">上传成功</string>
+    <string name="save">保存</string>
+    <string name="update">修改</string>
+    <string name="update_name">修改昵称</string>
+    <string name="nick_name_not_empty">昵称不能为空</string>
+    <string name="isNoChange">您没有更改任何信息</string>
+    <string name="all_clear">是否清除所有缓存</string>
+
+
+    <!-- image picker -->
+    <string name="picker_image_preview">预览</string>
+    <string name="picker_image_send">发送</string>
+    <string name="picker_image_folder">相册</string>
+    <string name="picker_image_album_loading">相册加载中…</string>
+    <string name="picker_image_album_empty">相册中没有图片！</string>
+    <string name="picker_image_folder_info">共%d张</string>
+    <string name="picker_image_exceed_max_image_select">最多选择%d张图片！</string>
+    <string name="picker_image_send_select">完成（%d）</string>
+    <string name="picker_image_preview_original">发送原图</string>
+    <string name="picker_image_preview_original_select">发送原图（%s）</string>
+    <string name="picker_image_error">获取图片出错</string>
+    <string name="image_compressed_size">该原始图片大小为: %1$s,</string>
+    <string name="unknow_size">未知大小</string>
+    <string name="is_send_image">是否发送该原始图片？</string>
+    <string name="multi_image_compressed_size">原始图片总大小为: %1$s,</string>
+    <string name="is_send_multi_image">是否发送这些原始图片？</string>
+    <string name="waitfor_image_local">正在打开相册，请稍候\u2026</string>
+    <string name="recapture">重拍</string>
+    <string name="image_show_error">图片显示异常</string>
+    <string name="memory_out">内存不足</string>
+    <string name="choose_from_photo_album">从手机相册选择</string>
+    <string name="choose">选取</string>
+    <string name="edit">编辑</string>
+    <string name="crop">裁剪</string>
+    <string name="ok">确定</string>
+    <!-- 拍照视频 -->
+    <string name="gallery_invalid">你的手机没有图库程序</string>
+    <string name="sdcard_not_enough_head_error">SD卡被拔出或存储空间不足，无法保存头像</string>
+    <string name="sdcard_not_enough_error">存储空间不足，无法保存此次多媒体消息</string>
+    <string name="iknow">我知道了</string>
+
+    <string name="main_msg_list_delete_chatting">删除该聊天</string>
+    <string name="main_msg_list_sticky_on_top">置顶该聊天</string>
+    <string name="main_msg_list_clear_sticky_on_top">取消置顶</string>
+    <string name="image">图片</string>
+    <string name="trans_voice_failed">语音转化失败</string>
+    <string name="video_exception">视频异常</string>
+    <string name="video">视频</string>
+    <string name="unsupport_title">无法显示该内容</string>
+    <string name="unsupport_desc">客户端版本不支持该内容</string>
+    <string name="notice">提示</string>
+    <string name="cancel_appoint_msg">您确定要取消%s的预约么</string>
+    <string name="confirm_appoint">确认预约</string>
+    <string name="hospital_bind_hospital">绑定医院</string>
+    <string name="hospital_skip">跳过</string>
+    <string name="remind">您的预约时间快到了哦</string>
+    <string name="operate_later">连接超时,请稍后重试</string>
+
+
+    <string name="input_panel_photo">图 片</string>
+    <string name="input_panel_video">视 频</string>
+    <string name="input_panel_location">位 置</string>
+    <string name="input_panel_take">拍 摄</string>
+    <string name="im_choose_pic">请选择JPG PNG BMP GIF格式的图片文件</string>
+    <string name="repeat_download_message">重新下载?</string>
+    <string name="repeat_send_has_blank">重 发</string>
+    <string name="repeat_send_message">重发消息?</string>
+    <string name="copy_has_blank">复 制</string>
+    <string name="delete_has_blank">删 除</string>
+    <string name="voice_to_text">转文字</string>
+    <string name="forward_to_person">转发到个人</string>
+    <string name="forward_to_team">转发到群组</string>
+
+    <string name="my_passwd_old_remind">请输入旧密码</string>
+    <string name="my_passwd_new_empty">新密码不能为空</string>
+    <string name="my_passwd_old_empty">旧密码不能为空</string>
+    <string name="auth_send">验证码已发送至</string>
+    <string name="auth_phone">手机号</string>
+    <string name="nick_name_error">昵称长度应为1-16个字符</string>
+    <string name="date_pass">选择生日日期不能超过今天哦</string>
+
+    <string name="cancel_crop">取消裁剪</string>
+    <string name="message_unbind_hospital">解除绑定</string>
+    <string name="bind_ok">绑定成功</string>
+    <string name="bind_fail">绑定失败</string>
+    <string name="unbind_ok">解除绑定成功</string>
+    <string name="unbind_fail">解除绑定失败</string>
+    <string name="hospital_introduce">医院简介</string>
+
 </resources>

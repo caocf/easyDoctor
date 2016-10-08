@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+
+        android:id="@+id/search_ll"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shape_rec_border_grey"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/search_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/icon_search"
+            android:drawablePadding="9dp"
+            android:gravity="center"
+            android:hint="@string/search"
+            android:textColor="@color/text_body_weak"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search_et_ll"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_bg_search">
+
+            <EditText
+                android:background="@color/trans"
+                android:textColorHint="@color/text_body_weak"
+                android:hint="@string/hospital_hint_search"
+                android:id="@+id/search_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:paddingLeft="8dp"
+                android:textColor="@color/text_body_strong"
+                android:textSize="@dimen/text_14"/>
+
+            <ImageView
+                android:id="@+id/clear_img"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:src="@drawable/icon_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/confirm_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:padding="3dp"
+            android:text="@string/search"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:textSize="@dimen/text_18"
+            android:id="@+id/cancle_tv"
+            android:layout_width="60dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:textColor="@color/main_color_blue"/>
+
+    </LinearLayout>
+
+</LinearLayout>

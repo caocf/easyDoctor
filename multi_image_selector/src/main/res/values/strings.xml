@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Multi_Image_Selector</string>
+    <!--multi-image-->
+    <string name="image_tip_take_photo">拍摄照片</string>
+    <string name="login_experice_now">立即体验</string>
+    <string name="version_unknown">版本无法获取</string>
+    <string name="image_app_name">多图选择器</string>
+    <string name="image_folder_all">所有照片</string>
+    <string name="image_preview">预览</string>
+    <string name="image_msg_no_camera">没有系统相机</string>
+    <string name="image_msg_amount_limit">已经达到最高选择数量</string>
+    <string name="image_action_done">完成</string>
+    <string name="image_photo_unit">张</string>
+
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+    >
+
+    <View
+        style="@style/style_line"
+        android:layout_alignLeft="@+id/popup_menu_title"/>
+
+    <com.easyhoms.easydoctor.common.view.CircleImageView
+        android:id="@+id/popup_menu_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dip"
+        android:layout_marginRight="16dip"
+        />
+
+    <TextView
+        android:id="@+id/popup_menu_title"
+        android:layout_width="208dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/popup_menu_icon"
+        android:ellipsize="end"
+        android:paddingBottom="12dp"
+        android:paddingTop="12dp"
+        android:singleLine="true"
+        android:text="测试标题"
+        android:textColor="@color/text_body_strong"
+        android:textSize="@dimen/text_16"/>
+
+    <ImageView
+        android:id="@+id/popup_menu_selected_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="16dp"
+        android:src="@drawable/icon_checkmark"/>
+
+</RelativeLayout>
