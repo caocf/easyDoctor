@@ -51,7 +51,7 @@ public class ConstantValues {
     /**
      * 服务器网址
      */
-    public static final String HOST = "http://192.168.1.36:8080/doct-openapi";
+    public static final String HOST = "http://192.168.1.36:8080/doct-webClient";
 
     /*
     * 图片下载前缀

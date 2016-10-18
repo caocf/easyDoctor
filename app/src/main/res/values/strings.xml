@@ -9,7 +9,7 @@
     <string name="cancel">取消</string>
     <string name="exit_app">账号提示</string>
     <string name="whether_exit_app">是否退出当前账号</string>
-    <string name="empty"/>
+    <string name="empty" />
 
     <string name="cure_uncured">未治疗</string>
     <string name="cure_curing">治疗中</string>

@@ -4,7 +4,7 @@ import org.xutils.db.annotation.Column;
 import org.xutils.db.annotation.Table;
 
 /**
- * 患者用户
+ * 医生
  */
 @Table(name="user")
 public class User {
