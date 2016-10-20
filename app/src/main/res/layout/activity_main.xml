@@ -1,18 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.easyhoms.easydoctor.MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/main_fragment_fl"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <View
+        style="@style/style_line"/>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-</RelativeLayout>
+        android:orientation="horizontal"
+        android:paddingBottom="3dp"
+        android:paddingTop="5dp">
+
+        <LinearLayout
+            android:id="@+id/mian_bottom_commcunication_ll"
+            style="@style/main_bottom_ll_style">
+
+            <ImageView
+                style="@style/main_bottom_img_style"
+                android:src="@drawable/selector_main_bottom_message"/>
+
+            <TextView
+                style="@style/main_bottom_text_style"
+                android:text="@string/communication"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mian_bottom_treatment_ll"
+            style="@style/main_bottom_ll_style">
+
+            <ImageView
+                style="@style/main_bottom_img_style"
+                android:src="@drawable/selector_main_bottom_cure"/>
+
+            <TextView
+                style="@style/main_bottom_text_style"
+                android:text="@string/treatment"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mian_bottom_my_ll"
+            style="@style/main_bottom_ll_style">
+
+            <ImageView
+                style="@style/main_bottom_img_style"
+                android:src="@drawable/selector_main_bottom_user"/>
+
+            <TextView
+                style="@style/main_bottom_text_style"
+                android:text="@string/my"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+
