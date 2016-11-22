@@ -1,5 +1,6 @@
 package com.easyhoms.easydoctor.login.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
@@ -8,13 +9,20 @@ import com.easyhoms.easydoctor.ConstantValues;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
+import com.easyhoms.easydoctor.common.manager.ImManager;
+import com.easyhoms.easydoctor.common.manager.UserManager;
+import com.easyhoms.easydoctor.common.utils.AppManager;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
+import com.easyhoms.easydoctor.common.utils.KeyBoardUtils;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.common.view.DescribeEditView;
+import com.easyhoms.easydoctor.main.activity.MainActivity;
+import com.easyhoms.easydoctor.password.activity.ForgetPasswordActivity;
+import com.easyhoms.easydoctor.register.activity.RegisterActivity;
 
+import org.xutils.view.annotation.BindView;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
-import org.xutils.view.annotation.ViewInject;
 
 
 /**
@@ -22,28 +30,40 @@ import org.xutils.view.annotation.ViewInject;
  */
 @ContentView(R.layout.activity_login)
 public class LoginActivity extends BaseActivity {
-    @ViewInject(R.id.login_phone_dev)
+    @BindView(R.id.login_phone_dev)
     private DescribeEditView mPhoneDev;
-    @ViewInject(R.id.login_password_dev)
+    @BindView(R.id.login_password_dev)
     private DescribeEditView mPasswordDev;
-    @ViewInject(R.id.login_tv)
+    @BindView(R.id.login_tv)
     private TextView mLoginTv;
-    @ViewInject(R.id.login_register_tv)
+    @BindView(R.id.login_register_tv)
     private TextView mRegisterTv;
-    @ViewInject(R.id.login_forget_pass_tv)
+    @BindView(R.id.login_forget_pass_tv)
     private TextView mForgetPassTv;
     private String mPhone;
     private String mPassword;
 
+    //登录云信回调
+    private ImManager.ImLoginCallback mLoginCallback = new ImManager.ImLoginCallback() {
+        @Override
+        public void success() {
+            loginOk();
+        }
+
+        @Override
+        public void fail() {
+            closeDialog();
+            showToast(R.string.operate_later);
+        }
+    };
     //登录接口
     private NetCallback mCallback = new NetCallback(this) {
         @Override
         protected void requestOK(String result) {
 
             if (CommonUtils.isResultOK(result)) {
-              //  UserManager.paraseUser(result,mPhone,mPassword);
-                loginOk();
-                //  ImManager.login(mContext, UserManager.getUser().userImId+"", mLoginCallback);
+                UserManager.paraseUser(result,mPhone,mPassword);
+                ImManager.login(mContext, UserManager.getUser().staffImId, mLoginCallback);
             } else {
                 closeDialog();
                 showToast(CommonUtils.getMsg(result));
@@ -67,11 +87,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-       /* if (UserManager.getUser()!=null) {
-            mPhone=UserManager.getUser().mobile!=null?UserManager.getUser().mobile:"";
-        }
-
-        mPhoneDev.getContentEt().setText(mPhone);*/
+        tintManager.setStatusBarTintResource(R.color.black);
 
     }
     @Event(R.id.login_tv)
@@ -100,12 +116,12 @@ public class LoginActivity extends BaseActivity {
 
     @Event(R.id.login_register_tv)
     private void register(View view) {
-       // startActivity(new Intent(mContext, RegisterPhoneActivity.class));
+       startActivity(new Intent(mContext, RegisterActivity.class));
     }
 
     @Event(R.id.login_forget_pass_tv)
     private void forget(View view) {
-     //   startActivity(new Intent(mContext, ForgetPasswordActivity.class));
+        startActivity(new Intent(mContext, ForgetPasswordActivity.class));
     }
 
     @Override
@@ -128,9 +144,16 @@ public class LoginActivity extends BaseActivity {
 
     private void loginOk(){
         closeDialog();
-        //KeyBoardUtils.hideKeyboard(mPasswordDev.getContentEt());
+        KeyBoardUtils.hideKeyboard(mPasswordDev.getContentEt());
         showToast(R.string.login_ok);
-        //AppManager.getAppManager().finishActivity();
-       // startActivity(new Intent(mContext, MainActivity.class));
+        AppManager.getAppManager().finishActivity();
+        startActivity(new Intent(mContext, MainActivity.class));
+    }
+
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        context.startActivity(intent);
     }
 }

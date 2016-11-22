@@ -44,5 +44,26 @@ public class User {
     @Column(name = "hospital")
     public String hospital;
 
+    @Column(name = "staff_im_id")
+    public String staffImId;
 
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "Id=" + Id +
+                ", access_token='" + access_token + '\'' +
+                ", createDate='" + createDate + '\'' +
+                ", modifyDate='" + modifyDate + '\'' +
+                ", id=" + id +
+                ", mobile='" + mobile + '\'' +
+                ", password='" + password + '\'' +
+                ", imagePath='" + imagePath + '\'' +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birth='" + birth + '\'' +
+                ", hospital='" + hospital + '\'' +
+                ", staffImId='" + staffImId + '\'' +
+                '}';
+    }
 }

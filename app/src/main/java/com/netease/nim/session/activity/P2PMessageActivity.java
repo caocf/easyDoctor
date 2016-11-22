@@ -25,9 +25,9 @@ import com.netease.nim.uinfo.UserInfoHelper;
 import com.netease.nim.uinfo.UserInfoObservable;
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
 
+import org.xutils.view.annotation.BindView;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
-import org.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,15 +40,15 @@ import java.util.List;
 
 @ContentView(R.layout.nim_message_activity)
 public class P2PMessageActivity extends BaseMessageActivity {
-    @ViewInject(R.id.message_back_img)
+    @BindView(R.id.message_back_img)
     private ImageView mBackImg;
-    @ViewInject(R.id.message_head_hiv)
+    @BindView(R.id.message_head_hiv)
     private HeadImageView mHeadHiv;
-    @ViewInject(R.id.message_name_tv)
+    @BindView(R.id.message_name_tv)
     private TextView mDoctorNameTv;
-    @ViewInject(R.id.message_hospital_tv)
+    @BindView(R.id.message_hospital_tv)
     private TextView mHospitalTv;
-    @ViewInject(R.id.message_doctor_tab_fl)
+    @BindView(R.id.message_doctor_tab_fl)
     private FlowLayout mDoctorTabFl;
 
     private boolean isResume = false;

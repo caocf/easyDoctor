@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_new"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/white"
+    tools:context="com.easyhoms.easydoctor.login.activity.GuideActivity">
+
+
+    <ImageView
+        android:id="@+id/guide_img"
+        android:layout_marginTop="64dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/guide"
+        android:layout_width="wrap_content"
+        android:layout_height="260dp"/>
+
+    <TextView
+        android:gravity="center"
+        android:layout_below="@id/guide_img"
+        android:text="@string/guide"
+        android:id="@+id/guide_tv"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/text_body_strong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"/>
+    <TextView
+        android:gravity="center"
+        android:layout_below="@id/guide_tv"
+        android:text="@string/new_ui"
+        android:layout_marginTop="22dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/text_body_weak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_16"/>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/guide_login_tv"
+            android:textColor="@color/white"
+            android:background="@drawable/shape_round_bg_blue_tv"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:textSize="@dimen/text_18"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/login"/>
+
+        <TextView
+            android:layout_marginRight="15dp"
+            android:id="@+id/guide_register_tv"
+            android:gravity="center"
+            android:textColor="@color/main_color_blue"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_18"
+            android:text="@string/new_user_register"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -60,10 +60,27 @@ public class DescribeEditView extends LinearLayout {
         //底部的线是否可见 默认可见
         boolean lineVisible = a.getBoolean(R.styleable.DescribeEditView_dev_is_line,true);
 
+        //底部的线是否可变
+        boolean lineFocus = a.getBoolean(R.styleable.DescribeEditView_dev_line_focus,false);
+
         if(lineVisible){
             line.setVisibility(VISIBLE);
         }
         else line.setVisibility(GONE);
+
+        if(lineFocus){
+            mContentEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if(hasFocus){//获得焦点
+                        line.setBackgroundColor(getResources().getColor(R.color.main_color_blue));
+                    }else{//失去焦点
+                        line.setBackgroundColor(getResources().getColor(R.color.line));
+                    }
+                }
+            });
+        }
 
         if (imgVisible) {
             mRightImg.setVisibility(VISIBLE);
@@ -97,6 +114,7 @@ public class DescribeEditView extends LinearLayout {
                 if (mAuthCallback == null) {
                     return;
                 }
+
                 String phone = mAuthCallback.getPhone();
                 if (!CommonUtils.isMobile(phone)) {
                     switch (CommonUtils.isRightMobile(phone)){
@@ -109,6 +127,7 @@ public class DescribeEditView extends LinearLayout {
                     }
                 } else {
                     mAuthCallback.clickAuthOk();
+                    mContentEt.requestFocus();
                 }
             }
         });

@@ -77,5 +77,17 @@
     <dimen name="height_10">10dp</dimen>
     <dimen name="height_14">14dp</dimen>
     <dimen name="height_36">36dp</dimen>
+    <dimen name="height_70">70dp</dimen>
     <dimen name="height_6">6dp</dimen>
+    <dimen name="height_82">82dp</dimen>
+    <dimen name="height_110">110dp</dimen>
+
+    <dimen name="team_item_height">56dp</dimen>
+    <dimen name="team_item_height_line">58dp</dimen>
+    <dimen name="team_head">42dp</dimen>
+    <dimen name="line_margin_left">60dp</dimen>
+    <dimen name="team_divider">16dp</dimen>
+    <dimen name="team_item_text">16dp</dimen>
+    <dimen name="avatar_size_in_session">40sp</dimen>
+    <dimen name="bubble_head_margin_horizontal">12dp</dimen>
 </resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_bind_hospital_state"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.easyhoms.easydoctor.hospital.activity.BindHospitalStateActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        app:ma_style="blue"
+        android:id="@+id/bind_hosp_ma"
+        app:ma_title="@string/bind_hospital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_complete"/>
+
+    <TextView
+        android:textSize="@dimen/text_18"
+        android:id="@+id/bind_state_tv"
+        android:gravity="center"
+        android:text="@string/wating_bind_hospital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -108,7 +108,7 @@ public abstract class RecentViewHolder extends TViewHolder implements OnClickLis
                 break;
         }
 
-        String timeString = TimeUtil.getTimeShowString(recent.getTime(), true);
+        String timeString = TimeUtil.getTimeShowString(recent.getTime());
         tvDatetime.setText(timeString);
         if (!TextUtils.isEmpty(timeString) && timeString.equals("1970-01-01")) {
             tvDatetime.setVisibility(View.GONE);

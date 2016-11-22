@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/shadow"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    >
+
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:ma_title="@string/my_change_bindphone"
+        />
+
+    <TextView
+        android:id="@+id/phone_remind_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/text_left"
+        android:layout_marginTop="@dimen/text_top"
+        android:layout_marginBottom="10dp"
+        android:text="@string/receive_phone_auth"
+        />
+
+    <com.easyhoms.easydoctor.common.view.DescribeEditView
+        android:id="@+id/my_phone_auth_dev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:dev_auth_text="@string/send_auth_code"
+        app:dev_auth_visible="true"
+        app:dev_hint="@string/edit_auth"
+        app:dev_is_line="false"
+        app:dev_title="@string/auth"/>
+
+    <TextView
+        android:id="@+id/my_phone_auth_sure_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/my_btn"
+        android:layout_marginLeft="@dimen/my_left"
+        android:layout_marginRight="@dimen/my_left"
+        android:layout_marginTop="@dimen/my_top"
+        android:background="@drawable/shape_round_bg_blue_tv"
+        android:gravity="center"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_16"/>
+
+</LinearLayout>

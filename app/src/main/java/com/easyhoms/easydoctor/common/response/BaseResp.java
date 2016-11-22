@@ -5,5 +5,6 @@ package com.easyhoms.easydoctor.common.response;
  */
 public class BaseResp<T> {
     public int code;
-    public T value;
+    public String desc;
+    public T content;
 }

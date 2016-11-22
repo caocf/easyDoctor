@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:id="@+id/bar_rl"
-    android:background="@color/white"
+    android:background="@color/main_color_blue"
     >
 
     <ImageView
@@ -24,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="标题"
-        android:textColor="@color/text_center_black"
+        android:gravity="center"
+        android:textColor="@color/white"
         android:textSize="@dimen/text_18"/>
 
     <ImageView
@@ -64,7 +65,7 @@
         android:layout_alignParentRight="true"
         android:visibility="invisible"
         android:textSize="@dimen/text_16"
-        android:textColor="@color/main_color_blue"
+        android:textColor="@color/white"
         android:gravity="center"
         android:id="@+id/bar_right_tv"
         android:layout_width="wrap_content"
@@ -81,5 +82,9 @@
         android:id="@+id/bar_left_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <View
+        android:id="@+id/bottom_line"
+        style="@style/style_bottom_line"/>
 
 </RelativeLayout>

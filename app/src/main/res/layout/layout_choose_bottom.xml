@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/choose_count_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:text="已选择:"
+        android:textColor="@color/main_color_blue"
+        android:textSize="@dimen/text_16"/>
+
+    <TextView
+        android:id="@+id/choose_num_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/choose_count_tv"
+        android:textColor="@color/main_color_blue"
+        android:textSize="@dimen/text_16"
+        tools:text="9"/>
+
+
+    <TextView
+        android:id="@+id/confirm_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_round_bg_blue_tv"
+        android:padding="4dp"
+        android:text="@string/confirm"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_18"/>
+</RelativeLayout>

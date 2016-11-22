@@ -3,7 +3,6 @@ package com.easyhoms.easydoctor.common.activity;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -27,8 +26,9 @@ public abstract class BaseActivity extends FragmentActivity {
     protected ProgressDialog mProgressDialog;
     protected AlertDialog mLogoutDialog;
     protected DisplayImageOptions mImageOptions;
-    protected Context mContext;
+    protected BaseActivity mContext;
     protected SystemBarTintManager tintManager;
+    private boolean destroyed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public abstract class BaseActivity extends FragmentActivity {
 
         tintManager = new SystemBarTintManager(this);
         tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.color.white);
+        tintManager.setStatusBarTintResource(R.color.main_color_blue);
         //显示图片的配置
         mImageOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
@@ -61,6 +61,9 @@ public abstract class BaseActivity extends FragmentActivity {
     protected abstract void initActionbar();
     protected abstract void initListener();
 
+    public void setStatusBarColor(int color){
+        tintManager.setStatusBarTintResource(color);
+    }
 
 
 
@@ -131,5 +134,18 @@ public abstract class BaseActivity extends FragmentActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         super.onResume();
+    }
+
+    public boolean isDestroyedCompatible() {
+        if (Build.VERSION.SDK_INT >= 17) {
+            return isDestroyedCompatible17();
+        } else {
+            return destroyed || super.isFinishing();
+        }
+    }
+
+    @TargetApi(17)
+    private boolean isDestroyedCompatible17() {
+        return super.isDestroyed();
     }
 }

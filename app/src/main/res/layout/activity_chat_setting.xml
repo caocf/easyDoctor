@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_chat_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.easyhoms.easydoctor.team.activity.doctor.ChatSettingActivity">
+
+    <com.netease.nim.common.ui.imageview.HeadImageView
+        android:id="@+id/user_head_hiv"
+        android:layout_centerHorizontal="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/user_head_default"/>
+
+    <ImageView
+        android:id="@+id/user_store_img"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/user_head_hiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/selector_checkbox"/>
+
+    <RelativeLayout
+        android:id="@+id/transfor_rl"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/transfer_member"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

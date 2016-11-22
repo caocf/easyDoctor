@@ -5,12 +5,15 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.easyhoms.easydoctor.ConstantValues;
 import com.easyhoms.easydoctor.R;
+import com.easyhoms.easydoctor.common.utils.LogUtils;
 import com.easyhoms.easydoctor.common.view.CircleImageView;
 import com.netease.nim.ImageLoaderKit;
 import com.netease.nim.NimUIKit;
 import com.netease.nimlib.sdk.nos.model.NosThumbParam;
 import com.netease.nimlib.sdk.nos.util.NosThumbImageUtil;
+import com.netease.nimlib.sdk.team.model.Team;
 import com.netease.nimlib.sdk.uinfo.UserInfoProvider;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -131,5 +134,43 @@ public class HeadImageView extends CircleImageView {
 
     public static String getAvatarCacheKey(final String url) {
         return makeAvatarThumbNosUrl(url, DEFAULT_AVATAR_THUMB_SIZE);
+    }
+
+    public void loadTeamIconByTeam(final Team team) {
+        // 先显示默认头像
+        setImageResource(R.drawable.doctors_default_head);
+
+        String teamUrl= ConstantValues.HOST_HEAD+"/"+team.getIcon();
+        // 判断是否需要ImageLoader加载
+        boolean needLoad = team != null && ImageLoaderKit.isImageUriValid(teamUrl);
+        LogUtils.i("team.getIcon()  "+team.getIcon());
+        doLoadImage(needLoad, team != null ? team.getId() : null, teamUrl, DEFAULT_AVATAR_THUMB_SIZE);
+    }
+
+    /**
+     * ImageLoader异步加载
+     */
+    private void doLoadImage(final boolean needLoad, final String tag, final String url, final int thumbSize) {
+        if (needLoad) {
+            setTag(tag); // 解决ViewHolder复用问题
+            /**
+             * 若使用网易云信云存储，这里可以设置下载图片的压缩尺寸，生成下载URL
+             * 如果图片来源是非网易云信云存储，请不要使用NosThumbImageUtil
+             */
+            final String thumbUrl = makeAvatarThumbNosUrl(url, thumbSize);
+
+            // 异步从cache or NOS加载图片
+            ImageLoader.getInstance().displayImage(thumbUrl, new NonViewAware(new ImageSize(thumbSize, thumbSize),
+                    ViewScaleType.CROP), options, new SimpleImageLoadingListener() {
+                @Override
+                public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                    if (getTag() != null && getTag().equals(tag)) {
+                        setImageBitmap(loadedImage);
+                    }
+                }
+            });
+        } else {
+            setTag(null);
+        }
     }
 }

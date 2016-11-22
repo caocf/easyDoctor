@@ -1,13 +1,61 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.easyhoms.easydoctor.message.fragment.CommuicateFragment">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_main_color"
+                android:orientation="vertical"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        android:id="@+id/communicate_ma"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:layout_height="wrap_content"
+        app:ma_back_img_visible="false"
+        app:ma_right_img="@drawable/icon_add"
+        app:ma_title="@string/communication"/>
 
-</FrameLayout>
+    <com.easyhoms.easydoctor.common.view.SearchLayout
+        android:layout_below="@id/communicate_ma"
+        android:id="@+id/search_recent_sl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_height="0.5dp"
+        android:id="@+id/line"
+        android:layout_below="@id/search_recent_sl"
+        style="@style/style_line"
+       />
+
+    <ListView
+        android:layout_below="@id/line"
+        android:id="@+id/search_lv"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/message_null_bg_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/line"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/null_bg"
+        android:gravity="center"
+        android:text="@string/message_contact_doctor_here"
+        android:textColor="@color/text_body_weak"
+        android:textSize="@dimen/text_16"/>
+
+    <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+        android:id="@+id/communicate_recent_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/layer_recrent_lv_divider"
+        android:dividerHeight="1dp"
+        android:layout_below="@id/line"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"/>
+
+
+</RelativeLayout>

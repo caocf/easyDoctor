@@ -13,6 +13,18 @@ public class ConstantValues {
     public static final String KEY_TYPE = "TYPE";
     public static final String KEY_TITLE = "Title";
     public static final String KEY_DATA = "data";
+    public static final String KEY_HOSPITAL = "hospital";
+    public static final String KEY_ORDER_ID= "order_id";
+    public static final String KEY_CURE_ID = "cure_id";
+    public static final String KEY_CURE_TYPE = "cure_type";
+    public static final String KEY_CURE_NAME = "cure_name";
+    public static final String KEY_HOS_NAME = "hos_name";
+    public static final String KEY_TIME = "time";
+    public static final String KEY_MAX_COUNT = "max_count";
+    public static final String KEY_COUNT = "count";
+    public static final String KEY_USER_ID = "user_id";
+    public static final String KEY_GROUP_ID = "group_id";
+    public static final String KEY_YX_TEAM_ID = "team_id";
 
     /**
      * 验证码时间
@@ -51,14 +63,14 @@ public class ConstantValues {
     /**
      * 服务器网址
      */
-    public static final String HOST = "http://192.168.1.36:8080/doct-webClient";
+    public static final String HOST = "http://59.110.25.238:8080/doct-webClient";
+    // public static final String HOST = "http://192.168.1.20:8090/doct-openapi";
+    public static final String HOST_PATIENT = "http://59.110.25.238:8080/doct-webClient";
 
-    /*
-    * 图片下载前缀
-    **/
-    public static final String HOST_HEAD = "http://192.168.1.34";
-
-
+    /**
+     * 图片下载前缀
+     */
+    public static final String HOST_HEAD = "http://59.110.25.238";
 
     /**
      * 图片保存的路径地址
@@ -71,9 +83,9 @@ public class ConstantValues {
     /**
      * 1:未治疗  2:治疗中   3:治疗完
      */
-    public static final int CURE_TYPE_UNCURED = 1;
-    public static final int CURE_TYPE_CURING = 2;
-    public static final int CURE_TYPE_COMPLETE = 3;
+    public static final int CURE_TYPE_UNCURED = 0;
+    public static final int CURE_TYPE_CURING = 1;
+    public static final int CURE_TYPE_COMPLETE = 2;
 
     /**
      * 预约治疗状态
@@ -93,5 +105,16 @@ public class ConstantValues {
     public static final String DATE_STANDED="yyyy-MM-dd HH:mm:ss";
     public static final String DATE_YEAR_MONTH_DAY="yyyy-MM-dd";
     public static final String DATE_CHINESE="yyyy年M月dd日";
+    public static final String DATE_CHINESE_2="yyyy年M月dd日 HH时mm分";
+    public static final String DATE_MONTH_YEAR="M月dd日";
+    public static final String DATE_WEEK="yy/M/dd EEE HH:mm";
+    public static final String DATE_WEEK_SYSTEM="yy/M/dd HH:mm";
+    public static final String DATE_SERVER="yyyy-MM-dd HH:mm";
     //public static final String DATE_MONTH_DAY_HOUR_MIN , YEAR_MONTH,MORNING_HOURS_MINS,AFTERNOON_HOURS_MINS
+
+    /**
+     * Im前缀
+     */
+    public static final String IM_DOCTOR="staff_";
+    public static final String IM_PATIENT="user_";
 }

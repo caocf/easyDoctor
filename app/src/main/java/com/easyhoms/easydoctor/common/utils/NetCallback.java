@@ -1,13 +1,18 @@
 package com.easyhoms.easydoctor.common.utils;
 
 import android.content.Context;
+import android.content.Intent;
 
+import com.easyhoms.easydoctor.BaseApp;
 import com.easyhoms.easydoctor.R;
+import com.easyhoms.easydoctor.login.activity.GuideActivity;
 import com.netease.nim.common.ui.dialog.DialogMaker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.xutils.common.Callback;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 /**
  * Created by Administrator on 2016/2/24.
@@ -43,6 +48,9 @@ public abstract class NetCallback implements Callback.CommonCallback<String> {
         DialogMaker.dismissProgressDialog();
         CommonUtils.showToast(R.string.operate_later);
         timeOut();
+        Intent intent=new Intent(BaseApp.getApp(), GuideActivity.class);
+        intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+        BaseApp.getApp().startActivity(intent);
     }
 
     @Override

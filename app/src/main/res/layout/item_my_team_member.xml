@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+    <com.netease.nim.common.ui.imageview.HeadImageView
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:id="@+id/member_head_hiv"
+        style="@style/head_style"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/doctors_default_head"/>
+
+    <TextView
+        android:id="@+id/member_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/member_head_hiv"
+        android:textColor="@color/text_body_strong"
+        android:textSize="@dimen/team_item_text"/>
+</RelativeLayout>

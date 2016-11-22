@@ -14,6 +14,12 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- 云信接收sdk消息声明 -->
+    <permission
+        android:name="com.easyhoms.easydoctor.common.permission.RECEIVE_MSG"
+        android:protectionLevel="signature"/>
+
+    <uses-permission android:name="com.easyhoms.easydoctor.permission.RECEIVE_MSG"/>
 
     <application
         android:name=".BaseApp"
@@ -24,20 +30,24 @@
         android:theme="@style/AppTheme">
         <activity android:name=".login.activity.LoginActivity">
         </activity>
-        <activity android:name=".main.activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+        <activity
+            android:name=".main.activity.MainActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <activity
+            android:name=".login.activity.WelcomeActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:hardwareAccelerated="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
-        <activity android:name=".login.activity.WelcomeActivity">
-        </activity>
-        <activity android:name=".login.activity.NewActivity">
-        </activity>
-        <activity android:name=".password.activity.ForgetPasswordActivity">
-        </activity>
-        <activity android:name=".password.activity.ResetPasswordActivity">
+        <activity
+            android:name=".login.activity.GuideActivity"
+            android:launchMode="singleTask">
         </activity>
         <activity android:name=".register.activity.RegisterActivity">
         </activity>
@@ -74,6 +84,68 @@
         <activity android:name=".my.activity.approve.ApplyApproveActivity">
         </activity>
         <activity android:name=".my.activity.approve.ApproveDetailActivity">
+        </activity>
+        <activity android:name=".my.activity.setting.SettingActivity"/>
+        <activity android:name="com.netease.nim.session.activity.TeamMessageActivity"/>
+        <activity android:name="com.netease.nim.session.activity.P2PMessageActivity"/>
+        <activity android:name=".password.activity.ForgetPasswordActivity"/>
+        <activity android:name=".password.activity.ResetPasswordActivity"/>
+        <!-- 云信配置  start -->
+        <meta-data
+            android:name="com.netease.nim.appKey"
+            android:value="7fc55e4e326cb9bf7be84067b7e0963b"/>
+
+        <!-- 声明云信后台服务 -->
+        <service
+            android:name="com.netease.nimlib.service.NimService"
+            android:process=":core"/>
+
+        <!-- 运行后台辅助服务 -->
+        <service
+            android:name="com.netease.nimlib.service.NimService$Aux"
+            android:process=":core"/>
+
+        <!-- 云信SDK的监视系统启动和网络变化的广播接收器，用户开机自启动以及网络变化时候重新登录 -->
+        <receiver
+            android:name="com.netease.nimlib.service.NimReceiver"
+            android:exported="false"
+            android:process=":core">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- 云信进程间通信receiver -->
+        <receiver android:name="com.netease.nimlib.service.ResponseReceiver"/>
+
+        <!-- cosine target SDK integrated -->
+        <meta-data
+            android:name="com.netease.cosine.target"
+            android:value=""/>
+        <meta-data
+            android:name="com.netease.cosine.target.receiver"
+            android:value="com.netease.nimlib.service.NimReceiver"/>
+        <!-- 云信配置  end -->
+        <activity android:name=".team.activity.doctor.ChatSettingActivity">
+        </activity>
+        <activity android:name=".my.activity.password.UpdatePasswordFirstActivity">
+        </activity>
+        <activity android:name=".my.activity.password.UpdatePasswordSecondActivity"/>
+        <activity android:name=".my.activity.phone.UpdatePhoneFirstActivity">
+            /
+        </activity>
+        <activity
+            android:name=".team.activity.myTeam.SearchMemberActivity"
+            android:theme="@style/MyDialogStyle">
+        </activity>
+        <activity android:name=".message.activity.TransforMemberActivity">
+        </activity>
+        <activity android:name=".hospital.activity.BindHospitalStateActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

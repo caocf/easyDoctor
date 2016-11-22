@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main_color"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    >
+
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ma_title="@string/my_setting"
+        />
+
+    <com.easyhoms.easydoctor.common.view.MenuItem
+        android:id="@+id/set_clear_mi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:mi_title="@string/set_clear"
+        app:mi_type="top"/>
+
+    <com.easyhoms.easydoctor.common.view.MenuItem
+        android:id="@+id/set_protactol_mi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mi_title="@string/set_agreement"
+        app:mi_type="center"/>
+
+    <com.easyhoms.easydoctor.common.view.MenuItem
+        android:id="@+id/set_update_mi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mi_title="@string/set_check"
+        app:mi_type="bottom"/>
+
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:id="@+id/setting_exit_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_44"
+        android:background="@color/white"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/quit"
+        android:textColor="@color/text_body_strong"
+        android:textSize="@dimen/text_16"
+        />
+
+
+</LinearLayout>

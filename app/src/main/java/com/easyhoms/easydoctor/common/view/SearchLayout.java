@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
+import com.easyhoms.easydoctor.common.utils.LogUtils;
 
 /**
  * Created by Administrator on 2016/3/28.
@@ -52,20 +53,18 @@ public class SearchLayout extends FrameLayout {
         mSearchLl.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mEditEt.getText().clear();
-                mSearchLl.setVisibility(GONE);
-                mSearchEtLl.setVisibility(VISIBLE);
-                showKeyboard(mEditEt);
+                showEdit();
+
                 if (mCallback != null) {
                     mCallback.showEditView();
                 }
-
             }
         });
 
         mCancelTv.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                LogUtils.i("click cancel");
                 mSearchLl.setVisibility(VISIBLE);
                 mSearchEtLl.setVisibility(GONE);
                 mEditEt.setText("");
@@ -120,6 +119,13 @@ public class SearchLayout extends FrameLayout {
                 mEditEt.setText("");
             }
         });
+    }
+
+    public void showEdit() {
+        mEditEt.getText().clear();
+        mSearchLl.setVisibility(GONE);
+        mSearchEtLl.setVisibility(VISIBLE);
+        showKeyboard(mEditEt);
     }
 
     public interface SearchCallback {

@@ -13,6 +13,7 @@
     <color name="text_color">#3bafd9</color>
     <color name="text_body_weak">#c7c7cd</color>
     <color name="text_body_strong">#2a3c4c</color>
+    <color name="text_subtitle">#757575</color>
     <color name="text_tip">#a8b4bd</color>
 
     <color name="line">#e5e5e5</color>
@@ -50,4 +51,7 @@
     <color name="actionsheet_blue">#037BFF</color>
 
     <color name="circle_border_width">#54ffffff</color>
+    <color name="bg_remark">#bbc4c9</color>
+    <color name="main_weak_blue">#bfdcfa</color>
+
 </resources>

@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_sex"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.easyhoms.easydoctor.my.activity.personal.SexActivity">
 
-</RelativeLayout>
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        android:id="@+id/actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ma_title="@string/sex"/>
+
+    <LinearLayout
+        android:id="@+id/ll_my_update_male"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/man"
+            android:textSize="@dimen/text_16"/>
+
+        <ImageView
+            android:id="@+id/img_my_update_male_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/icon_lock"/>
+
+    </LinearLayout>
+
+    <View style="@style/style_line"/>
+
+    <LinearLayout
+        android:id="@+id/ll_my_update_female"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/women"
+            android:textSize="@dimen/text_16"/>
+
+        <ImageView
+            android:id="@+id/img_my_update_female_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/icon_lock"/>
+
+    </LinearLayout>
+
+    <View style="@style/style_line"/>
+</LinearLayout>

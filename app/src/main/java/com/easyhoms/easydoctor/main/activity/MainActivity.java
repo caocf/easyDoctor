@@ -9,32 +9,47 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
+import com.easyhoms.easydoctor.common.manager.BaseManager;
 import com.easyhoms.easydoctor.common.manager.LogoutHelper;
+import com.easyhoms.easydoctor.common.manager.UserManager;
 import com.easyhoms.easydoctor.common.permission.MPermission;
 import com.easyhoms.easydoctor.common.permission.annotation.OnMPermissionDenied;
 import com.easyhoms.easydoctor.common.permission.annotation.OnMPermissionGranted;
+import com.easyhoms.easydoctor.common.response.BaseArrayResp;
+import com.easyhoms.easydoctor.common.response.Hospital;
 import com.easyhoms.easydoctor.common.utils.AppManager;
+import com.easyhoms.easydoctor.common.utils.CommonUtils;
+import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.message.fragment.CommuicateFragment;
 import com.easyhoms.easydoctor.my.fragment.MyFragment;
 import com.easyhoms.easydoctor.team.fragment.TeamFragment;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import org.xutils.view.annotation.BindView;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
-import org.xutils.view.annotation.ViewInject;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 
 @ContentView(R.layout.activity_main)
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements CommuicateFragment.UnreadCallback{
     private final int BASIC_PERMISSION_REQUEST_CODE = 110;
-    @ViewInject(R.id.mian_bottom_commcunication_ll)
-    private LinearLayout mCommcunicationLl;
-    @ViewInject(R.id.mian_bottom_treatment_ll)
+    @BindView(R.id.mian_bottom_commcunication_ll)
+    private RelativeLayout mCommcunicationLl;
+    @BindView(R.id.mian_bottom_treatment_ll)
     private LinearLayout mTreatmentLl;
-    @ViewInject(R.id.mian_bottom_my_ll)
+    @BindView(R.id.mian_bottom_my_ll)
     private LinearLayout mMyLl;
+    @BindView(R.id.unread_tv)
+    private TextView mUnReadTv;
 
     private CommuicateFragment mCommunicationFragment;
     private TeamFragment mCureFragment;
@@ -42,12 +57,34 @@ public class MainActivity extends BaseActivity {
     private int mIndex = 0;
 
     private FragmentManager mFragmentManager;
+    private ArrayList<Hospital> mBindHospitals=new ArrayList<>();
+    private NetCallback mGetHospCallback = new NetCallback(this) {
+        @Override
+        protected void requestOK(String result) {
+            closeDialog();
+            if (CommonUtils.isResultOK(result)) {
+                Type objectType = new TypeToken<BaseArrayResp<Hospital>>() {
+                }.getType();
+                BaseArrayResp<Hospital> res = new Gson().fromJson(result, objectType);
+                mBindHospitals=res.content;
+                UserManager.saveBindHosToDb(mBindHospitals);
+
+            } else {
+
+            }
+        }
+        @Override
+        protected void timeOut() {
+
+        }
+    };
 
     @Override
     protected void initView() {
         requestBasicPermission();
         mFragmentManager = getSupportFragmentManager();
         //虽然他注册了广播接收者，但是他并没有进行处理
+
 
     }
 
@@ -76,6 +113,8 @@ public class MainActivity extends BaseActivity {
                 onClickBottom(mMyLl);
                 break;
         }
+
+        BaseManager.getMyHospitals(mGetHospCallback);
     }
 
     @Event({R.id.mian_bottom_commcunication_ll, R.id.mian_bottom_treatment_ll, R.id.mian_bottom_my_ll})
@@ -96,6 +135,7 @@ public class MainActivity extends BaseActivity {
                 } else {
                     transaction.show(mCommunicationFragment);
                 }
+                mCommunicationFragment.setUnreadCallback(this);
                 break;
             case R.id.mian_bottom_treatment_ll:
                 mIndex = 1;
@@ -217,5 +257,20 @@ public class MainActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         mMyFragment.onActivityResult(requestCode, resultCode, data);
     }
+
+    @Override
+    public void unread(int count) {
+        String countStr="";
+        if(count>99){
+            countStr="99+";
+        }else if(count==99){
+            countStr="99";
+        }else{
+            countStr=count+"";
+        }
+        mUnReadTv.setVisibility(count > 0 ? View.VISIBLE : View.GONE);
+        mUnReadTv.setText(countStr);
+    }
+
 
 }

@@ -1,19 +1,20 @@
 <resources>
-    <string name="app_name">EasyDoctor</string>
+
+    <string name="app_name">你好医生医生版</string>
     <string name="communication">沟通</string>
     <string name="treatment">治疗</string>
     <string name="my">我的</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="confirm">确认</string>
+    <string name="confirm">确定</string>
     <string name="cancel">取消</string>
     <string name="exit_app">账号提示</string>
     <string name="whether_exit_app">是否退出当前账号</string>
     <string name="empty"/>
 
-    <string name="cure_uncured">未治疗</string>
-    <string name="cure_curing">治疗中</string>
-    <string name="cure_completed">治疗完成</string>
+    <string name="cure_uncured">未开始</string>
+    <string name="cure_curing">进行中</string>
+    <string name="cure_completed">已完成</string>
     <string name="cure_all_hospital">所有医院</string>
     <string name="cure_choose_hospital">选择医院</string>
     <string name="cure_add_hospital">添加医院</string>
@@ -21,6 +22,7 @@
     <!--通用-->
     <string name="phone">手机号</string>
     <string name="enter_phone">输入手机号码</string>
+    <string name="enter_new_phone">输入新手机号</string>
     <string name="password">密码</string>
     <string name="enter_password">6~16位字母或数字</string>
     <string name="send_auth_code">发送验证码</string>
@@ -47,7 +49,7 @@
 
     <string name="login">登录</string>
     <string name="login_forget_password">忘记密码</string>
-    <string name="login_register">没有账号?请注册</string>
+    <string name="login_register">新用户注册</string>
     <string name="login_phone_will_be_account">手机号码将作为登录账号</string>
 
     <string name="search_keyword">请输入关键词</string>
@@ -61,8 +63,8 @@
 
     <string name="register">注册</string>
     <string name="register_use_phone_register">请用手机号码注册</string>
-    <string name="register_next">下一步</string>
-    <string name="register_protocol">同意“名字”用户协议与隐身条款</string>
+    <string name="next">下一步</string>
+    <string name="register_protocol">同意“名字”用户协议与隐私条款</string>
     <string name="register_set_account_password">设置你的账户密码</string>
     <string name="register_passwrod_error">使用6~16位字符</string>
     <string name="register_passwrod_empty">密码不能为空</string>
@@ -82,7 +84,7 @@
     <string name="phone_number_error">手机号格式错误</string>
     <string name="my_setting">设置</string>
     <string name="my_change_password">修改密码</string>
-    <string name="my_change_phone">更换手机</string>
+    <string name="my_change_phone">更换绑定手机</string>
     <string name="my_email">我的邮箱</string>
     <string name="my_hospital">我的医院</string>
     <string name="auth_send_fail">验证码发送失败,请稍后重试</string>
@@ -104,7 +106,7 @@
     <string name="reset_password_ok">设置密码成功</string>
     <string name="my_passwd_twice_passwd_same">输入的两次密码一致,请重新修改</string>
     <string name="my_passwd_old_error">旧密码输入错误,请重新输入</string>
-    <string name="my_passwd_new_error">新密码输入错误,请重新输入</string>
+    <string name="my_passwd_new_error">密码输入错误,请重新输入</string>
     <string name="my_passwd_change_ok">密码修改成功</string>
     <string name="granted_ok">授权成功</string>
     <string name="granted_fail">授权失败</string>
@@ -116,11 +118,11 @@
     <string name="phone_same_error">请输入新的手机号</string>
     <string name="success">更改成功</string>
     <string name="change_user_message">修改个人资料</string>
-    <string name="set_clear">清空缓存</string>
+    <string name="set_clear">清空聊天记录</string>
     <string name="clear">清空</string>
     <string name="set_agreement">相关协议</string>
     <string name="set_check">检查更新</string>
-    <string name="quit">退出</string>
+    <string name="quit">退出登录</string>
     <string name="edit_user_message">修改个人资料</string>
     <string name="sex">性别</string>
     <string name="birthday">生日</string>
@@ -136,7 +138,7 @@
     <string name="hospital_top">医院置顶</string>
     <string name="message_bind_hospital">绑定医院</string>
     <string name="cure_appointment">预约</string>
-    <string name="cure_notice_one_hour">提前1小时提醒</string>
+    <string name="cure_notice_one_hour">闹钟提醒</string>
     <string name="appoint_time">预约时间</string>
     <string name="take_picture">拍照</string>
 
@@ -150,14 +152,14 @@
 
     <string name="complete">完成</string>
 
-    <string name="appoint_cure_count">治疗数量</string>
+    <string name="appoint_cure_count">预约数量</string>
 
     <string name="attestation">认证</string>
 
     <string name="appoint">预约</string>
     <string name="appoint_date">预约日期</string>
     <string name="nim_send_again">重新发送</string>
-    <string name="hospital_binded">已绑定</string>
+    <string name="hospital_binded">已经绑定</string>
     <string name="hospital_hint_search">请输入医院关键字</string>
 
     <!-- 语音 -->
@@ -232,10 +234,10 @@
     <string name="notice">提示</string>
     <string name="cancel_appoint_msg">您确定要取消%s的预约么</string>
     <string name="confirm_appoint">确认预约</string>
-    <string name="hospital_bind_hospital">绑定医院</string>
+    <string name="bind_hospital">绑定医院</string>
     <string name="hospital_skip">跳过</string>
     <string name="remind">您的预约时间快到了哦</string>
-    <string name="operate_later">连接超时,请稍后重试</string>
+    <string name="operate_later">登录过期,请重新登录</string>
 
 
     <string name="input_panel_photo">图 片</string>
@@ -267,5 +269,158 @@
     <string name="unbind_ok">解除绑定成功</string>
     <string name="unbind_fail">解除绑定失败</string>
     <string name="hospital_introduce">医院简介</string>
+    <string name="update_pause">暂停</string>
+    <string name="update_continue">继续</string>
+    <string name="set_top_ok">置顶成功</string>
+    <string name="cancel_top_ok">取消置顶成功</string>
+    <string name="set_top_fail">置顶失败,请稍后重试</string>
+    <string name="cancel_top_fail">取消置顶失败,请稍后重试</string>
+    <string name="over_max_count">不能超过最大可预约次数</string>
+    <string name="set_time_error">预约时间不能小于当前时间</string>
+    <string name="max_appoint_count">当前最大可预约次数为%s次</string>
+    <string name="set_count_zero">预约次数不能为空</string>
+    <string name="appoint_count_over">您已预约所有的疗程</string>
+    <string name="cancel_appoint_ok">取消预约成功</string>
+    <string name="cancel_appoint_fail">时间过期,取消预约失败</string>
+
+
+    <string name="team_send_message_not_allow">您已不在该群，不能发送消息</string>
+    <string name="team_invalid_tip">您已退出该群</string>
+    <string name="normal_team_invalid_tip">您已退出该讨论组</string>
+    <!-- team -->
+    <string name="team_need_authentication">需要身份验证</string>
+    <string name="team_allow_anyone_join">允许任何人加入</string>
+    <string name="team_not_allow_anyone_join">不允许任何人申请加入</string>
+    <string name="team_admin_invite">管理员邀请</string>
+    <string name="team_everyone_invite">所有人邀请</string>
+    <string name="team_admin_update">管理员修改</string>
+    <string name="team_everyone_update">所有人修改</string>
+    <string name="team_invitee_need_authen">需要验证</string>
+    <string name="team_invitee_not_need_authen">不需要验证</string>
+    <string name="team_nickname">群昵称</string>
+    <string name="team_nickname_none">未填写</string>
+    <string name="team_identity">身份</string>
+    <string name="remove_member">移出本群</string>
+    <string name="team_member_info">成员信息</string>
+    <string name="team_admin">管理员</string>
+    <string name="team_creator">群主</string>
+    <string name="team_member">群成员</string>
+    <string name="update_success">保存成功</string>
+    <string name="update_failed">保存失败, code:%d</string>
+    <string name="no_permission">没有权限</string>
+    <string name="set_team_admin">设为管理员</string>
+    <string name="cancel_team_admin">取消管理员</string>
+    <string name="team_member_remove_confirm">确定要将其移出群组么?</string>
+    <string name="team_annourcement">群公告</string>
+    <string name="invite_member">邀请成员</string>
+    <string name="team_name">群名称</string>
+    <string name="team_introduce">群介绍</string>
+    <string name="team_extension">扩展示例</string>
+    <string name="click_set">点击设置</string>
+    <string name="create_advanced_team">创建高级群</string>
+    <string name="reach_team_member_capacity">成员数量不能超过%1$d</string>
+    <string name="team_authentication">身份验证</string>
+    <string name="team_invite">邀请他人权限</string>
+    <string name="team_info_update">群资料修改权限</string>
+    <string name="team_invitee_authentication">被邀请人身份验证</string>
+    <string name="create_team">创建群</string>
+    <string name="over_team_member_capacity">邀请失败，成员人数上限为%1$d人</string>
+    <string name="over_team_capacity">创建失败，创建群数量达到限制</string>
+    <string name="create_team_failed">创建失败</string>
+    <string name="create_team_success">创建成功</string>
+    <string name="team_announce_title">标题</string>
+    <string name="team_announce_content">公告内容</string>
+    <string name="team_announce_notice">请输入群公告标题</string>
+    <string name="my_team_card">我的群名片</string>
+    <string name="team_introduce_hint">点击填写群介绍</string>
+    <string name="team_extension_hint">点击修改扩展内容</string>
+    <string name="team_announce_hint">点击填写群公告</string>
+    <string name="team_notification_config">消息提醒</string>
+    <string name="team_transfer_without_member">没有可转移的群成员</string>
+    <string name="team_invite_members_success">群成员邀请已发出</string>
+    <string name="team_invite_members_failed">群成员邀请失败</string>
+    <string name="team_transfer_success">群转移成功</string>
+    <string name="team_transfer_failed">群转移失败</string>
+    <string name="quit_team_success">您已退群</string>
+    <string name="quit_team_failed">退群失败</string>
+    <string name="quit_normal_team_success">您已经退出讨论组</string>
+    <string name="quit_normal_team_failed">退出讨论组失败</string>
+    <string name="dismiss_team_success">群已解散</string>
+    <string name="dismiss_team_failed">解散群失败</string>
+    <string name="dismiss_team">解散本群</string>
+    <string name="transfer_team">转让群</string>
+    <string name="quit_team">退出群</string>
+    <string name="quit_normal_team">退出讨论组</string>
+    <string name="team_apply_to_join">申请加入</string>
+    <string name="advanced_team">高级群</string>
+    <string name="normal_team">讨论组</string>
+    <string name="team_name_toast">群名称不能为空</string>
+    <string name="not_allow_empty">不能为空</string>
+    <string name="chat_setting">聊天信息</string>
+    <string name="team_settings_name">设置名称</string>
+    <string name="normal_team_name">讨论组名称</string>
+    <string name="remove_member_success">移除成员成功</string>
+    <string name="remove_member_failed">移除成员失败</string>
+    <string name="invite_member_success">邀请成员成功</string>
+    <string name="invite_member_failed">邀请成员失败</string>
+    <string name="team_create_notice">请添加群成员</string>
+    <string name="team_settings_set_name">取个名字吧</string>
+    <string name="team_not_exist">该群不存在</string>
+    <string name="normal_team_not_exist">该讨论组不存在</string>
+    <string name="mute_msg">设置禁言</string>
+    <string name="set_head_image">设置头像</string>
+    <string name="team_update_cancel">取消更新</string>
+    <string name="team_update_failed">群头像设置失败</string>
+    <string name="system_notice" formatted="false">您有一个%s的%s治疗,请及时到医院治疗</string>
+    <string name="see_detail">查看详情</string>
+    <string name="protocol">隐身条款</string>
+    <string name="current_is_newest">已经是最新版本</string>
+    <string name="wating">正在查询数据,请稍后...</string>
+    <string name="new_app_avilable">有新版本可用</string>
+    <string name="download">下载</string>
+    <string name="update_msg" formatted="false">徳医%s邀您体验,新版特性,%s</string>
+    <string name="download_error">下载失败,请检查你的网络</string>
+    <string name="retry">重试</string>
+    <string name="photo_folder">相册</string>
+    <string name="all_photo">所有照片</string>
+    <string name="message">消息</string>
+    <string name="team">团队</string>
+    <string name="real_name">真实姓名</string>
+    <string name="manager">管理</string>
+    <string name="my_team">我的团队</string>
+    <string name="my_store">我的收藏</string>
+    <string name="add_member">添加成员</string>
+    <string name="add_staff_ok">添加成员成功</string>
+    <string name="store_user_ok">收藏用户成功</string>
+    <string name="cancel_store_user_ok">取消用户收藏成功</string>
+    <string name="my_data">我的资料</string>
+    <string name="patient_contect_you">患者现在可以轻松找到和联系您啦</string>
+    <string name="update_password">修改密码</string>
+    <string name="transfer_member">转发同事</string>
+
+    <string name="commuicate_count" formatted="false">沟通(%s)</string>
+    <string name="doctor_approve">医生资格认证</string>
+    <string name="doctor_title">职称</string>
+    <string name="special_project">擅长项目</string>
+    <string name="introduce">简介</string>
+    <string name="choose_birth">选择您的生日</string>
+    <string name="apply_approve">申请认证</string>
+    <string name="approving">认证中</string>
+    <string name="remark">备注</string>
+    <string name="remove">移除</string>
+    <string name="reset_password">重置密码</string>
+    <string name="new_user_register">新用户注册</string>
+    <string name="name">姓名</string>
+    <string name="hello_doctor">你好医生</string>
+    <string name="guide">直接与患者沟通\n根据预约实时跟进患者状态</string>
+    <string name="new_ui">更直观的界面</string>
+    <string name="current_phone" formatted="false">当前手机号:%s</string>
+    <string name="receive_phone_auth" formatted="false">请输入%s收到的短信验证</string>
+    <string name="verfity_phone">验证手机</string>
+    <string name="set_new_password">设置新密码</string>
+    <string name="wating_bind_hospital" formatted="false">您申请绑定%s的请求已经发送\n请等待审核</string>
+    <string name="bind_hospital_ok" formatted="false">您成功绑定\n%s</string>
+    <string name="unbind_hospital">解除绑定</string>
+
 
 </resources>

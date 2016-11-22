@@ -1,7 +1,11 @@
 package com.easyhoms.easydoctor.common.view;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.TextAppearanceSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +31,7 @@ public class MyActionbar extends FrameLayout {
     private TextView mTitleTv;
     private TextView mRightTv;
     private TextView mLeftTv;
+    private View mBottomLine;
     private String mTitle;
     private RelativeLayout mBarRl;
 
@@ -34,8 +39,9 @@ public class MyActionbar extends FrameLayout {
 
     public MyActionbar(final Context context, AttributeSet attrs) {
         super(context, attrs);
-        mContext=context;
+        mContext = context;
         LayoutInflater.from(context).inflate(R.layout.custom_view_actionbar, this);
+        Resources resources=getResources();
         mBackImg = (ImageView) findViewById(R.id.bar_back_img);
         mTitleTv = (TextView) findViewById(R.id.bar_center_title_tv);
         mRightTv = (TextView) findViewById(R.id.bar_right_tv);
@@ -43,58 +49,51 @@ public class MyActionbar extends FrameLayout {
         mRightFirstImg = (ImageView) findViewById(R.id.bar_right_first_img);
         mRightSecondImg = (ImageView) findViewById(R.id.bar_right_second_img);
         mCenterImg = (ImageView) findViewById(R.id.bar_center_img);
+        mBottomLine = (View) findViewById(R.id.bottom_line);
 
         mBarRl = (RelativeLayout) findViewById(R.id.bar_rl);
 
         TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.MyActionbar);
 
-        boolean rightTitleVisible = a.getBoolean(R.styleable.MyActionbar_ma_right_title,false);
+        boolean rightTitleVisible = a.getBoolean(R.styleable.MyActionbar_ma_right_title, false);
+        boolean bottomLineVisible = a.getBoolean(R.styleable.MyActionbar_ma_bottom_line_visible, false);
 
+        mBottomLine.setVisibility(bottomLineVisible ? VISIBLE : INVISIBLE);
         String title = a.getString(R.styleable.MyActionbar_ma_title);
         if (title != null) {
             mTitleTv.setText(title);
         }
 
         boolean rightBtnVisible = a.getBoolean(R.styleable.MyActionbar_ma_right_img_visible, true);
-        if (rightBtnVisible) {
-            mRightFirstImg.setVisibility(VISIBLE);
-        }else{
-            mRightFirstImg.setVisibility(INVISIBLE);
-        }
+        mRightFirstImg.setVisibility(rightBtnVisible?VISIBLE:INVISIBLE);
 
-        int rightImgId=a.getResourceId(R.styleable.MyActionbar_ma_right_img,0);
-        if(rightImgId!=0){
+        int rightImgId = a.getResourceId(R.styleable.MyActionbar_ma_right_img, 0);
+        if (rightImgId != 0) {
             mRightFirstImg.setVisibility(VISIBLE);
             mRightFirstImg.setImageResource(rightImgId);
         }
-        int secondImgId=a.getResourceId(R.styleable.MyActionbar_ma_second_img,0);
-        if(rightImgId!=0){
+        int secondImgId = a.getResourceId(R.styleable.MyActionbar_ma_second_img, 0);
+        if (rightImgId != 0) {
             mRightSecondImg.setVisibility(VISIBLE);
             mRightSecondImg.setImageResource(secondImgId);
         }
-        int backImgId=a.getResourceId(R.styleable.MyActionbar_ma_back_img,0);
-        if(backImgId!=0){
+        int backImgId = a.getResourceId(R.styleable.MyActionbar_ma_back_img, 0);
+        if (backImgId != 0) {
             mBackImg.setVisibility(VISIBLE);
             mBackImg.setImageResource(backImgId);
         }
-        int centerImgId=a.getResourceId(R.styleable.MyActionbar_ma_center_img,0);
-        if(centerImgId!=0){
+        int centerImgId = a.getResourceId(R.styleable.MyActionbar_ma_center_img, 0);
+        if (centerImgId != 0) {
             mCenterImg.setVisibility(VISIBLE);
             mCenterImg.setImageResource(centerImgId);
         }
         boolean backBtnVisible = a.getBoolean(R.styleable.MyActionbar_ma_back_img_visible, true);
-        if (backBtnVisible) {
-            mBackImg.setVisibility(VISIBLE);
-        }else{
-            mBackImg.setVisibility(INVISIBLE);
-        }
+        mBackImg.setVisibility(backBtnVisible?VISIBLE:INVISIBLE);
+
         boolean centerImgVisible = a.getBoolean(R.styleable.MyActionbar_ma_center_img_visible, false);
-        if (centerImgVisible) {
-            mCenterImg.setVisibility(VISIBLE);
-        }else{
-            mCenterImg.setVisibility(GONE);
-        }
+        mCenterImg.setVisibility(centerImgVisible?VISIBLE:GONE);
+
         mBackImg.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,9 +102,10 @@ public class MyActionbar extends FrameLayout {
         });
 
         //设置背景颜色
-        int bgColor=a.getColor(R.styleable.MyActionbar_ma_bg,getResources().getColor(R.color.white));
-
-        mBarRl.setBackgroundColor(bgColor);
+        int style = a.getColor(R.styleable.MyActionbar_ma_style, 1);  //1  blue  2 white
+        mBarRl.setBackgroundColor(style==1?resources.getColor(R.color.main_color_blue):resources.getColor(R.color.white));
+        mTitleTv.setTextColor(style==1?resources.getColor(R.color.white):resources.getColor(R.color.text_body_strong));
+        mBackImg.setImageResource(style==1?R.drawable.icon_back_white:R.drawable.icon_back_blue);
     }
 
     public void setRightClick(OnClickListener onClickListener) {
@@ -131,6 +131,7 @@ public class MyActionbar extends FrameLayout {
     public void setTitle(int textId) {
         mTitleTv.setText(textId);
     }
+
     public void setTitleVisible(int visible) {
         mTitleTv.setVisibility(visible);
     }
@@ -144,6 +145,7 @@ public class MyActionbar extends FrameLayout {
     public ImageView getRightBtnImg() {
         return mRightFirstImg;
     }
+
     public ImageView getSecondBtnImg() {
         return mRightSecondImg;
     }
@@ -154,8 +156,9 @@ public class MyActionbar extends FrameLayout {
     }
 
     public void setRightTv(int stringId, OnClickListener onClickListener) {
-        this.setRightTv(mContext.getResources().getString(stringId),onClickListener);
+        this.setRightTv(mContext.getResources().getString(stringId), onClickListener);
     }
+
     public void setRightTv(String string, OnClickListener onClickListener) {
         mRightTv.setVisibility(VISIBLE);
         mRightTv.setText(string);
@@ -168,6 +171,7 @@ public class MyActionbar extends FrameLayout {
         mLeftTv.setText(stringId);
         mLeftTv.setOnClickListener(onClickListener);
     }
+
     public void setLeftBtnListener(OnClickListener onClickListener) {
 
         mBackImg.setVisibility(VISIBLE);
@@ -180,10 +184,19 @@ public class MyActionbar extends FrameLayout {
     }
 
     public ImageView getCenterImg() {
-        return  mCenterImg;
+        return mCenterImg;
     }
 
-    public void setCenterImgClickListerer(OnClickListener listerer){
+    public void setCenterImgClickListerer(OnClickListener listerer) {
         mCenterImg.setOnClickListener(listerer);
+    }
+
+    public void setSubTitle() {
+        String str = "擅长项目\n最多选择三项";
+        SpannableString styledText = new SpannableString(str);
+        styledText.setSpan(new TextAppearanceSpan(mContext, R.style.style_text_18), 0, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        styledText.setSpan(new TextAppearanceSpan(mContext, R.style.style_text_12), 5, str.length() - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        mTitleTv.setText(styledText, TextView.BufferType.SPANNABLE);
     }
 }

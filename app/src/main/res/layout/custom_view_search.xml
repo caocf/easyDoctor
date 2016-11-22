@@ -2,6 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:id="@+id/custom_search_ll"
+              android:background="@color/white"
+              android:paddingBottom="8dp"
               android:orientation="vertical">
 
     <LinearLayout

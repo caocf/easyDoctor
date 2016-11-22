@@ -766,7 +766,9 @@ public class CommonUtils {
                 .considerExifParams(true)// 会识别图片的方向信息
                 .resetViewBeforeLoading(true)// 重设图片
                 .build();
-        LogUtils.i(url);
+
+        url=url.startsWith("http://")?url:"http://"+url;
+        LogUtils.i("image: "+url);
         ImageLoader.getInstance().displayImage(url, imageView, mConfig);
     }
 

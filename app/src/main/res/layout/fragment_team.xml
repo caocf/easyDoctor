@@ -1,13 +1,142 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.easyhoms.easydoctor.team.fragment.TeamFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_main_color"
+              android:orientation="vertical"
+              tools:context="com.easyhoms.easydoctor.team.fragment.TeamFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        android:id="@+id/team_ma"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:layout_height="wrap_content"
+        app:ma_title="@string/team"/>
 
-</FrameLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.easyhoms.easydoctor.common.view.SearchLayout
+                android:id="@+id/team_sl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <View
+                style="@style/style_line"
+                android:layout_marginTop="8dp"/>
+
+            <LinearLayout
+                android:id="@+id/my_team_ll"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/team_item_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.netease.nim.common.ui.imageview.HeadImageView
+                    android:id="@+id/my_head_hiv"
+                    android:src="@drawable/user_head_default"
+                    style="@style/head_style"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/my_team"
+                    android:textColor="@color/text_body_strong"
+                    android:textSize="@dimen/team_item_text"/>
+
+                <TextView
+                    android:id="@+id/team_manager_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_rec_white_bule"
+                    android:padding="8dp"
+                    android:text="@string/manager"
+                    android:textColor="@color/main_color_blue"
+                    />
+
+                <ImageView
+                    android:id="@+id/my_team_selected_img"
+                    android:layout_width="34dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/selector_arrow_right_down"/>
+            </LinearLayout>
+
+            <com.easyhoms.easydoctor.common.view.NoScrollListView
+                android:id="@+id/my_team_nslv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:visibility="gone"/>
+
+            <View
+                style="@style/style_line"
+                />
+
+            <com.easyhoms.easydoctor.common.view.NoScrollExpandableListView
+                android:id="@+id/other_team_elv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:childDivider="@drawable/layer_recrent_lv_divider"
+                android:divider="@color/trans"
+                />
+
+            <View
+                android:layout_marginTop="@dimen/team_divider"
+                style="@style/style_line"
+                />
+
+            <LinearLayout
+
+                android:id="@+id/my_store_ll"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/team_item_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.netease.nim.common.ui.imageview.HeadImageView
+                    style="@style/head_style"
+                    android:src="@drawable/icon_team_store"/>
+
+                <TextView
+                    android:textColor="@color/text_body_strong"
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/my_store"
+                    android:textSize="@dimen/team_item_text"/>
+
+                <ImageView
+                    android:id="@+id/store_selected_img"
+                    android:layout_width="34dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/selector_arrow_right_down"/>
+            </LinearLayout>
+
+            <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+                android:id="@+id/user_swip_smrv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerHeight="0dp"
+                android:visibility="invisible"/>
+            <View
+                style="@style/style_line"
+                />
+        </LinearLayout>
+
+
+
+    </ScrollView>
+</LinearLayout>

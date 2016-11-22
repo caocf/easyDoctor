@@ -5,5 +5,4 @@ package com.easyhoms.easydoctor.common.bean;
  */
 public class ContactLetter {
     public String sortLetters;  //显示数据拼音的首字母
-
 }

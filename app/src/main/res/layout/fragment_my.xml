@@ -1,13 +1,269 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.easyhoms.easydoctor.my.fragment.MyFragment">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:background="@color/bg_main_color"
+        android:orientation="vertical"
+        tools:context="com.easyhoms.easydoctor.my.fragment.MyFragment">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="228dp"
+            android:background="@drawable/my_bg"
+            android:paddingTop="20dp">
+
+            <com.netease.nim.common.ui.imageview.HeadImageView
+                android:id="@+id/head_hiv"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_patient_head"
+                app:civ_border_color="#30ffffff"
+                app:civ_border_width="3dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/head_hiv"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/icon_approved"/>
+
+            <TextView
+                android:id="@+id/doctor_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/head_hiv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:text="You Are my Sunshine!"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_24"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/doctor_job_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/doctor_name_tv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:text="主任医生"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_16"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_rec_border_grey">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/main_color_blue"/>
+
+            <TextView
+                android:id="@+id/title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/my_hospital"
+                android:textColor="#757575"
+                android:textSize="@dimen/text_14"/>
+
+            <ImageView
+                android:id="@+id/icon_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title_tv"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="17dp"
+                android:src="@drawable/icon_hospital"/>
+
+            <TextView
+                android:id="@+id/hospital_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/icon_iv"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@id/icon_iv"
+                android:text="@string/my_hospital"
+                android:textColor="@color/text_body_strong"
+                android:textSize="@dimen/text_20"/>
+
+            <TextView
+                android:id="@+id/hospita_describe_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/icon_iv"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="18dp"
+                android:text="@string/patient_contect_you"
+                android:textColor="#757575"
+                android:textSize="@dimen/text_18"/>
+
+            <TextView
+                android:id="@+id/unbind_tv"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/shape_round_bg_blue_tv"
+                android:gravity="center"
+                android:text="@string/bind_hospital"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_16"
+                android:visibility="invisible"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/shape_rec_border_grey"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_binding"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hospital_binded"
+                    android:textColor="@color/text_body_weak"
+                    android:textSize="@dimen/text_16"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/update_mobile_ll"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_rec_border_grey"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="17dp">
+
+                <RelativeLayout
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/shape_round_bg_grey">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/icon_phone"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/mobile_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="192XXXX123"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/update_password_ll"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_rec_border_grey"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="17dp">
+                <RelativeLayout
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/shape_round_bg_grey">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/icon_lock"/>
+                </RelativeLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/update_password"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/my_setting_tv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_44"
+            android:background="@color/white"
+            >
+
+            <View
+                android:id="@+id/top_line_v"
+                style="@style/style_line"/>
+
+            <ImageView
+                android:id="@+id/set_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/icon_setting"/>
+
+            <TextView
+                android:id="@+id/menu_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_below="@+id/top_line_v"
+                android:layout_marginLeft="@dimen/height_16"
+                android:layout_toRightOf="@id/set_img"
+                android:gravity="center_vertical"
+                android:text="@string/change_user_message"
+                android:textColor="@color/text_body_strong"
+                android:textSize="@dimen/text_16"
+                />
+
+            <ImageView
+                android:id="@+id/next_img"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/height_16"
+                android:src="@drawable/icon_next"
+                />
+
+            <View
+                android:id="@+id/bottom_line_v"
+                style="@style/style_line"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</ScrollView>

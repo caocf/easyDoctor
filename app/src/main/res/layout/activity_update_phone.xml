@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_update_phone"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.easyhoms.easydoctor.my.activity.phone.UpdatePhoneFirstActivity">
+
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:ma_title="@string/my_change_phone"
+        />
+
+
+    <TextView
+        android:textSize="@dimen/text_18"
+        android:id="@+id/my_phone_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="@dimen/text_top"
+        android:text="@string/current_phone"
+        />
+
+    <View
+        android:layout_height="0.5dp"
+        style="@style/style_line"/>
+
+    <EditText
+        android:textSize="17dp"
+        android:hint="@string/enter_new_phone"
+        android:gravity="center"
+        android:id="@+id/my_passwd_auth_et"
+        android:textColor="@color/text_body_strong"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white"
+        />
+
+    <View
+        android:layout_height="0.5dp"
+        style="@style/style_line"/>
+
+    <TextView
+        android:background="@drawable/selector_round_blue"
+        android:id="@+id/next_tv"
+        style="@style/style_login_tv"
+        android:layout_below="@id/login_password_dev"
+        android:text="@string/next"/>
+</LinearLayout>

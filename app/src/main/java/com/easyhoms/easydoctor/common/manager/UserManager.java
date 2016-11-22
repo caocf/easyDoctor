@@ -1,16 +1,17 @@
 package com.easyhoms.easydoctor.common.manager;
 
 import com.easyhoms.easydoctor.common.bean.User;
+import com.easyhoms.easydoctor.common.response.Hospital;
+import com.easyhoms.easydoctor.common.response.UserBean;
+import com.easyhoms.easydoctor.common.utils.LogUtils;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.xutils.ex.DbException;
 import org.xutils.x;
 
-import java.text.SimpleDateFormat;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * 保存医生
@@ -26,46 +27,34 @@ public class UserManager {
         }
         return user;
     }
-    public static void paraseUser(String result,String phone,String password) {
-        try {
-            JSONObject object = new JSONObject(result);
-            JSONObject content=object.getJSONObject("content");
-            String access_token=content.getString("access_token");
-            JSONObject user=content.getJSONObject("user");
-            JSONObject userExtend = content.getJSONObject("userExtend");
-            String imagePath = userExtend.getString("imagePath");
-            User userBean=new Gson().fromJson(user.toString(),User.class);
-            userBean.access_token=access_token;
-            userBean.Id = 1;
-            userBean.mobile = phone;
-            userBean.password = password;
-            userBean.imagePath = imagePath;
-            userBean.name = user.getString("name");
-            if (user.getString("birth").equals("null")){
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-                userBean.birth = df.format(new Date());
-            }
-            else {
-                userBean.birth = user.getString("birth");
-            }
-            if (user.getString("gender").equals("null")){
-                userBean.gender = "1";
-            }
-            else {
-                userBean.gender = user.getString("gender");
-            }
-            try {
-                x.db().delete(User.class);
-                x.db().saveBindingId(userBean);
-            } catch (DbException e) {
-                e.printStackTrace();
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
+
+    public static void paraseUser(String result, String phone, String password) {
+        UserBean bean = new Gson().fromJson(result, UserBean.class);
+        User dbUser = new User();
+        dbUser.staffImId = bean.content.staff_im_id;
+        dbUser.access_token = bean.content.access_token;
+        dbUser.staffImId = bean.content.staff_im_id;
+        dbUser.mobile = phone;
+        dbUser.password = password;
+        if (bean.content.staffExtend != null) {
+            dbUser.imagePath = bean.content.staffExtend.imagePath;
         }
+        dbUser.name = bean.content.staff.name;
+        dbUser.birth = bean.content.staff.birth;
+        dbUser.gender = bean.content.staff.gender;
+        dbUser.Id = 1;
+        try {
+            x.db().delete(User.class);
+            x.db().saveBindingId(dbUser);
+            LogUtils.i(dbUser.toString());
+        } catch (DbException e) {
+            e.printStackTrace();
+            LogUtils.e("db: " + e.getMessage());
+        }
+
     }
 
-    public static void deleteUser(){
+    public static void deleteUser() {
         try {
             x.db().delete(User.class);
         } catch (DbException e) {
@@ -99,9 +88,8 @@ public class UserManager {
 
     }
 
-    public static void saveHosToDb(ArrayList<String> hospitals) {
-
-        User user = UseManager.getUser();
+    public static void saveBindHosToDb(ArrayList<Hospital> hospitals) {
+        User user = UserManager.getUser();
         user.hospital = new Gson().toJson(hospitals);
         try {
             x.db().saveOrUpdate(user);
@@ -109,4 +97,18 @@ public class UserManager {
             e.printStackTrace();
         }
     }
+
+    public static Hospital getBindHos(){
+        Hospital hospital=null;
+        String hos=getUser().hospital;
+
+        Type objectType = new TypeToken<ArrayList<Hospital>>() {
+        }.getType();
+        ArrayList<Hospital> res = new Gson().fromJson(hos, objectType);
+        hospital=(res.size()==0?null:res.get(0));
+        LogUtils.i("hosname:"+hospital==null?"null":hospital.companyName);
+        return hospital;
+    }
+
+
 }

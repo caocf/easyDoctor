@@ -1,11 +1,9 @@
 package com.netease.nim.session.activity;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewCompat;
@@ -18,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.easyhoms.easydoctor.R;
-import com.netease.nim.common.activity.UI;
+import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.netease.nim.common.ui.dialog.CustomAlertDialog;
 import com.netease.nim.common.ui.imageview.BaseZoomableImageView;
 import com.netease.nim.common.ui.imageview.ImageGestureListener;
@@ -36,6 +34,9 @@ import com.netease.nimlib.sdk.msg.constant.AttachStatusEnum;
 import com.netease.nimlib.sdk.msg.constant.MsgTypeEnum;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
 
+import org.xutils.view.annotation.BindView;
+import org.xutils.view.annotation.ContentView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -45,7 +46,8 @@ import java.util.List;
  * 查看聊天消息原图
  * Created by huangjun on 2015/3/6.
  */
-public class WatchMessagePictureActivity extends UI {
+@ContentView(R.layout.nim_watch_picture_activity)
+public class WatchMessagePictureActivity extends BaseActivity {
 
     private static final String INTENT_EXTRA_IMAGE = "INTENT_EXTRA_IMAGE";
     private static final String TAG = WatchMessagePictureActivity.class.getSimpleName();
@@ -57,12 +59,13 @@ public class WatchMessagePictureActivity extends UI {
 
     private boolean newPageSelected = false;
 
+    @BindView(R.id.loading_layout)
     private View loadingLayout;
-    private BaseZoomableImageView image;
-    private ActionBar actionBar;
-    protected CustomAlertDialog alertDialog;
+    @BindView(R.id.view_pager_image)
     private ViewPager imageViewPager;
     private PagerAdapter adapter;
+    private BaseZoomableImageView image;
+    protected CustomAlertDialog alertDialog;
     private AbortableFuture downloadFuture;
 
     public static void start(Context context, IMMessage message) {
@@ -73,15 +76,23 @@ public class WatchMessagePictureActivity extends UI {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.nim_watch_picture_activity);
+    protected void initView() {
         this.message = (IMMessage) getIntent().getSerializableExtra(INTENT_EXTRA_IMAGE);
-        findViews();
+        alertDialog = new CustomAlertDialog(this);
         queryImageMessages();
 
         handler = new Handler();
         registerObservers(true);
+    }
+
+    @Override
+    protected void initActionbar() {
+
+    }
+
+    @Override
+    protected void initListener() {
+
     }
 
 
@@ -133,19 +144,6 @@ public class WatchMessagePictureActivity extends UI {
 
     protected boolean compareObjects(IMMessage t1, IMMessage t2) {
         return (t1.getUuid().equals(t2.getUuid()));
-    }
-
-    private void findViews() {
-        alertDialog = new CustomAlertDialog(this);
-        loadingLayout = findViewById(R.id.loading_layout);
-
-        imageViewPager = (ViewPager) findViewById(R.id.view_pager_image);
-
-        actionBar = getActionBar();
-        if(actionBar!=null){
-            actionBar.hide();
-        }
-
     }
 
     private void setViewPagerAdapter() {
@@ -422,7 +420,12 @@ public class WatchMessagePictureActivity extends UI {
 //        }
 //        alertDialog.show();
     }
-
+    public Handler getHandler() {
+        if (handler == null) {
+            handler = new Handler(getMainLooper());
+        }
+        return handler;
+    }
 
 
 }

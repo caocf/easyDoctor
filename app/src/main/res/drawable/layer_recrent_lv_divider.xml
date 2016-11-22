@@ -6,15 +6,19 @@
         >
         <shape
             android:shape="rectangle">
+            <size
+                android:height="1dp"/>
             <solid
                 android:color="@color/white"/>
         </shape>
     </item>
-    <item android:left="84dp">
+    <item android:left="@dimen/line_margin_left">
         <shape
             android:shape="rectangle">
+            <size
+                android:height="1dp"/>
             <solid
-                android:color="@color/line"/>
+                android:color="@color/bg_main_color"/>
         </shape>
     </item>
 </layer-list>

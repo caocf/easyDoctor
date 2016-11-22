@@ -14,6 +14,7 @@ import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.view.ActionSheetDialog;
 import com.netease.nim.cache.TeamDataCache;
 import com.netease.nim.common.adapter.TViewHolder;
+import com.netease.nim.common.ui.imageview.HeadImageView;
 import com.netease.nim.common.util.sys.TimeUtil;
 import com.netease.nim.session.module.list.MsgAdapter;
 import com.netease.nimlib.sdk.NIMClient;
@@ -27,7 +28,7 @@ import com.netease.nimlib.sdk.msg.model.IMMessage;
 
 /**
  * 会话窗口消息列表项的ViewHolder基类，负责每个消息项的外层框架，包括头像，昵称，发送/接收进度条，重发按钮等。<br>
- *     具体的消息展示项可继承该基类，然后完成具体消息内容展示即可。
+ * 具体的消息展示项可继承该基类，然后完成具体消息内容展示即可。
  */
 public abstract class MsgViewHolderBase extends TViewHolder {
 
@@ -43,8 +44,8 @@ public abstract class MsgViewHolderBase extends TViewHolder {
     //zhang
     protected TextView noticeTextView;
 
-//    private HeadImageView avatarLeft;
-//    private HeadImageView avatarRight;
+    private HeadImageView avatarLeft;
+    private HeadImageView avatarRight;
 
     public ImageView nameIconView;
 
@@ -112,7 +113,7 @@ public abstract class MsgViewHolderBase extends TViewHolder {
 
     // 设置FrameLayout子控件的gravity参数
     protected final void setGravity(View view, int gravity) {
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams)view.getLayoutParams();
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
         params.gravity = gravity;
     }
 
@@ -128,7 +129,7 @@ public abstract class MsgViewHolderBase extends TViewHolder {
 
     // 根据layout id查找对应的控件
     protected <T extends View> T findViewById(int id) {
-        return (T)view.findViewById(id);
+        return (T) view.findViewById(id);
     }
 
     // 判断消息方向，是否是接收到的消息
@@ -145,8 +146,8 @@ public abstract class MsgViewHolderBase extends TViewHolder {
     @Override
     protected final void inflate() {
         timeTextView = findViewById(R.id.message_item_time);
-//        avatarLeft = findViewById(R.id.message_item_portrait_left);
-//        avatarRight = findViewById(R.id.message_item_portrait_right);
+        avatarLeft = findViewById(R.id.message_item_portrait_left);
+        avatarRight = findViewById(R.id.message_item_portrait_right);
         alertButton = findViewById(R.id.message_item_alert);
         progressBar = findViewById(R.id.message_item_progress);
         nameTextView = findViewById(R.id.message_item_nickname);
@@ -154,7 +155,7 @@ public abstract class MsgViewHolderBase extends TViewHolder {
         nameIconView = findViewById(R.id.message_item_name_icon);
         nameContainer = findViewById(R.id.message_item_name_layout);
         readReceiptTextView = findView(R.id.textViewAlreadyRead);
-        noticeTextView=findView(R.id.notice_item_time);
+        noticeTextView = findView(R.id.notice_item_time);
 
         View.inflate(view.getContext(), getContentResId(), contentContainer);
         inflateContentView();
@@ -163,7 +164,7 @@ public abstract class MsgViewHolderBase extends TViewHolder {
     @Override
     protected final void refresh(Object item) {
         message = (IMMessage) item;
-        //setHeadImageView();
+        setHeadImageView();
         setNameTextView();
         setTimeTextView();
         setStatus();
@@ -178,7 +179,6 @@ public abstract class MsgViewHolderBase extends TViewHolder {
 
     //zhang 设置底部的提示框
     public void setNotice(String noticeText) {
-
 
 
     }
@@ -200,7 +200,7 @@ public abstract class MsgViewHolderBase extends TViewHolder {
             return;
         }
 
-        String text = TimeUtil.getTimeShowString(message.getTime(), false);
+        String text = TimeUtil.getTimeShowString(message.getTime());
         timeTextView.setText(text);
     }
 
@@ -211,36 +211,20 @@ public abstract class MsgViewHolderBase extends TViewHolder {
 
         MsgStatusEnum status = message.getStatus();
         switch (status) {
-        case fail:
-            progressBar.setVisibility(View.GONE);
-            alertButton.setVisibility(View.VISIBLE);
-            break;
-        case sending:
-            progressBar.setVisibility(View.VISIBLE);
-            alertButton.setVisibility(View.GONE);
-            break;
-        default:
-            progressBar.setVisibility(View.GONE);
-            alertButton.setVisibility(View.GONE);
-            break;
+            case fail:
+                progressBar.setVisibility(View.GONE);
+                alertButton.setVisibility(View.VISIBLE);
+                break;
+            case sending:
+                progressBar.setVisibility(View.VISIBLE);
+                alertButton.setVisibility(View.GONE);
+                break;
+            default:
+                progressBar.setVisibility(View.GONE);
+                alertButton.setVisibility(View.GONE);
+                break;
         }
     }
-
-//    private void setHeadImageView() {
-//        HeadImageView show = isReceivedMessage() ? avatarLeft : avatarRight;
-//        HeadImageView hide = isReceivedMessage() ? avatarRight : avatarLeft;
-//        if (isMiddleItem()) {
-//            show.setVisibility(View.GONE);
-//        } else {
-//            show.setVisibility(View.VISIBLE);
-//            show.loadBuddyAvatar(message.getFromAccount());
-//        }
-//
-//        if (!isShowHeadImage()) {
-//            show.setVisibility(View.GONE);
-//        }
-//        hide.setVisibility(View.GONE);
-//    }
 
     private void setOnClickListener() {
         // 重发/重收按钮响应事件
@@ -251,7 +235,7 @@ public abstract class MsgViewHolderBase extends TViewHolder {
                     //重新发送
 
                     ActionSheetDialog dialog = new ActionSheetDialog(context).builder().addSheetItem(context.getString(R.string.nim_send_again)
-                            ,R.color.popcolor, new ActionSheetDialog.OnSheetItemClickListener() {
+                            , R.color.popcolor, new ActionSheetDialog.OnSheetItemClickListener() {
                                 @Override
                                 public void onClick(int which) {
                                     getAdapter().getEventListener().onFailedBtnClick(message);
@@ -320,13 +304,16 @@ public abstract class MsgViewHolderBase extends TViewHolder {
     }
 
     public void setNameTextView() {
-        if (message.getSessionType() == SessionTypeEnum.Team && isReceivedMessage() && !isMiddleItem()) {
+        //   if (message.getSessionType() == SessionTypeEnum.Team && isReceivedMessage() && !isMiddleItem()) {
+        if (message.getSessionType() == SessionTypeEnum.Team && !isMiddleItem()) {
             nameTextView.setVisibility(View.VISIBLE);
             nameTextView.setText(TeamDataCache.getInstance().getTeamMemberDisplayName(message.getSessionId(), message
                     .getFromAccount()));
+
         } else {
             nameTextView.setVisibility(View.GONE);
         }
+
     }
 
     private void setContent() {
@@ -362,5 +349,22 @@ public abstract class MsgViewHolderBase extends TViewHolder {
         } else {
             readReceiptTextView.setVisibility(View.GONE);
         }
+    }
+
+    private void setHeadImageView() {
+        HeadImageView show = isReceivedMessage() ? avatarLeft : avatarRight;
+        HeadImageView hide = isReceivedMessage() ? avatarRight : avatarLeft;
+        hide.setVisibility(View.GONE);
+        if (!isShowHeadImage()) {
+            show.setVisibility(View.GONE);
+            return;
+        }
+        if (isMiddleItem()) {
+            show.setVisibility(View.GONE);
+        } else {
+            show.setVisibility(View.VISIBLE);
+            show.loadBuddyAvatar(message.getFromAccount());
+        }
+
     }
 }

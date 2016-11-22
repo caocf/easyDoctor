@@ -75,23 +75,7 @@ public class TimeUtil {
         return getDateTimeString(milliseconds, "yyyyMMdd");
     }
 
-    public static String getTimeString(long milliseconds) {
-        return getDateTimeString(milliseconds, "HHmmss");
-    }
 
-    public static String getBeijingNowTimeString(String format) {
-        TimeZone timezone = TimeZone.getTimeZone("Asia/Shanghai");
-
-        Date date = new Date(currentTimeMillis());
-        SimpleDateFormat formatter = new SimpleDateFormat(format, Locale.getDefault());
-        formatter.setTimeZone(timezone);
-
-        GregorianCalendar gregorianCalendar = new GregorianCalendar();
-        gregorianCalendar.setTimeZone(timezone);
-        String prefix = gregorianCalendar.get(Calendar.AM_PM) == Calendar.AM ? "上午" : "下午";
-
-        return prefix + formatter.format(date);
-    }
 
     public static String getBeijingNowTime(String format) {
         TimeZone timezone = TimeZone.getTimeZone("Asia/Shanghai");
@@ -125,11 +109,14 @@ public class TimeUtil {
         return showDataString;
     }
 
-    public static String getTimeShowString(long milliseconds, boolean abbreviate) {
-        String dataString = "";
-        String timeStringBy24 = "";
+    public static String getTimeShowString(long milliseconds) {
+        String dataString;
+        String timeStringBy24;
+
+        long time24Hour=24*60*60*24;
 
         Date currentTime = new Date(milliseconds);
+        int currentYear=currentTime.getYear();
         Date today = new Date();
         Calendar todayStart = Calendar.getInstance();
         todayStart.set(Calendar.HOUR_OF_DAY, 0);
@@ -137,35 +124,31 @@ public class TimeUtil {
         todayStart.set(Calendar.SECOND, 0);
         todayStart.set(Calendar.MILLISECOND, 0);
         Date todaybegin = todayStart.getTime();
+        int todayYear=todaybegin.getYear();
         Date yesterdaybegin = new Date(todaybegin.getTime() - 3600 * 24 * 1000);
         Date preyesterday = new Date(yesterdaybegin.getTime() - 3600 * 24 * 1000);
 
-        if (!currentTime.before(todaybegin)) {
-            dataString = "今天";
-        } else if (!currentTime.before(yesterdaybegin)) {
-            dataString = "昨天";
-        } else if (!currentTime.before(preyesterday)) {
-            dataString = "前天";
-        } else if (isSameWeekDates(currentTime, today)) {
-            dataString = getWeekOfDate(currentTime);
-        } else {
+        if(currentYear!=todayYear){
             SimpleDateFormat dateformatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            dataString = dateformatter.format(currentTime);
+        }else if (!currentTime.before(todaybegin)) {
+            SimpleDateFormat dateformatter = new SimpleDateFormat("HH:mm", Locale.getDefault());
+            dataString = dateformatter.format(currentTime);
+            // dataString = "今天";
+        } else {
+            SimpleDateFormat dateformatter = new SimpleDateFormat("MM-dd", Locale.getDefault());
             dataString = dateformatter.format(currentTime);
         }
 
-        SimpleDateFormat timeformatter24 = new SimpleDateFormat("HH:mm", Locale.getDefault());
-        timeStringBy24 = timeformatter24.format(currentTime);
 
-        if (abbreviate) {
-            if (!currentTime.before(todaybegin)) {
-                return getTodayTimeBucket(currentTime);
-            } else {
-                return dataString;
-            }
-        } else {
-            return dataString + " " + timeStringBy24;
-        }
+//        if (!currentTime.before(todaybegin)) {
+//            return getTodayTimeBucket(currentTime);
+//        } else {
+        return dataString;
+        //  }
+
     }
+
 
     /**
      * 根据不同时间段，显示不同时间
@@ -221,32 +204,7 @@ public class TimeUtil {
         return sameDay;
     }
 
-    /**
-     * 判断两个日期是否在同一周
-     *
-     * @param date1
-     * @param date2
-     * @return
-     */
-    public static boolean isSameWeekDates(Date date1, Date date2) {
-        Calendar cal1 = Calendar.getInstance();
-        Calendar cal2 = Calendar.getInstance();
-        cal1.setTime(date1);
-        cal2.setTime(date2);
-        int subYear = cal1.get(Calendar.YEAR) - cal2.get(Calendar.YEAR);
-        if (0 == subYear) {
-            if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR))
-                return true;
-        } else if (1 == subYear && 11 == cal2.get(Calendar.MONTH)) {
-            // 如果12月的最后一周横跨来年第一周的话则最后一周即算做来年的第一周
-            if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR))
-                return true;
-        } else if (-1 == subYear && 11 == cal1.get(Calendar.MONTH)) {
-            if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR))
-                return true;
-        }
-        return false;
-    }
+
 
     public static long getSecondsByMilliseconds(long milliseconds) {
         long seconds = new BigDecimal((float) ((float) milliseconds / (float) 1000)).setScale(0,

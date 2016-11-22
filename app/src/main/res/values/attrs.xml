@@ -27,7 +27,11 @@
         <attr name="ma_center_img" format="reference"/>
         <attr name="ma_right_title" format="boolean"/>
         <attr name="ma_center_img_visible" format="boolean"/>
-        <attr name="ma_bg" format="color|reference"/>
+        <attr name="ma_style">
+            <enum name="blue" value="1"/>
+            <enum name="white" value="2"/>
+        </attr>
+        <attr name="ma_bottom_line_visible" format="boolean"/>
     </declare-styleable>
 
 
@@ -39,7 +43,8 @@
         <attr name="dev_right_img" format="reference"/>
         <attr name="dev_auth_text" format="string|reference"/>
         <attr name="dev_is_password" format="boolean"/>
-            <attr name="dev_is_line" format="boolean" />
+        <attr name="dev_is_line" format="boolean"/>
+        <attr name="dev_line_focus" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="CircleImageView">
@@ -60,6 +65,21 @@
         <attr name="dm_line" format="boolean"></attr>
     </declare-styleable>
 
+    <declare-styleable name="MenuItem">
+        <attr name="mi_type">
+            <enum name="single" value="1"/>
+            <enum name="top" value="2"/>
+            <enum name="center" value="3"/>
+            <enum name="bottom" value="4"/>
+        </attr>
+        <attr name="mi_title" format="string"></attr>
+        <attr name="mi_next_visible" format="integer">
+            <enum name="gone" value="1"/>
+            <enum name="visible" value="2"/>
+            <enum name="invisible" value="3"/>
+        </attr>
+        <attr name="mi_describe" format="string"></attr>
+    </declare-styleable>
 
 
 </resources>

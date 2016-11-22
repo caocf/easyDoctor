@@ -17,11 +17,31 @@
         android:textSize="@dimen/text_12"
         android:visibility="gone"/>
 
+    <com.netease.nim.common.ui.imageview.HeadImageView
+        android:id="@+id/message_item_portrait_left"
+        android:layout_width="@dimen/avatar_size_in_session"
+        android:layout_height="@dimen/avatar_size_in_session"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/message_item_time"
+        android:layout_marginRight="@dimen/bubble_head_margin_horizontal"
+        android:visibility="gone" />
+
+    <com.netease.nim.common.ui.imageview.HeadImageView
+        android:id="@+id/message_item_portrait_right"
+        android:layout_width="@dimen/avatar_size_in_session"
+        android:layout_height="@dimen/avatar_size_in_session"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/message_item_time"
+        android:layout_marginLeft="@dimen/bubble_head_margin_horizontal"
+        android:visibility="gone" />
+
     <LinearLayout
         android:id="@+id/message_item_name_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/message_item_time"
+        android:layout_toLeftOf="@id/message_item_portrait_right"
+        android:layout_toRightOf="@id/message_item_portrait_left"
         android:orientation="horizontal">
 
         <ImageView
@@ -46,13 +66,16 @@
             android:singleLine="true"
             android:textColor="#000000"
             android:textSize="12sp"
-            android:visibility="gone"/>
+            android:visibility="gone"
+             />
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/message_item_portrait_right"
+        android:layout_toRightOf="@id/message_item_portrait_left"
         android:layout_below="@id/message_item_name_layout">
 
         <LinearLayout

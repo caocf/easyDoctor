@@ -380,9 +380,9 @@ public class TeamDataCache {
      * @return
      */
     public String getTeamMemberDisplayName(String tid, String account) {
-        if (account.equals(NimUIKit.getAccount())) {
-            return "我";
-        }
+//        if (account.equals(NimUIKit.getAccount())) {
+//            return "我";
+//        }
 
         return getDisplayNameWithoutMe(tid, account);
     }

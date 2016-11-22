@@ -24,7 +24,7 @@ import org.xutils.ViewInjector;
 import org.xutils.common.util.LogUtil;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
-import org.xutils.view.annotation.ViewInject;
+import org.xutils.view.annotation.BindView;
 import org.xutils.x;
 
 import java.lang.reflect.Field;
@@ -155,15 +155,15 @@ public final class ViewInjectorImpl implements ViewInjector {
                     continue;
                 }
 
-                ViewInject viewInject = field.getAnnotation(ViewInject.class);
-                if (viewInject != null) {
+                BindView bindView = field.getAnnotation(BindView.class);
+                if (bindView != null) {
                     try {
-                        View view = finder.findViewById(viewInject.value(), viewInject.parentId());
+                        View view = finder.findViewById(bindView.value(), bindView.parentId());
                         if (view != null) {
                             field.setAccessible(true);
                             field.set(handler, view);
                         } else {
-                            throw new RuntimeException("Invalid @ViewInject for "
+                            throw new RuntimeException("Invalid @BindView for "
                                     + handlerType.getSimpleName() + "." + field.getName());
                         }
                     } catch (Throwable ex) {

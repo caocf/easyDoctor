@@ -9,6 +9,8 @@ import com.easyhoms.easydoctor.R;
 import com.netease.nim.NimUIKit;
 import com.netease.nim.common.ui.popupmenu.NIMPopupMenu;
 import com.netease.nim.common.ui.popupmenu.PopupMenuItem;
+import com.netease.nim.model.TeamExtras;
+import com.netease.nim.model.TeamRequestCode;
 import com.netease.nim.session.extension.CustomAttachParser;
 import com.netease.nim.session.extension.StickerAttachment;
 import com.netease.nimlib.sdk.NIMClient;
@@ -142,4 +144,35 @@ public class SessionHelper {
 
         return moreMenuItems;
     }
+
+    public static SessionCustomization getTeamCustomization() {
+        if (teamCustomization == null) {
+            teamCustomization = new SessionCustomization() {
+                @Override
+                public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
+                    if (requestCode == TeamRequestCode.REQUEST_CODE) {
+                        if (resultCode == Activity.RESULT_OK) {
+                            String reason = data.getStringExtra(TeamExtras.RESULT_EXTRA_REASON);
+                            boolean finish = reason != null && (reason.equals(TeamExtras
+                                    .RESULT_EXTRA_REASON_DISMISS) || reason.equals(TeamExtras.RESULT_EXTRA_REASON_QUIT));
+                            if (finish) {
+                                activity.finish(); // 退出or解散群直接退出多人会话
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public MsgAttachment createStickerAttachment(String category, String item) {
+                    return new StickerAttachment(category, item);
+                }
+            };
+
+
+            teamCustomization.withSticker = true;
+        }
+
+        return teamCustomization;
+    }
+
 }
