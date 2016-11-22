@@ -25,8 +25,7 @@ import com.netease.nimlib.sdk.uinfo.UserInfoProvider;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
-import org.xutils.DbManager;
-import org.xutils.x;
+
 
 
 /**
