@@ -126,6 +126,7 @@
     <string name="edit_user_message">修改个人资料</string>
     <string name="sex">性别</string>
     <string name="birthday">生日</string>
+    <string name="change_head_img">修改个人头像</string>
 
     <string name="doctor_bind_already">已绑定</string>
     <string name="belong_hospital">所属医院</string>

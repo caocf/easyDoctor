@@ -128,7 +128,7 @@ public class MyDataActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-        mMyActionbar.setSubTitle();
+//        mMyActionbar.setSubTitle();
     }
 
     //更改头像
@@ -228,6 +228,12 @@ public class MyDataActivity extends BaseActivity {
     private void startprotactol(View view) {
 
         Intent intent = new Intent(mContext, ApplyApproveActivity.class);
+        startActivity(intent);
+    }
+
+    @Event(R.id.set_name_mi)
+    private void startName(View view){
+        Intent intent = new Intent(mContext,RealNameActivity.class);
         startActivity(intent);
     }
 

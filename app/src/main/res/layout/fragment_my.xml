@@ -243,7 +243,7 @@
                 android:layout_marginLeft="@dimen/height_16"
                 android:layout_toRightOf="@id/set_img"
                 android:gravity="center_vertical"
-                android:text="@string/change_user_message"
+                android:text="@string/my_setting"
                 android:textColor="@color/text_body_strong"
                 android:textSize="@dimen/text_16"
                 />

@@ -34,7 +34,7 @@
             android:layout_below="@+id/top_line_v"
             android:layout_marginLeft="@dimen/height_16"
             android:gravity="center_vertical"
-            android:text="@string/change_user_message"
+            android:text="@string/change_head_img"
             android:textColor="@color/text_body_strong"
             android:textSize="@dimen/text_16"
             />
