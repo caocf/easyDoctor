@@ -1,7 +1,7 @@
 package com.easyhoms.easydoctor.password.request;
 
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -15,7 +15,7 @@ public class ForgetPasswordResetParams extends RequestParams {
     public ForgetPasswordResetParams(String mobile, String password) {
 
         //更改路径即可
-        super(ConstantValues.HOST + "/login/forget_passwd_reset.jhtml");
+        super(Constants.HOST + "/login/forget_passwd_reset.jhtml");
         this.mobile = mobile;
         this.password = password;
     }

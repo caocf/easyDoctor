@@ -1,6 +1,6 @@
 package com.easyhoms.easydoctor.team.request;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -12,7 +12,7 @@ public class AddAliasParams extends RequestParams {
     public  String alias;
 
     public AddAliasParams(String yxId,String alias) {
-        super(ConstantValues.HOST+"/link/add_alias.jhtml");
+        super(Constants.HOST+"/link/add_alias.jhtml");
         this.yxId = yxId;
         this.alias = alias;
     }

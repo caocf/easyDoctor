@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="12dp"
-            android:src="@drawable/icon_lock"/>
+            android:src="@drawable/icon_checkmark"/>
 
     </LinearLayout>
 
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="12dp"
-            android:src="@drawable/icon_lock"/>
+            android:src="@drawable/icon_checkmark"/>
 
     </LinearLayout>
 

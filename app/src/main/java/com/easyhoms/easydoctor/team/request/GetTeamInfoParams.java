@@ -1,6 +1,6 @@
 package com.easyhoms.easydoctor.team.request;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -13,7 +13,7 @@ public class GetTeamInfoParams extends RequestParams {
     public long companyId;
 
     public GetTeamInfoParams(long teamId, long companyId) {
-        super(ConstantValues.HOST+"/team/get_myteam.jhtml");
+        super(Constants.HOST+"/team/get_myteam.jhtml");
         this.teamId = teamId;
         this.companyId = companyId;
     }

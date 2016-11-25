@@ -26,6 +26,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
     private static final String TAG_SUBMIT = "submit";
     private static final String TAG_CANCEL = "cancel";
     private OnTimeSelectListener timeSelectListener;
+    private boolean mDismiss=true;
 
     public TimePickerView(Context context, Type type) {
         super(context);
@@ -130,20 +131,23 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
             if (timeSelectListener != null) {
                 try {
                     Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
-                    timeSelectListener.onTimeSelect(date);
+                    mDismiss=timeSelectListener.onTimeSelect(date);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
             }
-            dismiss();
+
+            if (mDismiss) {
+                dismiss();
+            }
+
             return;
         }
     }
 
 
-
     public interface OnTimeSelectListener {
-        public void onTimeSelect(Date date);
+        public boolean onTimeSelect(Date date);
     }
 
     public void setOnTimeSelectListener(OnTimeSelectListener timeSelectListener) {

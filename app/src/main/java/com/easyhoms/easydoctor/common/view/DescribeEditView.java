@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
 
@@ -24,7 +24,7 @@ import com.easyhoms.easydoctor.common.utils.CommonUtils;
 
 public class DescribeEditView extends LinearLayout {
 
-    private static final int AUTH_TIME_SECONDS = ConstantValues.AUTH_TIME;
+    private static final int AUTH_TIME_SECONDS = Constants.AUTH_TIME;
     private TextView mTitleTv;
     private EditText mContentEt;
     private ImageView mRightImg;
@@ -118,10 +118,10 @@ public class DescribeEditView extends LinearLayout {
                 String phone = mAuthCallback.getPhone();
                 if (!CommonUtils.isMobile(phone)) {
                     switch (CommonUtils.isRightMobile(phone)){
-                        case ConstantValues.ERROR_EMPTY:
+                        case Constants.ERROR_EMPTY:
                             CommonUtils.showToast(R.string.phone_empty);
                             return;
-                        case ConstantValues.ERROR_PHONE_FORMAT:
+                        case Constants.ERROR_PHONE_FORMAT:
                             CommonUtils.showToast(R.string.phone_error);
                             return;
                     }

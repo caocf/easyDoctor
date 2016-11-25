@@ -5,13 +5,12 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
 import com.easyhoms.easydoctor.common.manager.ImManager;
 import com.easyhoms.easydoctor.common.manager.UserManager;
-import com.easyhoms.easydoctor.common.utils.AppManager;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.common.utils.KeyBoardUtils;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
@@ -57,7 +56,7 @@ public class LoginActivity extends BaseActivity {
         }
     };
     //登录接口
-    private NetCallback mCallback = new NetCallback(this) {
+    private NetCallback mCallback = new NetCallback(this,false) {
         @Override
         protected void requestOK(String result) {
 
@@ -94,18 +93,18 @@ public class LoginActivity extends BaseActivity {
     private void login(View view) {
         mPhone =mPhoneDev.getContent();
         switch (CommonUtils.isRightMobile(mPhone)){
-            case ConstantValues.ERROR_EMPTY:
+            case Constants.ERROR_EMPTY:
                 showToast(R.string.phone_empty);
                 return;
-            case ConstantValues.ERROR_PHONE_FORMAT:
+            case Constants.ERROR_PHONE_FORMAT:
                 showToast(R.string.phone_error);
                 return;
         }
         mPassword =mPasswordDev.getContent();
         switch (CommonUtils.isRightPassword(mPassword)){
-            case ConstantValues.ERROR_PASSWORD_FORMAT:
-            case ConstantValues.ERROR_PASSWORD_LENGTH_FORMAT:
-            case ConstantValues.ERROR_PASSWORD_LENGTH:
+            case Constants.ERROR_PASSWORD_FORMAT:
+            case Constants.ERROR_PASSWORD_LENGTH_FORMAT:
+            case Constants.ERROR_PASSWORD_LENGTH:
                 showToast(R.string.password_error);
                 return;
         }
@@ -127,7 +126,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mPhone=getIntent().getStringExtra(ConstantValues.KEY_PHONE);
+        mPhone=getIntent().getStringExtra(Constants.KEY_PHONE);
 
         if(mPhone!=null){
             mPhoneDev.getContentEt().setText(mPhone);
@@ -146,7 +145,7 @@ public class LoginActivity extends BaseActivity {
         closeDialog();
         KeyBoardUtils.hideKeyboard(mPasswordDev.getContentEt());
         showToast(R.string.login_ok);
-        AppManager.getAppManager().finishActivity();
+        finish();
         startActivity(new Intent(mContext, MainActivity.class));
     }
 

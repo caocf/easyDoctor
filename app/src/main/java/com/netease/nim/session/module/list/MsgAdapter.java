@@ -20,6 +20,7 @@ public class MsgAdapter extends TAdapter<IMMessage> {
     private Map<String, Float> progresses; // 有文件传输，需要显示进度条的消息ID map
     private String messageId;
 
+
     public MsgAdapter(Context context, List<IMMessage> items, TAdapterDelegate delegate) {
         super(context, items, delegate);
         timedItems = new HashSet<>();
@@ -176,6 +177,8 @@ public class MsgAdapter extends TAdapter<IMMessage> {
             return false;
         }
     }
+
+
 
     public interface ViewHolderEventListener {
         // 长按事件响应处理

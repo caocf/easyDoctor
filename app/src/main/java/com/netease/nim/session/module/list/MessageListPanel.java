@@ -98,6 +98,7 @@ public class MessageListPanel implements TAdapterDelegate {
 
     // 背景图片缓存
     private static Pair<String, Bitmap> background;
+    private String mLastMember;
 
     public MessageListPanel(Container container, View rootView) {
         this(container, rootView, null, false, false);
@@ -452,6 +453,11 @@ public class MessageListPanel implements TAdapterDelegate {
         } else if (color != 0) {
             listviewBk.setBackgroundColor(color);
         }
+    }
+
+    public void setLastMember(String lastMember) {
+        mLastMember = lastMember;
+        adapter.setLastMember(lastMember);
     }
 
     private class MessageLoader implements AutoRefreshListView.OnRefreshListener {

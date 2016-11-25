@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
@@ -84,7 +84,7 @@ public class UpdatePhoneSecondActivity extends BaseActivity implements DescribeE
     @Override
     protected void initView() {
         mPhoneAuthDev.setAuthCallback(this);
-        mPhoneNumber = getIntent().getStringExtra(ConstantValues.KEY_PHONE);
+        mPhoneNumber = getIntent().getStringExtra(Constants.KEY_PHONE);
     }
 
 

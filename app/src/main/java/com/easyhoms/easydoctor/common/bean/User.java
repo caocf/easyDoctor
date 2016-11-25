@@ -47,6 +47,8 @@ public class User {
     @Column(name = "staff_im_id")
     public String staffImId;
 
+    @Column(name = "auth_state")
+    public int authState;
 
     @Override
     public String toString() {

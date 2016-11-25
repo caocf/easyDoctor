@@ -2,6 +2,7 @@ package com.easyhoms.easydoctor.common.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +11,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.easyhoms.easydoctor.R;
-
-import org.xutils.view.annotation.BindView;
 
 
 /**
@@ -23,25 +22,24 @@ public class MenuItem extends RelativeLayout {
     public static final int CENTER = 3;
     public static final int BOTTOM = 4;
 
-    @BindView(R.id.top_line_v)
+
     View mTopLineV;
-    @BindView(R.id.menu_title_tv)
     TextView mNameTv;
-    @BindView(R.id.describe_tv)
     TextView mDescribeTv;
-    @BindView(R.id.bottom_line_v)
     View mBottomLineV;
-    @BindView(R.id.set_rl)
     RelativeLayout mSetRl;
-    @BindView(R.id.next_img)
     ImageView mNextImg;
+    ImageView mLeftImg;
+    Context mContext;
 
     public MenuItem(Context context) {
         super(context);
+        mContext=context;
     }
 
     public MenuItem(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext=context;
         LayoutInflater.from(context).inflate(R.layout.custom_view_setting_menu, this);
 
         mTopLineV=(View)findViewById(R.id.top_line_v);
@@ -50,6 +48,7 @@ public class MenuItem extends RelativeLayout {
         mBottomLineV=(View)findViewById(R.id.bottom_line_v);
         mSetRl= (RelativeLayout) findViewById(R.id.set_rl);
         mNextImg= (ImageView) findViewById(R.id.next_img);
+        mLeftImg= (ImageView) findViewById(R.id.describe_img);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MenuItem);
 
@@ -95,13 +94,24 @@ public class MenuItem extends RelativeLayout {
 
         String describe=typedArray.getString(R.styleable.MenuItem_mi_describe);
         mDescribeTv.setText(describe);
+
+        boolean leftImgVisible=typedArray.getBoolean(R.styleable.MenuItem_mi_left_img_visible,false);
+        mLeftImg.setVisibility(leftImgVisible?VISIBLE:GONE);
+
+        int leftImgId = typedArray.getResourceId(R.styleable.MenuItem_mi_left_img, 0);
+        if (leftImgId!= 0) {
+            mLeftImg.setVisibility(VISIBLE);
+            mLeftImg.setImageResource(leftImgId);
+        }
         //资源回收
         typedArray.recycle();
     }
 
-    private void initWidget(TypedArray typedArray) {
-
-
+    public void setRightText(String text){
+        mDescribeTv.setText(TextUtils.isEmpty(text)?"":text);
+    }
+    public void setRightText(int textId){
+        setRightText(mContext.getString(textId));
     }
 
 }

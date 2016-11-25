@@ -1,7 +1,7 @@
 package com.easyhoms.easydoctor.hospital.request;
 
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -13,7 +13,7 @@ public class GetDoctorsParams extends RequestParams {
 
 
     public GetDoctorsParams(int companyId) {
-        super(ConstantValues.HOST + "/api/company/get_doctors.jhtml");
+        super(Constants.HOST + "/api/company/get_doctors.jhtml");
         this.companyId = companyId;
     }
 }

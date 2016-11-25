@@ -28,11 +28,12 @@
                 app:civ_border_width="3dp"/>
 
             <ImageView
+                android:id="@+id/apply_approve_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/head_hiv"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/icon_approved"/>
+                android:src="@drawable/icon_approve_ok"/>
 
             <TextView
                 android:id="@+id/doctor_name_tv"
@@ -121,9 +122,11 @@
                 android:text="@string/bind_hospital"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_16"
-                android:visibility="invisible"/>
+                />
 
             <LinearLayout
+                android:id="@+id/bind_ll"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentBottom="true"
@@ -146,123 +149,31 @@
             </LinearLayout>
         </RelativeLayout>
 
-
-        <LinearLayout
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+        <com.easyhoms.easydoctor.common.view.MenuItem
+            app:mi_type="top"
+            android:id="@+id/update_mobile_ll"
+            app:mi_left_img_visible="true"
+            app:mi_title="@string/my_change_phone"
+            app:mi_left_img="@drawable/icon_phone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:id="@+id/update_mobile_ll"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_rec_border_grey"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingTop="17dp">
-
-                <RelativeLayout
-                    android:layout_width="46dp"
-                    android:layout_height="46dp"
-                    android:background="@drawable/shape_round_bg_grey">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/icon_phone"/>
-                </RelativeLayout>
-
-                <TextView
-                    android:id="@+id/mobile_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="192XXXX123"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/update_password_ll"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_rec_border_grey"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingTop="17dp">
-                <RelativeLayout
-                    android:layout_width="46dp"
-                    android:layout_height="46dp"
-                    android:background="@drawable/shape_round_bg_grey">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/icon_lock"/>
-                </RelativeLayout>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/update_password"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"/>
+        <com.easyhoms.easydoctor.common.view.MenuItem
+            app:mi_type="center"
+            android:id="@+id/update_password_ll"
+            app:mi_left_img_visible="true"
+            app:mi_title="@string/my_change_password"
+            app:mi_left_img="@drawable/icon_lock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.easyhoms.easydoctor.common.view.MenuItem
+            android:layout_marginBottom="14dp"
+            app:mi_type="bottom"
             android:id="@+id/my_setting_tv"
+            app:mi_left_img_visible="true"
+            app:mi_title="@string/my_setting"
+            app:mi_left_img="@drawable/icon_site"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_44"
-            android:background="@color/white"
-            >
-
-            <View
-                android:id="@+id/top_line_v"
-                style="@style/style_line"/>
-
-            <ImageView
-                android:id="@+id/set_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/icon_setting"/>
-
-            <TextView
-                android:id="@+id/menu_title_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="44dp"
-                android:layout_below="@+id/top_line_v"
-                android:layout_marginLeft="@dimen/height_16"
-                android:layout_toRightOf="@id/set_img"
-                android:gravity="center_vertical"
-                android:text="@string/my_setting"
-                android:textColor="@color/text_body_strong"
-                android:textSize="@dimen/text_16"
-                />
-
-            <ImageView
-                android:id="@+id/next_img"
-                android:layout_width="wrap_content"
-                android:layout_height="44dp"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="@dimen/height_16"
-                android:src="@drawable/icon_next"
-                />
-
-            <View
-                android:id="@+id/bottom_line_v"
-                style="@style/style_line"
-                android:layout_alignParentBottom="true"/>
-        </RelativeLayout>
+            android:layout_height="wrap_content"/>
 
 
     </LinearLayout>

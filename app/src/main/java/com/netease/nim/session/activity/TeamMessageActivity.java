@@ -8,13 +8,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
 import com.easyhoms.easydoctor.common.response.BaseArrayResp;
-import com.easyhoms.easydoctor.common.utils.AppManager;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
-import com.easyhoms.easydoctor.common.utils.LogUtils;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.common.view.MyActionbar;
 import com.easyhoms.easydoctor.my.reponse.UserDetail;
@@ -42,6 +40,7 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -66,8 +65,11 @@ public class TeamMessageActivity extends BaseMessageActivity {
 
     private TeamMessageFragment fragment;
     private UserDetail mUser;
+    private String mLastJoinMember;
+    private ArrayList<TeamMember> mTeamMembers=new ArrayList<>();
 
     private Class<? extends Activity> backToClass;
+
     private NetCallback mCallback = new NetCallback(this) {
         @Override
         protected void requestOK(String result) {
@@ -95,9 +97,10 @@ public class TeamMessageActivity extends BaseMessageActivity {
                 BaseArrayResp<UserDetail> res = new Gson().fromJson(result, objectType);
                 mUser=res.content.get(0);
                 Intent intent=new Intent(mContext, ChatSettingActivity.class);
-                intent.putExtra(ConstantValues.KEY_DATA,mUser);
-                intent.putExtra(ConstantValues.KEY_USER_ID,mUserImId);
-                intent.putExtra(ConstantValues.KEY_YX_TEAM_ID,sessionId);
+                intent.putExtra(Constants.KEY_DATA,mUser);
+                intent.putExtra(Constants.KEY_USER_ID,mUserImId);
+                intent.putExtra(Constants.KEY_YX_TEAM_ID,sessionId);
+                intent.putExtra(Constants.KEY_YX_TEAM_MEMBERS,mTeamMembers);
                 startActivity(intent);
             } else {
 
@@ -176,32 +179,6 @@ public class TeamMessageActivity extends BaseMessageActivity {
             });
         }
 
-        //获取群成员
-        NIMClient.getService(TeamService.class).queryMemberList(sessionId)
-                .setCallback(new RequestCallback<List<TeamMember>>() {
-                    @Override
-                    public void onSuccess(List<TeamMember> members) {
-
-                        for (TeamMember member : members) {
-                            LogUtils.i(member.getAccount()+" nickName"+member.getTeamNick());
-                            if (member.getAccount().startsWith(ConstantValues.IM_PATIENT)) {
-                                mUserImId = member.getAccount();
-                                mTitleUser=TeamDataCache.getInstance().getDisplayNameWithoutMe(sessionId,member.getAccount());
-                                mMyActionbar.setTitle(mTitleUser);
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailed(int i) {
-
-                    }
-
-                    @Override
-                    public void onException(Throwable throwable) {
-
-                    }
-                });
 
 
     }
@@ -228,6 +205,38 @@ public class TeamMessageActivity extends BaseMessageActivity {
 
         invalidTeamTipText.setText(team.getType() == TeamTypeEnum.Normal ? R.string.normal_team_invalid_tip : R.string.team_invalid_tip);
         invalidTeamTipView.setVisibility(team.isMyTeam() ? View.GONE : View.VISIBLE);
+
+        //获取群成员
+        NIMClient.getService(TeamService.class).queryMemberList(sessionId)
+                .setCallback(new RequestCallback<List<TeamMember>>() {
+                    @Override
+                    public void onSuccess(List<TeamMember> members) {
+                        mLastJoinMember=members.get(members.size()-1).getAccount();
+                        fragment.setLastMember(mLastJoinMember);
+                        fragment.refreshMessageList();
+                        mTeamMembers=(ArrayList<TeamMember>) members;
+                        for (TeamMember member : members) {
+
+                            if (member.getAccount().startsWith(Constants.IM_PATIENT)) {
+                                mUserImId = member.getAccount();
+                                mTitleUser=TeamDataCache.getInstance().getDisplayNameWithoutMe(sessionId,member.getAccount());
+                                mMyActionbar.setTitle(mTitleUser);
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(int i) {
+
+                    }
+
+                    @Override
+                    public void onException(Throwable throwable) {
+
+                    }
+                });
+
     }
 
     /**
@@ -344,36 +353,7 @@ public class TeamMessageActivity extends BaseMessageActivity {
 
     @Event(R.id.message_back_img)
     private void certification(View view) {
-        AppManager.getAppManager().finishActivity();
-    }
-
-
-    private void userInfo(View view) {
-        NIMClient.getService(TeamService.class).queryMemberList(sessionId)
-                .setCallback(new RequestCallback<List<TeamMember>>() {
-                    @Override
-                    public void onSuccess(List<TeamMember> members) {
-                        for (TeamMember member : members) {
-                            LogUtils.i(member.getAccount()+" nick"+member.getTeamNick());
-                            if(member.getAccount().startsWith(ConstantValues.IM_PATIENT)){
-
-
-                                return;
-                            }
-                        }
-
-                    }
-
-                    @Override
-                    public void onFailed(int i) {
-
-                    }
-
-                    @Override
-                    public void onException(Throwable throwable) {
-
-                    }
-                });
+        finish();
     }
 
 

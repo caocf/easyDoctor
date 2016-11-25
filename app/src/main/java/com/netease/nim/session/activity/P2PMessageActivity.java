@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.easyhoms.easydoctor.R;
-import com.easyhoms.easydoctor.common.utils.AppManager;
 import com.easyhoms.easydoctor.common.utils.LogUtils;
 import com.easyhoms.easydoctor.common.view.FlowLayout;
 import com.netease.nim.cache.FriendDataCache;
@@ -181,7 +180,7 @@ public class P2PMessageActivity extends BaseMessageActivity {
 
     @Event(R.id.message_back_img)
     private void back(View view){
-        AppManager.getAppManager().finishActivity();
+        finish();
     }
 
     @Event(R.id.message_head_hiv)

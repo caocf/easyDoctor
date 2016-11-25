@@ -39,7 +39,7 @@ public class BaseApp extends Application {
     private DbManager.DaoConfig daoConfig = new DbManager.DaoConfig()
             .setDbName("doctor.db")
                     // 不设置dbDir时, 默认存储在app的私有目录.
-            .setDbVersion(1)
+            .setDbVersion(2)
             .setDbOpenListener(new DbManager.DbOpenListener() {
                 @Override
                 public void onDbOpened(DbManager db) {

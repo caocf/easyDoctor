@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
@@ -117,7 +117,7 @@ public class AddMembersActivity extends BaseActivity implements MemberCheckAdapt
         mCharacterParser = CharacterParser.getInstance();
         mComparator = new PinyinComparator();
         mSortSb.setTextView(mNoticeTv);
-        mGroupId=getIntent().getIntExtra(ConstantValues.KEY_GROUP_ID,0);
+        mGroupId=getIntent().getIntExtra(Constants.KEY_GROUP_ID,0);
         mCheckAdapter = new MemberCheckAdapter(mContext, mDoctors, this);
         mHospitalLv.setAdapter(mCheckAdapter);
         mDoctors.add(new Doctor("爱"));

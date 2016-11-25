@@ -10,8 +10,6 @@
     android:orientation="vertical"
     tools:context=".team.activity.myTeam.AddMembersActivity">
 
-
-
     <com.easyhoms.easydoctor.common.view.MyActionbar
         android:id="@+id/add_member_ma"
         android:layout_width="match_parent"

@@ -22,7 +22,6 @@ import com.easyhoms.easydoctor.common.permission.annotation.OnMPermissionDenied;
 import com.easyhoms.easydoctor.common.permission.annotation.OnMPermissionGranted;
 import com.easyhoms.easydoctor.common.response.BaseArrayResp;
 import com.easyhoms.easydoctor.common.response.Hospital;
-import com.easyhoms.easydoctor.common.utils.AppManager;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.message.fragment.CommuicateFragment;
@@ -206,7 +205,7 @@ public class MainActivity extends BaseActivity implements CommuicateFragment.Unr
         ad.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         LogoutHelper.logout();
-                        AppManager.getAppManager().finishActivity();
+                        finish();
                     }
                 }
         );

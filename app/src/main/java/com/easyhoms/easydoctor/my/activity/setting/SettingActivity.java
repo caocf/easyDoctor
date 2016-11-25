@@ -4,12 +4,11 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.manager.LogoutHelper;
 import com.easyhoms.easydoctor.common.manager.UserManager;
-import com.easyhoms.easydoctor.common.utils.AppManager;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.common.view.MenuItem;
 import com.easyhoms.easydoctor.common.view.MyAlertDialog;
@@ -118,9 +117,9 @@ public class SettingActivity extends BaseActivity {
                 Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
                 String phone = UserManager.getUser().mobile;
                 UserManager.deleteUser();
-                intent.putExtra(ConstantValues.KEY_PHONE, phone);
+                intent.putExtra(Constants.KEY_PHONE, phone);
                 startActivity(intent);
-                AppManager.getAppManager().finishAllActivity();
+                finish();
             }
         }).show();
     }
@@ -153,7 +152,7 @@ public class SettingActivity extends BaseActivity {
 //            @Override
 //            public void onClick(View v) {
 //                Intent intent=new Intent(SettingActivity.this, UpdateAppActivity.class);
-//                intent.putExtra(ConstantValues.KEY_DATA,mVersion);
+//                intent.putExtra(Constants.KEY_DATA,mVersion);
 //                startActivity(intent);
 //            }
 //        }).show();

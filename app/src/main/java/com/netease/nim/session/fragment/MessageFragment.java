@@ -49,6 +49,7 @@ public class MessageFragment extends TFragment implements ModuleProxy {
     // modules
     protected InputPanel inputPanel;
     protected MessageListPanel messageListPanel;
+    public String mLastMember="";
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -240,5 +241,10 @@ public class MessageFragment extends TFragment implements ModuleProxy {
      */
     public void receiveReceipt() {
         messageListPanel.receiveReceipt();
+    }
+
+    public void setLastMember(String lastMember) {
+        mLastMember = lastMember;
+        messageListPanel.setLastMember(mLastMember);
     }
 }

@@ -102,7 +102,7 @@ public class StoreUserAdapter extends SwipeMenuAdapter<StoreUserAdapter.DefaultV
         }
 
         public void setData(StoreUser doctor) {
-           // CommonUtils.loadImg(ConstantValues.HOST_HEAD+doctor.imagePath,this.mHeadHiv);
+           // CommonUtils.loadImg(Constants.HOST_HEAD+doctor.imagePath,this.mHeadHiv);
             this.mNameTv.setText(doctor.staff.name);
         }
 

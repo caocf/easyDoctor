@@ -1,5 +1,6 @@
 package com.easyhoms.easydoctor.common.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -15,7 +16,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.easyhoms.easydoctor.R;
-import com.easyhoms.easydoctor.common.utils.AppManager;
 
 
 /**
@@ -97,7 +97,7 @@ public class MyActionbar extends FrameLayout {
         mBackImg.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppManager.getAppManager().finishActivity();
+                ((Activity)mContext).finish();
             }
         });
 

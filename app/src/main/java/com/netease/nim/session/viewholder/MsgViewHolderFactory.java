@@ -1,6 +1,5 @@
 package com.netease.nim.session.viewholder;
 
-import com.easyhoms.easydoctor.common.utils.LogUtils;
 import com.netease.nimlib.sdk.msg.attachment.AudioAttachment;
 import com.netease.nimlib.sdk.msg.attachment.ImageAttachment;
 import com.netease.nimlib.sdk.msg.attachment.MsgAttachment;
@@ -37,7 +36,7 @@ public class MsgViewHolderFactory {
     }
 
     public static Class<? extends MsgViewHolderBase> getViewHolderByType(IMMessage message) {
-        LogUtils.i(message.getMsgType()+"");
+
         if (message.getMsgType() == MsgTypeEnum.text) {
             return MsgViewHolderText.class;
         } else if (message.getMsgType() == MsgTypeEnum.tip) {

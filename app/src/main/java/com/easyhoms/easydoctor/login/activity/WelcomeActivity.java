@@ -4,18 +4,20 @@ import android.content.Intent;
 import android.os.Handler;
 import android.text.TextUtils;
 
+import com.easyhoms.easydoctor.BaseApp;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.bean.User;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
 import com.easyhoms.easydoctor.common.manager.UserManager;
-import com.easyhoms.easydoctor.common.utils.AppManager;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.main.activity.MainActivity;
 import com.netease.nim.preference.Preferences;
 
 import org.xutils.view.annotation.ContentView;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 @ContentView(R.layout.activity_welcome)
 public class WelcomeActivity extends BaseActivity {
@@ -25,7 +27,7 @@ public class WelcomeActivity extends BaseActivity {
     private String mPassword;
 
     //登录接口
-    private NetCallback mCallback = new NetCallback(this) {
+    private NetCallback mCallback = new NetCallback(this, false) {
         @Override
         protected void requestOK(String result) {
 
@@ -40,6 +42,11 @@ public class WelcomeActivity extends BaseActivity {
 
         @Override
         protected void timeOut() {
+            goHomeDelay();
+        }
+
+        @Override
+        public void networkErrorToGuide() {
             goHomeDelay();
         }
     };
@@ -72,7 +79,7 @@ public class WelcomeActivity extends BaseActivity {
     private void loginOk() {
         postDelay(new Runnable() {
             public void run() {
-                AppManager.getAppManager().finishActivity();
+                finish();
                 startActivity(new Intent(mContext, MainActivity.class));
             }
         });
@@ -82,8 +89,10 @@ public class WelcomeActivity extends BaseActivity {
         // 使用Handler的postDelayed方法，3秒后执行跳转到MainActivity
         postDelay(new Runnable() {
             public void run() {
-                mContext.startActivity(new Intent(mContext, GuideActivity.class));
-                AppManager.getAppManager().finishActivity();
+                Intent intent = new Intent(BaseApp.getApp(), GuideActivity.class);
+                intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+                BaseApp.getApp().startActivity(intent);
+                finish();
             }
         });
     }

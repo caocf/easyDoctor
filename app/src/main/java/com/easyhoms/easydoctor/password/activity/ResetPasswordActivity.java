@@ -4,11 +4,10 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
-import com.easyhoms.easydoctor.common.utils.AppManager;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.common.utils.KeyBoardUtils;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
@@ -48,9 +47,9 @@ public class ResetPasswordActivity extends BaseActivity {
                 KeyBoardUtils.hideKeyboard(mPasswordNewDev.getContentEt());
                 showToast(R.string.reset_password_ok);
                 Intent intent=new Intent(mContext, LoginActivity.class);
-                intent.putExtra(ConstantValues.KEY_PHONE,mPhoneNumber);
+                intent.putExtra(Constants.KEY_PHONE,mPhoneNumber);
                 startActivity(intent);
-                AppManager.getAppManager().finishActivity();
+                finish();
             }else{
                 showToast(CommonUtils.getMsg(result));
             }
@@ -77,7 +76,7 @@ public class ResetPasswordActivity extends BaseActivity {
     protected void initView() {
         setStatusBarColor(R.color.black);
         Intent intent = getIntent();
-        mPhoneNumber = intent.getStringExtra(ConstantValues.KEY_PHONE);
+        mPhoneNumber = intent.getStringExtra(Constants.KEY_PHONE);
     }
 
 
@@ -89,14 +88,14 @@ public class ResetPasswordActivity extends BaseActivity {
 
         //遇到return直接退出该函数
         switch (CommonUtils.isRightPassword(password)) {
-            case ConstantValues.ERROR_PASSWORD_FORMAT:
+            case Constants.ERROR_PASSWORD_FORMAT:
                 mFormatErrorTv.setVisibility(View.VISIBLE);
                 return;
-            case ConstantValues.ERROR_PASSWORD_LENGTH_FORMAT:
+            case Constants.ERROR_PASSWORD_LENGTH_FORMAT:
                 mLengthErrorTv.setVisibility(View.VISIBLE);
                 mFormatErrorTv.setVisibility(View.VISIBLE);
                 return;
-            case ConstantValues.ERROR_PASSWORD_LENGTH:
+            case Constants.ERROR_PASSWORD_LENGTH:
                 mLengthErrorTv.setVisibility(View.VISIBLE);
                 return;
         }

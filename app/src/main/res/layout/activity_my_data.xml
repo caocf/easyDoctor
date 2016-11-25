@@ -97,7 +97,7 @@
         android:id="@+id/doctor_title_mi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mi_describe="张"
+        app:mi_describe="主任医生"
         app:mi_next_visible="invisible"
         app:mi_title="@string/doctor_title"
         app:mi_type="center"/>

@@ -17,16 +17,22 @@
     <com.netease.nim.common.ui.imageview.HeadImageView
         android:layout_below="@+id/treat_item_letter_tv"
         android:id="@+id/head_hiv"
-        android:layout_width="@dimen/team_head"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         style="@style/head_style"
-        android:src="@drawable/doctors_default_head"
-        android:layout_height="@dimen/team_head"/>
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/doctors_default_head"/>
+
     <TextView
-        android:text="HHHH"
-        android:layout_below="@+id/treat_item_letter_tv"
-        android:layout_toRightOf="@+id/head_hiv"
+        android:text="HHH"
+        android:layout_below="@id/treat_item_letter_tv"
         android:id="@+id/member_name_tv"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:layout_toRightOf="@id/head_hiv"
+        android:textColor="@color/text_body_strong"
+        android:textSize="@dimen/team_item_text"/>
+
 
 </RelativeLayout>

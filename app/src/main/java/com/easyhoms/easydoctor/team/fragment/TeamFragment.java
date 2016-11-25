@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.fragment.BaseFragment;
+import com.easyhoms.easydoctor.common.manager.BaseManager;
 import com.easyhoms.easydoctor.common.manager.UserManager;
 import com.easyhoms.easydoctor.common.response.BaseArrayResp;
 import com.easyhoms.easydoctor.common.response.Hospital;
@@ -148,6 +149,26 @@ public class TeamFragment extends BaseFragment implements MedicalRecordExpandAda
 
         }
     };
+    private NetCallback mJoinedCallback = new NetCallback(getActivity()) {
+        @Override
+        protected void requestOK(String result) {
+            closeDialog();
+            if (CommonUtils.isResultOK(result)) {
+                Type objectType = new TypeToken<BaseArrayResp<MyGroup>>() {
+                }.getType();
+                BaseArrayResp<MyGroup> res = new Gson().fromJson(result, objectType);
+                mMyGroup = res.content.get(0);
+
+            } else {
+
+            }
+        }
+
+        @Override
+        protected void timeOut() {
+
+        }
+    };
     private NetCallback mFavoriteCallback = new NetCallback(getActivity()) {
         @Override
         protected void requestOK(String result) {
@@ -264,7 +285,7 @@ public class TeamFragment extends BaseFragment implements MedicalRecordExpandAda
     @Event(R.id.team_manager_tv)
     private void teamManager(View view) {
         Intent intent = new Intent(getActivity(), TeamManagerActivity.class);
-//        intent.putExtra(ConstantValues.KEY_GROUP_ID, mMyGroup.id);
+//        intent.putExtra(Constants.KEY_GROUP_ID, mMyGroup.id);
         startActivity(intent);
     }
 
@@ -273,6 +294,7 @@ public class TeamFragment extends BaseFragment implements MedicalRecordExpandAda
         super.onResume();
      //   BaseManager.getMyGroup(mHospital.id + "", mCallback);
         //查询其他队伍
+        BaseManager.getJoinedGroup(UserManager.getUser().id+"",mJoinedCallback);
 
     }
 

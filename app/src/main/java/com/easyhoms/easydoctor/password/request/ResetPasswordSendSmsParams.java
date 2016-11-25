@@ -1,7 +1,7 @@
 package com.easyhoms.easydoctor.password.request;
 
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -13,7 +13,7 @@ public class ResetPasswordSendSmsParams extends RequestParams {
     public String newPasswd;
 
     public ResetPasswordSendSmsParams(String mobile) {
-        super(ConstantValues.HOST + "/api/passwd/reset_passwd_sendsms.jhtml");
+        super(Constants.HOST + "/api/passwd/reset_passwd_sendsms.jhtml");
         this.mobile = mobile;
     }
 }

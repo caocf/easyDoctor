@@ -30,4 +30,5 @@ public class Hospital {
     public String address;
     public Object isEnable;
     public Object isTop;
+    public boolean  isChecked;
 }

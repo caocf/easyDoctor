@@ -1,5 +1,6 @@
 package com.easyhoms.easydoctor.common.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -19,9 +20,31 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
  */
 public abstract class NetCallback implements Callback.CommonCallback<String> {
     private Context mContext;
+    private boolean mServerErrorToGuide = true;
 
     public NetCallback(Context context) {
         mContext = context;
+    }
+
+    public NetCallback(Context context, boolean turnToGuide) {
+        mContext = context;
+        mServerErrorToGuide = turnToGuide;
+    }
+
+    public Context getContext() {
+        return mContext;
+    }
+
+    public void networkErrorToGuide() {
+
+    }
+    public void serverErrorToGuide() {
+        if (mServerErrorToGuide) {
+            Intent intent = new Intent(BaseApp.getApp(), GuideActivity.class);
+            intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+            BaseApp.getApp().startActivity(intent);
+            ((Activity)mContext).finish();
+        }
     }
 
     @Override
@@ -48,9 +71,8 @@ public abstract class NetCallback implements Callback.CommonCallback<String> {
         DialogMaker.dismissProgressDialog();
         CommonUtils.showToast(R.string.operate_later);
         timeOut();
-        Intent intent=new Intent(BaseApp.getApp(), GuideActivity.class);
-        intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-        BaseApp.getApp().startActivity(intent);
+        serverErrorToGuide();
+
     }
 
     @Override
@@ -64,6 +86,7 @@ public abstract class NetCallback implements Callback.CommonCallback<String> {
     }
 
     protected abstract void requestOK(String result);
+
     protected abstract void timeOut();
 
     //protected abstract void requestError(Throwable ex, boolean isOnCallback);

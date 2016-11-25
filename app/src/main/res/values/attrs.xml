@@ -79,6 +79,11 @@
             <enum name="invisible" value="3"/>
         </attr>
         <attr name="mi_describe" format="string"></attr>
+        <attr name="mi_left_img_visible" format="boolean"></attr>
+        <attr name="mi_left_img" format="reference"></attr>
+    </declare-styleable>
+    <declare-styleable name="AddImgMenu">
+        <attr name="aim_msg" format="string|reference"></attr>
     </declare-styleable>
 
 

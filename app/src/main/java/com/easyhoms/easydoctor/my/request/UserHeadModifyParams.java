@@ -1,7 +1,7 @@
 package com.easyhoms.easydoctor.my.request;
 
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -11,7 +11,7 @@ import org.xutils.http.RequestParams;
 public class UserHeadModifyParams extends RequestParams {
     public String imagePath;
     public UserHeadModifyParams(String imagePath) {
-        super(ConstantValues.HOST + "/staff/user_head_modify.jhtml");
+        super(Constants.HOST + "/staff/user_head_modify.jhtml");
         this.imagePath = imagePath;
     }
 }

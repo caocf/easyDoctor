@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_real_name"
@@ -13,22 +14,23 @@
         android:id="@+id/real_name_ma"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ma_title="@string/real_name">
-    </com.easyhoms.easydoctor.common.view.MyActionbar>
+        app:ma_title="@string/real_name"/>
 
     <View
         style="@style/style_line"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"/>
 
     <EditText
-        android:id="@+id/real_name_edit"
+        android:id="@+id/real_name_et"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:layout_height="40dp"
         android:background="@color/white"
-        android:textSize="16sp"
-        android:maxLength="5"/>
+        android:paddingLeft="12dp"
+        android:textColor="@color/text_body_strong"
+        android:textSize="18sp"
+        tools:text="@string/add_member"/>
 
-    <View style="@style/style_line" />
+    <View
+        style="@style/style_line"/>
+
 </LinearLayout>

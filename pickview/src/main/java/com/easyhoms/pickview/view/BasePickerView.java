@@ -90,6 +90,7 @@ public class BasePickerView {
         return view != null;
     }
     public void dismiss() {
+
         if (isDismissing) {
             return;
         }

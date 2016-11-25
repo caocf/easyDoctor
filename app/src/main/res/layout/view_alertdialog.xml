@@ -40,13 +40,13 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/letter_red"
         android:textSize="16sp" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="14dp"
         android:background="@color/alertdialog_line" />
 
     <LinearLayout

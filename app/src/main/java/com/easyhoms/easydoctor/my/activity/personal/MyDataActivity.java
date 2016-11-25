@@ -4,14 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
+import com.easyhoms.easydoctor.common.bean.User;
 import com.easyhoms.easydoctor.common.bean.UserImagePath;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
 import com.easyhoms.easydoctor.common.manager.UserManager;
@@ -77,6 +79,8 @@ public class MyDataActivity extends BaseActivity {
     private Calendar cal = Calendar.getInstance();
 
     private TimePickerView mTimePickerView;
+    private String mBirth;
+    private User mUser;
 
     //更改头像
     private NetCallback mFileCallback = new NetCallback(mContext) {
@@ -118,7 +122,7 @@ public class MyDataActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        CommonUtils.loadImg(Constants.HOST_HEAD+"/"+UserManager.getUser().imagePath,mHeadHiv);
     }
 
     @Override
@@ -128,7 +132,7 @@ public class MyDataActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-//        mMyActionbar.setSubTitle();
+
     }
 
     //更改头像
@@ -139,7 +143,7 @@ public class MyDataActivity extends BaseActivity {
                     @Override
                     public void onClick(int which) {
                         initFile();
-                        CameraUtils.choseHeadImageFromCameraCapture(mContext, new File(mUploadFile, ConstantValues.HEAD_JPG));
+                        CameraUtils.choseHeadImageFromCameraCapture(mContext, new File(mUploadFile, Constants.HEAD_JPG));
                     }
                 }
         ).addSheetItem(getString(R.string.picture_fromlocal), R.color.popcolor, new ActionSheetDialog.OnSheetItemClickListener() {
@@ -153,7 +157,7 @@ public class MyDataActivity extends BaseActivity {
     }
 
     private void initFile() {
-        mUploadFile = new File(ConstantValues.SDCARD, ConstantValues.PATH + UserManager.getUser().id + "/");
+        mUploadFile = new File(Constants.SDCARD, Constants.PATH + UserManager.getUser().id + "/");
         if (!mUploadFile.exists()) {
             mUploadFile.mkdirs();
         }
@@ -163,9 +167,9 @@ public class MyDataActivity extends BaseActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         // 用户没有进行有效的设置操作，返回
         if (resultCode == Activity.RESULT_CANCELED) {
-            if (requestCode == ConstantValues.CODE_CAMERA_RESULT_REQUEST) {//裁剪不满意  重新拍照
-                CameraUtils.choseHeadImageFromCameraCapture(mContext, new File(mUploadFile, ConstantValues.HEAD_JPG));
-            } else if (requestCode == ConstantValues.CODE_GALLERY_RESULT_REQUEST) {
+            if (requestCode == Constants.CODE_CAMERA_RESULT_REQUEST) {//裁剪不满意  重新拍照
+                CameraUtils.choseHeadImageFromCameraCapture(mContext, new File(mUploadFile, Constants.HEAD_JPG));
+            } else if (requestCode == Constants.CODE_GALLERY_RESULT_REQUEST) {
                 CameraUtils.choseHeadImageFromGallery(mContext);
             } else {
                 showToast(R.string.cancel);
@@ -173,24 +177,26 @@ public class MyDataActivity extends BaseActivity {
             return;
         }
         switch (requestCode) {
-            case ConstantValues.CODE_GALLERY_REQUEST:
-                CameraUtils.cropRawPhoto(mContext, intent.getData(), ConstantValues.CODE_GALLERY_RESULT_REQUEST);
+            case Constants.CODE_GALLERY_REQUEST:
+                CameraUtils.cropRawPhoto(mContext, intent.getData(), Constants.CODE_GALLERY_RESULT_REQUEST);
                 break;
 
-            case ConstantValues.CODE_CAMERA_REQUEST:
+            case Constants.CODE_CAMERA_REQUEST:
                 if (CommonUtils.hasSdcard()) {
-                    CameraUtils.cropRawPhoto(mContext, Uri.fromFile(new File(mUploadFile, ConstantValues.HEAD_JPG)), ConstantValues.CODE_CAMERA_RESULT_REQUEST);
+                    CameraUtils.cropRawPhoto(mContext, Uri.fromFile(new File(mUploadFile, Constants.HEAD_JPG)), Constants.CODE_CAMERA_RESULT_REQUEST);
                 } else {
                     showToast(R.string.no_sdcard);
                 }
                 break;
-            case ConstantValues.CODE_GALLERY_RESULT_REQUEST:
-            case ConstantValues.CODE_CAMERA_RESULT_REQUEST:
+            case Constants.CODE_GALLERY_RESULT_REQUEST:
+            case Constants.CODE_CAMERA_RESULT_REQUEST:
                 if (intent != null) {
-                    File file = new File(mUploadFile, ConstantValues.HEAD_JPG);
+                    File file = new File(mUploadFile, Constants.HEAD_JPG);
                     Bitmap photo = CameraUtils.saveIntentToFile(intent, file);
                     CameraUtils.saveFile(photo, file);
-                    mHeadHiv.setImageBitmap(photo);
+                    CommonUtils.loadImgFromFile(file.getPath(),mHeadHiv);
+                    //mHeadHiv.setImageBitmap(photo);
+
                     showdialog();
                     BaseManager.uploadFile("image", file, mFileCallback);
                 }
@@ -205,25 +211,39 @@ public class MyDataActivity extends BaseActivity {
         mTimePickerView = new TimePickerView(this, TimePickerView.Type.YEAR_MONTH_DAY, new Date(System.currentTimeMillis()), false, true);
         mTimePickerView.setTitle(getString(R.string.choose_birth));
         mTimePickerView.show();
+        mTimePickerView.setTime(mBirth == null ? new Date() : CommonUtils.getDate(mBirth, Constants.DATE_YEAR_MONTH_DAY));
         mTimePickerView.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
             @Override
-            public void onTimeSelect(Date date) {
+            public boolean onTimeSelect(Date date) {
                 if (date.getTime() >= System.currentTimeMillis()) {
                     showToast("请选择正确的出生日期!");
-                    return;
+                    return false;
                 }
+
+                mBirth = CommonUtils.getDateTime(date, Constants.DATE_STANDED);
+                setBirth();
+                return true;
 
             }
         });
 
     }
 
+    private void setBirth() {
+        if (TextUtils.isEmpty(mBirth)) {
+            mSetBirthMi.setRightText(R.string.please_choose);
+        } else {
+            mBirth = CommonUtils.changeDateForamt(mBirth, Constants.DATE_STANDED, Constants.DATE_YEAR_MONTH_DAY);
+            mSetBirthMi.setRightText(mBirth);
+        }
+    }
+
     @Event(R.id.set_sex_mi)
     private void startSex(View view) {
-
         Intent intent = new Intent(mContext, SexActivity.class);
         startActivity(intent);
     }
+
     @Event(R.id.doctor_protactol_mi)
     private void startprotactol(View view) {
 
@@ -232,10 +252,25 @@ public class MyDataActivity extends BaseActivity {
     }
 
     @Event(R.id.set_name_mi)
-    private void startName(View view){
-        Intent intent = new Intent(mContext,RealNameActivity.class);
+    private void startRealName(View view) {
+
+        Intent intent = new Intent(mContext, RealNameActivity.class);
         startActivity(intent);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        mUser = UserManager.getUser();
+        mBirth = mUser.birth;
+        setBirth();
+        mSetNameMi.setRightText(mUser.name);
+
+        if (!TextUtils.isEmpty(mUser.gender) && mUser.gender.equals("0")) {
+            mSetSexMi.setRightText("女");
+        } else {
+            mSetSexMi.setRightText("男");
+        }
+    }
 }

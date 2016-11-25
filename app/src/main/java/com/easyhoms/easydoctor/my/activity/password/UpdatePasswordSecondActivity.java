@@ -5,7 +5,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
@@ -79,13 +79,13 @@ public class UpdatePasswordSecondActivity extends BaseActivity {
     private void makeSure(View view) {
 
         switch (CommonUtils.isRightPassword(mPassword)) {
-            case ConstantValues.ERROR_PASSWORD_FORMAT:
+            case Constants.ERROR_PASSWORD_FORMAT:
                 showToast(R.string.password_error_format);
                 return;
-            case ConstantValues.ERROR_PASSWORD_LENGTH_FORMAT:
+            case Constants.ERROR_PASSWORD_LENGTH_FORMAT:
                 showToast(R.string.password_error_format_length);
                 return;
-            case ConstantValues.ERROR_PASSWORD_LENGTH:
+            case Constants.ERROR_PASSWORD_LENGTH:
                 showToast(R.string.password_error_length);
                 return;
         }

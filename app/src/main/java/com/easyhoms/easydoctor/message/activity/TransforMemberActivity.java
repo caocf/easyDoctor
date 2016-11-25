@@ -2,7 +2,6 @@ package com.easyhoms.easydoctor.message.activity;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
@@ -11,7 +10,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
@@ -19,6 +18,7 @@ import com.easyhoms.easydoctor.common.manager.UserManager;
 import com.easyhoms.easydoctor.common.response.BaseArrayResp;
 import com.easyhoms.easydoctor.common.utils.CharacterParser;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
+import com.easyhoms.easydoctor.common.utils.LocalTeamMemberSearch;
 import com.easyhoms.easydoctor.common.utils.LogUtils;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.common.utils.PinyinComparator;
@@ -30,6 +30,7 @@ import com.easyhoms.easydoctor.message.response.GroupMember;
 import com.easyhoms.easydoctor.team.response.MyGroup;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.netease.nimlib.sdk.team.model.TeamMember;
 
 import org.xutils.view.annotation.BindView;
 import org.xutils.view.annotation.ContentView;
@@ -65,13 +66,12 @@ public class TransforMemberActivity extends BaseActivity implements SearchLayout
 
     private TransforMemberAdapter mCheckAdapter;
 
-  //  private ArrayList<Doctor> mChooseDoctors = new ArrayList<>();
-   // private ArrayList<Doctor> mDoctors = new ArrayList<>();
-   // private ArrayList<Doctor> mSearchDoctors = new ArrayList<>();
     private long mGroupId;
     private String mYxTeamId;
     private MyGroup mMyGroup;
     private ArrayList<GroupMember> mGroupMembers=new ArrayList<>();
+    private ArrayList<GroupMember> mSearchGroupMembers=new ArrayList<>();
+    private ArrayList<TeamMember> mTeamMembers=new ArrayList<>();
     private int mLastFirstVisibleItem = -1;//上次第一个可见元素，用于滚动时记录标识。
     private CharacterParser mCharacterParser;//汉字转换成拼音的类
     private PinyinComparator mComparator;//根据拼音来排列ListView里面的数据类
@@ -138,12 +138,13 @@ public class TransforMemberActivity extends BaseActivity implements SearchLayout
 
     @Override
     protected void initView() {
-        mYxTeamId=getIntent().getStringExtra(ConstantValues.KEY_YX_TEAM_ID);
+        mYxTeamId=getIntent().getStringExtra(Constants.KEY_YX_TEAM_ID);
+        mTeamMembers= (ArrayList<TeamMember>) getIntent().getSerializableExtra(Constants.KEY_YX_TEAM_MEMBERS);
         mSearchSl.setCallback(this);
         mCharacterParser = CharacterParser.getInstance();
         mComparator = new PinyinComparator();
         mSortSb.setTextView(mNoticeTv);
-        mGroupId = getIntent().getLongExtra(ConstantValues.KEY_GROUP_ID, 0);
+        mGroupId = getIntent().getLongExtra(Constants.KEY_GROUP_ID, 0);
         mCheckAdapter = new TransforMemberAdapter(mContext, mGroupMembers);
         mHospitalLv.setAdapter(mCheckAdapter);
 
@@ -227,10 +228,15 @@ public class TransforMemberActivity extends BaseActivity implements SearchLayout
         mHospitalLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                
+                showAddStaffDlg();
                 GroupMember member=mGroupMembers.get(position);
-                BaseManager.addStaff(ConstantValues.IM_DOCTOR+member.id,Long.valueOf(mYxTeamId), UserManager.getBindHos().id,mAddStaffCallback);
+                BaseManager.addStaff(Constants.IM_DOCTOR+member.id,Long.valueOf(mYxTeamId), UserManager.getBindHos().id,mAddStaffCallback);
             }
         });
+    }
+
+    private void showAddStaffDlg() {
     }
 
     @Override
@@ -248,6 +254,20 @@ public class TransforMemberActivity extends BaseActivity implements SearchLayout
 
     //为ListView填充数据
     private void initdata() {
+        //删除已经存在的群成员
+        for (TeamMember member : mTeamMembers) {
+            LogUtils.i("原来成员"+member.getAccount());
+            int size=mGroupMembers.size();
+            for (int i = 0; i < size; i++) {
+                GroupMember groupMember=mGroupMembers.get(i);
+                LogUtils.i("组内成员"+groupMember.id);
+                if(member.getAccount().replace(Constants.IM_DOCTOR,"").equals(groupMember.id+"")){
+                    mGroupMembers.remove(i);
+                    size--;
+                }
+            }
+        }
+
         for (GroupMember friend : mGroupMembers) {
             // 汉字转换成拼音
             String pinyin = mCharacterParser.getSelling(friend.name);
@@ -288,29 +308,25 @@ public class TransforMemberActivity extends BaseActivity implements SearchLayout
 
     @Override
     public void fillData(String s) {
-
+        ArrayList<GroupMember> filterDateList = LocalTeamMemberSearch.searchGroup(s, mGroupMembers);
+        mSearchGroupMembers=filterDateList;
+        mCheckAdapter.setData(mSearchGroupMembers);
     }
 
     @Override
     public void cancel() {
         mMyActionbar.setVisibility(View.VISIBLE);
-        mSourceFl.getBackground().setAlpha(255);
-
+        mMyActionbar.setVisibility(View.VISIBLE);
+        mCheckAdapter.setData(mGroupMembers);
     }
 
     @Override
     public void showEditView() {
         mMyActionbar.setVisibility(View.GONE);
-        backgroundAlpha(0.5f);
-
-
+        mMyActionbar.setVisibility(View.GONE);
+        mCheckAdapter.setData(new ArrayList<GroupMember>());
     }
 
 
-    //设置添加屏幕的背景透明度
-    public void backgroundAlpha(float bgAlpha) {
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.alpha = bgAlpha; //0.0-1.0
-        getWindow().setAttributes(lp);
-    }
+
 }

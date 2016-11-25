@@ -1,7 +1,7 @@
 package com.easyhoms.easydoctor.my.request;
 
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -13,7 +13,7 @@ public class ResetPhoneSendSmsParams extends RequestParams {
 
 
     public ResetPhoneSendSmsParams(String newMobile) {
-        super(ConstantValues.HOST + "/api/user/mobile_reset_sendsms.jhtml");
+        super(Constants.HOST + "/api/user/mobile_reset_sendsms.jhtml");
         this.newMobile = newMobile;
     }
 

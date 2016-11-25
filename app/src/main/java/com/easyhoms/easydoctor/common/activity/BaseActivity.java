@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.easyhoms.easydoctor.R;
-import com.easyhoms.easydoctor.common.utils.AppManager;
 import com.easyhoms.easydoctor.common.utils.NetworkUtil;
 import com.easyhoms.easydoctor.common.view.SystemBarTintManager;
 import com.netease.nim.common.ui.dialog.DialogMaker;
@@ -33,7 +32,7 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppManager.getAppManager().addActivity(this);
+       // AppManager.getAppManager().addActivity(this);
 
         mContext=this;
         x.view().inject(this);
@@ -122,7 +121,7 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AppManager.getAppManager().finishActivity(this);
+       // AppManager.getAppManager().finishActivity(this);
     }
 
     @Override

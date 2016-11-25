@@ -30,6 +30,8 @@ public abstract class TViewHolder implements IScrollStateListener {
      * index of item
      */
     protected int position;
+    protected String mLastMember="";
+
 
     public TViewHolder() {
 
@@ -95,5 +97,9 @@ public abstract class TViewHolder implements IScrollStateListener {
 
     protected <T extends View> T findView(int resId) {
         return (T) (view.findViewById(resId));
+    }
+
+    public void setLastMember(String lastMember) {
+        mLastMember = lastMember;
     }
 }

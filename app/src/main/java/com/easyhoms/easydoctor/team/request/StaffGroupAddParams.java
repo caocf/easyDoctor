@@ -1,6 +1,6 @@
 package com.easyhoms.easydoctor.team.request;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -12,7 +12,7 @@ public class StaffGroupAddParams extends RequestParams {
     public String staffId;
 
     public StaffGroupAddParams(String groupId, String staffId) {
-        super(ConstantValues.HOST+"/staffGroup/add.jhtml");
+        super(Constants.HOST+"/staffGroup/add.jhtml");
         this.groupId = groupId;
         this.staffId = staffId;
     }

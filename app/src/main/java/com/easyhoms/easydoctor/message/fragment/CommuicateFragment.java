@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.fragment.BaseFragment;
-import com.easyhoms.easydoctor.common.utils.LocalSearch;
+import com.easyhoms.easydoctor.common.utils.LocalRecentSearch;
 import com.easyhoms.easydoctor.common.utils.LogUtils;
 import com.easyhoms.easydoctor.common.view.MyActionbar;
 import com.easyhoms.easydoctor.common.view.SearchLayout;
@@ -203,6 +203,18 @@ public class CommuicateFragment extends BaseFragment implements SearchLayout.Sea
     private void onRecentContactsLoaded() {
         items.clear();
         if (loadedRecents != null) {
+
+//            int size=loadedRecents.size();
+//            for (int i = 0; i < size; i++) {
+//                RecentContact recentContact=loadedRecents.get(i);
+//                if(recentContact.getSessionType()==SessionTypeEnum.Team
+//                        &&recentContact.getMsgType()== MsgTypeEnum.notification
+//                        && TeamDataCache.getInstance().getTeamCount(recentContact.getContactId())==2
+//                ){
+//                    loadedRecents.remove(recentContact);
+//                    size--;
+//                }
+//            }
             items.addAll(loadedRecents);
             loadedRecents = null;
         }
@@ -478,7 +490,7 @@ public class CommuicateFragment extends BaseFragment implements SearchLayout.Sea
     @Override
     public void fillData(String filterStr) {
 
-        ArrayList<RecentContact> filterDateList = LocalSearch.searchGroup(filterStr, items);
+        ArrayList<RecentContact> filterDateList = LocalRecentSearch.searchGroup(filterStr, items);
         mSearchRecents=filterDateList;
         mSearchAdapter.setData(mSearchRecents);
 //        if (filterDateList.size() == 0) {

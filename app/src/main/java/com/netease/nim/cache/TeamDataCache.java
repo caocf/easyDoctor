@@ -48,6 +48,12 @@ public class TeamDataCache {
         clearTeamMemberCache();
     }
 
+    public int getTeamCount(String teamId) {
+        Team team=getTeamById(teamId);
+        return team.getMemberCount();
+
+    }
+
     /**
      * *
      * ******************************************** 观察者 ********************************************

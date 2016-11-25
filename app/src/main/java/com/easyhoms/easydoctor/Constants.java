@@ -2,7 +2,7 @@ package com.easyhoms.easydoctor;
 
 import android.os.Environment;
 
-public class ConstantValues {
+public class Constants {
     /**
      * intent key
      */
@@ -25,6 +25,7 @@ public class ConstantValues {
     public static final String KEY_USER_ID = "user_id";
     public static final String KEY_GROUP_ID = "group_id";
     public static final String KEY_YX_TEAM_ID = "team_id";
+    public static final String KEY_YX_TEAM_MEMBERS = "team_members";
 
     /**
      * 验证码时间
@@ -106,6 +107,7 @@ public class ConstantValues {
     public static final String DATE_YEAR_MONTH_DAY="yyyy-MM-dd";
     public static final String DATE_CHINESE="yyyy年M月dd日";
     public static final String DATE_CHINESE_2="yyyy年M月dd日 HH时mm分";
+    public static final String DATE_CHINESE_3="M月dd日 HH时mm分";
     public static final String DATE_MONTH_YEAR="M月dd日";
     public static final String DATE_WEEK="yy/M/dd EEE HH:mm";
     public static final String DATE_WEEK_SYSTEM="yy/M/dd HH:mm";
@@ -117,4 +119,20 @@ public class ConstantValues {
      */
     public static final String IM_DOCTOR="staff_";
     public static final String IM_PATIENT="user_";
+
+    /**
+     * 认证状态
+     */
+    public static final int AUTH_SUCCESS=1;
+    public static final int AUTH_FAIL=2;
+    public static final int AUTH_AUTHING=3;
+    public static final int AUTH_UNAUTHED=4;
+
+    /**
+     * 更新头像,名字,或年龄
+     */
+    public static final int USER_NAME=1;
+    public static final int USER_AGE=2;
+    public static final int USER_BIRTH=3;
+    public static final int USER_HEAD=4;
 }

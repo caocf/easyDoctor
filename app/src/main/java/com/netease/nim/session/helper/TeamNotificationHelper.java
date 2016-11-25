@@ -6,15 +6,19 @@ import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.utils.LogUtils;
 import com.netease.nim.NimUIKit;
 import com.netease.nim.cache.TeamDataCache;
+import com.netease.nimlib.sdk.NIMClient;
+import com.netease.nimlib.sdk.RequestCallbackWrapper;
 import com.netease.nimlib.sdk.msg.attachment.NotificationAttachment;
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
+import com.netease.nimlib.sdk.team.TeamService;
 import com.netease.nimlib.sdk.team.constant.TeamFieldEnum;
 import com.netease.nimlib.sdk.team.constant.TeamTypeEnum;
 import com.netease.nimlib.sdk.team.constant.VerifyTypeEnum;
 import com.netease.nimlib.sdk.team.model.MemberChangeAttachment;
 import com.netease.nimlib.sdk.team.model.MuteMemberAttachment;
 import com.netease.nimlib.sdk.team.model.Team;
+import com.netease.nimlib.sdk.team.model.TeamMember;
 import com.netease.nimlib.sdk.team.model.UpdateTeamAttachment;
 
 import java.util.List;
@@ -56,7 +60,7 @@ public class TeamNotificationHelper {
 
     private static String buildNotification(String tid, String fromAccount, NotificationAttachment attachment) {
         String text;
-        LogUtils.i("attachment.getType()" + attachment.toJson(true));
+
         switch (attachment.getType()) {
             case InviteMember:
                 text = buildInviteMemberNotification(((MemberChangeAttachment) attachment), fromAccount);
@@ -126,19 +130,36 @@ public class TeamNotificationHelper {
         sb.append("邀请 ");
         sb.append(buildMemberListString(a.getTargets(), fromAccount));
         Team team = TeamDataCache.getInstance().getTeamById(teamId.get());
-        int count = team.getMemberCount();
-        if (team.getType() == TeamTypeEnum.Advanced) {
-            sb.append(" 加入群");
-        } else {
-            sb.append(" 加入讨论组");
-        }
 
-        if (count == 2) {
-            return "";
-        } else if (count == 3&&a.getTargets().get(0).equals(NimUIKit.getAccount())) {
-            return "transfor";
-        }else{
-            return "";
+        int count = team.getMemberCount();
+//        if (team.getType() == TeamTypeEnum.Advanced) {
+//            sb.append(" 加入群");
+//        } else {
+//            sb.append(" 加入讨论组");
+//        }
+//
+//        for (String s : a.getTargets()) {
+//            LogUtils.i("memeber:  "+s);
+//        }
+
+        NIMClient.getService(TeamService.class).queryTeamMember(teamId.get(), NimUIKit.getAccount())
+                .setCallback(new RequestCallbackWrapper<TeamMember>() {
+                    @Override
+                    public void onResult(int code, TeamMember member, Throwable exception) {
+
+                    }
+                });
+
+        List<TeamMember> members = TeamDataCache.getInstance().getTeamMemberList(team.getId());
+        for (TeamMember member : members) {
+            LogUtils.i("member  " + member.getAccount() + "   my account" + NimUIKit.getAccount());
+        }
+        String lastMember = members.get(members.size() - 1).getAccount();
+
+        if (count >= 3 && lastMember.equals(NimUIKit.getAccount())) {
+           return "1";
+        } else {
+           return "0";
         }
     }
 //    private static String buildInviteMemberNotification(MemberChangeAttachment a, String fromAccount) {

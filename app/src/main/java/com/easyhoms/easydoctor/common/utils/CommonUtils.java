@@ -24,7 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.common.manager.UserManager;
 import com.easyhoms.easydoctor.common.response.BaseArrayResp;
 import com.google.gson.Gson;
@@ -847,8 +847,8 @@ public class CommonUtils {
         return format.format(date);
     }
 
-    public static String getDateTime(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    public static String getDateTime(Date date,String formatStr) {
+        SimpleDateFormat format = new SimpleDateFormat(formatStr);
         return format.format(date);
     }
 
@@ -924,6 +924,18 @@ public class CommonUtils {
         }
 
         return date.getTime();
+
+    }
+    public static Date getDate(String str,String formatStr) {
+        SimpleDateFormat format = new SimpleDateFormat(formatStr);
+        Date date = null;
+        try {
+            date = format.parse(str);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return date;
 
     }
 
@@ -1012,21 +1024,21 @@ public class CommonUtils {
      */
     public static int isRightPassword(String passwrod) {
         if (TextUtils.isEmpty(passwrod)) {
-            return ConstantValues.ERROR_EMPTY;
+            return Constants.ERROR_EMPTY;
         }
         //包含其他符号,长度错误 含有空格
-        if (!passwrod.matches(ConstantValues.reg) &&
+        if (!passwrod.matches(Constants.reg) &&
                 (passwrod.length() < 6 || passwrod.length() > 16)) {
-            return ConstantValues.ERROR_PASSWORD_LENGTH_FORMAT;
+            return Constants.ERROR_PASSWORD_LENGTH_FORMAT;
         }
-        if (!passwrod.matches(ConstantValues.reg)) {
-            return ConstantValues.ERROR_PASSWORD_FORMAT;
+        if (!passwrod.matches(Constants.reg)) {
+            return Constants.ERROR_PASSWORD_FORMAT;
         }
         if (passwrod.length() < 6 || passwrod.length() > 16) {
-            return ConstantValues.ERROR_PASSWORD_LENGTH;
+            return Constants.ERROR_PASSWORD_LENGTH;
         }
 
-        return ConstantValues.RIGHT;
+        return Constants.RIGHT;
     }
 
     /**
@@ -1034,12 +1046,12 @@ public class CommonUtils {
      */
     public static int isRightMobile(String phone) {
         if (TextUtils.isEmpty(phone)) {
-            return ConstantValues.ERROR_EMPTY;
+            return Constants.ERROR_EMPTY;
         }
         if (!isMobile(phone)) {
-            return ConstantValues.ERROR_PHONE_FORMAT;
+            return Constants.ERROR_PHONE_FORMAT;
         }
-        return ConstantValues.RIGHT;
+        return Constants.RIGHT;
     }
 
     public static void showToast(int stringId) {
@@ -1160,7 +1172,7 @@ public class CommonUtils {
 
     public static boolean isPassDate(String chooseDate) {
         Date choose = null, dateNow = null;
-        SimpleDateFormat df = new SimpleDateFormat(ConstantValues.DATE_CHINESE);
+        SimpleDateFormat df = new SimpleDateFormat(Constants.DATE_CHINESE);
         try {
             choose = df.parse(chooseDate);
             dateNow = new Date();
@@ -1192,5 +1204,9 @@ public class CommonUtils {
             flg = true;
         }
         return flg;
+    }
+
+    public static void loadImgFromFile(String uri,ImageView imageView) {
+        ImageLoader.getInstance().displayImage("file://" + uri, imageView);
     }
 }

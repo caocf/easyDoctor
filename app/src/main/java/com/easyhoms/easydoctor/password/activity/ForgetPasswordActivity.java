@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
@@ -59,8 +59,8 @@ public class ForgetPasswordActivity extends BaseActivity implements DescribeEdit
             closeDialog();
             if (CommonUtils.isResultOK(result)) {
                 Intent intent = new Intent(mContext, ResetPasswordActivity.class);
-                intent.putExtra(ConstantValues.KEY_PHONE, getPhone());
-                intent.putExtra(ConstantValues.KEY_TITLE,getString(R.string.forget_reset_new_password));
+                intent.putExtra(Constants.KEY_PHONE, getPhone());
+                intent.putExtra(Constants.KEY_TITLE,getString(R.string.forget_reset_new_password));
                 startActivity(intent);
             }else{
                 showToast(CommonUtils.getMsg(result));

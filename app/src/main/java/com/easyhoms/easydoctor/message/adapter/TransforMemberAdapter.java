@@ -5,9 +5,12 @@ import android.view.View;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.adapter.CommAdapter;
+import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.message.response.GroupMember;
+import com.netease.nim.common.ui.imageview.HeadImageView;
 
 import org.xutils.view.annotation.BindView;
 import org.xutils.x;
@@ -48,6 +51,7 @@ public class TransforMemberAdapter extends CommAdapter<GroupMember> implements S
         }
 
         viewHolder.mNameTv.setText(doctor.name);
+        CommonUtils.loadImg(Constants.HOST_HEAD+"/"+doctor.imagePath,viewHolder.mHeadHiv);
         return convertView;
     }
 
@@ -56,6 +60,8 @@ public class TransforMemberAdapter extends CommAdapter<GroupMember> implements S
         TextView mNameTv;
         @BindView(R.id.treat_item_letter_tv)
         TextView mLetterTv;
+        @BindView(R.id.head_hiv)
+        HeadImageView mHeadHiv;
     }
 
     /**

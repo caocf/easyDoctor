@@ -16,7 +16,7 @@
     <string name="cure_curing">进行中</string>
     <string name="cure_completed">已完成</string>
     <string name="cure_all_hospital">所有医院</string>
-    <string name="cure_choose_hospital">选择医院</string>
+    <string name="choose_hospital">选择医院</string>
     <string name="cure_add_hospital">添加医院</string>
 
     <!--通用-->
@@ -397,7 +397,7 @@
     <string name="my_data">我的资料</string>
     <string name="patient_contect_you">患者现在可以轻松找到和联系您啦</string>
     <string name="update_password">修改密码</string>
-    <string name="transfer_member">转发同事</string>
+    <string name="transfer_member">转发聊天</string>
 
     <string name="commuicate_count" formatted="false">沟通(%s)</string>
     <string name="doctor_approve">医生资格认证</string>
@@ -421,7 +421,26 @@
     <string name="set_new_password">设置新密码</string>
     <string name="wating_bind_hospital" formatted="false">您申请绑定%s的请求已经发送\n请等待审核</string>
     <string name="bind_hospital_ok" formatted="false">您成功绑定\n%s</string>
+    <string name="unbind_hospital_confirm" formatted="false">您确定要解除绑定%s</string>
+    <string name="unbind_hospital_detail" formatted="false">解除绑定后将清空您的消息记录,团队成员和收藏患者列表，请谨慎操作！</string>
     <string name="unbind_hospital">解除绑定</string>
+    <string name="please_choose">请选择</string>
+
+
+    <string name="idcard_num">身份证号</string>
+    <string name="doctor_certification">执业医师资格证</string>
+    <string name="doctor_registion">执业医师注册证</string>
+    <string name="doctor_title_book">职称证</string>
+    <string name="certification_only_to_doctor">以上证书只做认证,不向用户展示</string>
+    <string name="enter_idcard">请输入您的身份证号码</string>
+    <string name="first_page">第一张</string>
+    <string name="two_page">第二张</string>
+    <string name="three_page">第三张</string>
+    <string name="four_page">第四张</string>
+    <string name="five_page">第五张</string>
+    <string name="save_ok">保存成功</string>
+    <string name="store_user">收藏用户</string>
+    <string name="transfer_member_describe">将你与此用户的聊天记录及会话转发给同事</string>
 
 
 </resources>

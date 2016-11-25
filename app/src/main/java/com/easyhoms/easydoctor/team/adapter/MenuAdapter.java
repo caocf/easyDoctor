@@ -102,7 +102,7 @@ public class MenuAdapter extends SwipeMenuAdapter<MenuAdapter.DefaultViewHolder>
         }
 
         public void setData(Doctor doctor) {
-           // CommonUtils.loadImg(ConstantValues.HOST_HEAD+doctor.imagePath,this.mHeadHiv);
+           // CommonUtils.loadImg(Constants.HOST_HEAD+doctor.imagePath,this.mHeadHiv);
             this.mNameTv.setText(doctor.name);
         }
 

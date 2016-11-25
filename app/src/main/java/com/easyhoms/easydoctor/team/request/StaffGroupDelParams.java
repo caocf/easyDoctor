@@ -1,6 +1,6 @@
 package com.easyhoms.easydoctor.team.request;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -12,7 +12,7 @@ public class StaffGroupDelParams extends RequestParams {
     public String staffId;
 
     public StaffGroupDelParams(String groupId, String staffId) {
-        super(ConstantValues.HOST+"/staffGroup/del.jhtml");
+        super(Constants.HOST+"/staffGroup/del.jhtml");
         this.groupId = groupId;
         this.staffId = staffId;
     }

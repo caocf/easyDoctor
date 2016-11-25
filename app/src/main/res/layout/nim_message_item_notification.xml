@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:id="@+id/notification_rl"
+                android:layout_height="40dp">
+
 
     <TextView
+        android:textColor="@color/text_body_weak"
+        android:text="8月8日  12:30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/notification_time_tv"/>
+    <TextView
+        android:layout_below="@id/notification_time_tv"
         android:id="@+id/message_item_notification_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="7dip"
         android:layout_marginRight="7dip"
-        android:background="@drawable/nim_bg_message_tip"
+        android:layout_centerHorizontal="true"
+        android:text="对话记录"
+        android:drawableLeft="@drawable/icon_transfor"
         android:gravity="center"
         android:paddingLeft="7dip"
         android:paddingRight="7dip"
-        android:textColor="#ffffff"
-        android:textSize="12sp"/>
+        android:textColor="@color/main_color_blue"
+        android:textSize="18sp"/>
 
-</merge>
+</RelativeLayout>

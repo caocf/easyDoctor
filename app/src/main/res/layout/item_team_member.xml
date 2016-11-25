@@ -22,7 +22,6 @@
         android:id="@+id/member_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_toRightOf="@id/member_head_hiv"
         android:textColor="@color/text_body_strong"
         android:textSize="@dimen/team_item_text"/>

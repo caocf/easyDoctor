@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EasyDoctor.iml" filepath="$PROJECT_DIR$/EasyDoctor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multi_image_selector/multi_image_selector.iml" filepath="$PROJECT_DIR$/multi_image_selector/multi_image_selector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pickview/pickview.iml" filepath="$PROJECT_DIR$/pickview/pickview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pull_to_refresh/pull_to_refresh.iml" filepath="$PROJECT_DIR$/pull_to_refresh/pull_to_refresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recyclerview-swipe/recyclerview-swipe.iml" filepath="$PROJECT_DIR$/recyclerview-swipe/recyclerview-swipe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xutils/xutils.iml" filepath="$PROJECT_DIR$/xutils/xutils.iml" />
+    </modules>
+  </component>
+</project>

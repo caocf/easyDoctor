@@ -1,6 +1,6 @@
 package com.easyhoms.easydoctor.login.request;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -13,7 +13,7 @@ public class LoginParams extends RequestParams {
 
     public LoginParams(String mobile,String password) {
 
-        super(ConstantValues.HOST + "/login/mobilelogin.jhtml");
+        super(Constants.HOST + "/login/mobilelogin.jhtml");
         this.password = password;
         this.mobile = mobile;
     }

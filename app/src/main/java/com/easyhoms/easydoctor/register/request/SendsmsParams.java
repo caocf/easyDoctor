@@ -1,7 +1,7 @@
 package com.easyhoms.easydoctor.register.request;
 
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -13,7 +13,7 @@ public class SendsmsParams extends RequestParams {
     public String mobile;
 
     public SendsmsParams(String platformId, String mobile) {
-        super(ConstantValues.HOST+"/register/register_sendsms.jhtml");
+        super(Constants.HOST+"/register/register_sendsms.jhtml");
         this.platformId = platformId;
         this.mobile = mobile;
     }

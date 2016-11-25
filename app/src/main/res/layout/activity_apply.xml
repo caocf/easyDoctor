@@ -6,60 +6,158 @@
     android:id="@+id/activity_apply"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_main_color"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-
     tools:context="com.easyhoms.easydoctor.my.activity.approve.ApplyApproveActivity">
 
-
     <com.easyhoms.easydoctor.common.view.MyActionbar
-        android:id="@+id/apply_approve_ma"
+        android:id="@+id/apply_ma"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ma_right_title="@string/complete"
         app:ma_title="@string/apply_approve"/>
 
-
-    <com.netease.nim.common.ui.imageview.HeadImageView
-        android:id="@+id/approve_hiv"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/doctors_default_head"/>
-
-    <TextView
-        android:id="@+id/applay_state_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:text="@string/approving"
-        android:textColor="@color/text_subtitle"
-        android:textSize="20sp"/>
-
-    <com.easyhoms.easydoctor.common.view.MenuItem
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:mi_describe="zhang"
-        app:mi_next_visible="gone"
-        app:mi_title="@string/real_name"
-        app:mi_type="top"/>
+        android:layout_height="wrap_content">
 
-    <com.easyhoms.easydoctor.common.view.MenuItem
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:mi_describe="zhang"
-        app:mi_next_visible="gone"
-        app:mi_title="@string/real_name"
-        app:mi_type="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <com.easyhoms.easydoctor.common.view.MenuItem
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:mi_describe="zhang"
-        app:mi_next_visible="gone"
-        app:mi_title="@string/real_name"
-        app:mi_type="bottom"/>
+            <View
+                style="@style/style_line"
+                android:layout_marginTop="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/idcard_num"
+                    android:textColor="@color/text_body_strong"
+                    android:textSize="@dimen/text_16"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/trans"
+                    android:gravity="center_vertical"
+                    android:hint="@string/enter_idcard"
+                    android:textColor="@color/text_body_strong"
+                    android:textColorHint="@color/text_body_weak"
+                    android:textSize="@dimen/text_16"/>
+            </LinearLayout>
+
+            <View
+                style="@style/style_line"
+                android:layout_marginBottom="16dp"/>
+
+            <View
+                style="@style/style_line"/>
+
+            <RelativeLayout
+                android:paddingBottom="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/title_first_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:text="@string/doctor_certification"
+                    android:textColor="@color/text_body_strong"
+                    android:textSize="@dimen/text_14"/>
+
+                <com.easyhoms.easydoctor.common.view.AddImgMenu
+                    android:id="@+id/one_aim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title_first_tv"
+                    app:aim_msg="@string/first_page"/>
+
+                <com.easyhoms.easydoctor.common.view.AddImgMenu
+                    android:id="@+id/two_aim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title_first_tv"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/one_aim"
+                    app:aim_msg="@string/two_page"/>
+
+                <TextView
+                    android:id="@+id/title_two_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/one_aim"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/doctor_certification"
+                    android:textColor="@color/text_body_strong"
+                    android:textSize="@dimen/text_14"/>
+
+                <com.easyhoms.easydoctor.common.view.AddImgMenu
+                    android:id="@+id/three_aim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title_two_tv"
+                    app:aim_msg="@string/three_page"/>
+
+                <com.easyhoms.easydoctor.common.view.AddImgMenu
+                    android:id="@+id/four_aim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title_two_tv"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/one_aim"
+                    app:aim_msg="@string/four_page"/>
+
+                <TextView
+                    android:id="@+id/title_three_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/three_aim"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/doctor_certification"
+                    android:textColor="@color/text_body_strong"
+                    android:textSize="@dimen/text_14"/>
+
+                <com.easyhoms.easydoctor.common.view.AddImgMenu
+                    android:id="@+id/five_aim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title_three_tv"
+                    app:aim_msg="@string/five_page"/>
+
+            </RelativeLayout>
+
+            <View
+                style="@style/style_line"/>
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/text_body_weak"
+                android:text="@string/certification_only_to_doctor"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

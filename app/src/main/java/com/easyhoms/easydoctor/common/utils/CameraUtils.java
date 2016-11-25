@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.ImageView;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.BufferedOutputStream;
@@ -47,7 +47,7 @@ public class CameraUtils {
     public static Bitmap saveIntentToFile(Intent intent, File file) {
         Bundle extras = intent.getExtras();
         if (extras != null) {
-            Bitmap photo = extras.getParcelable(ConstantValues.KEY_DATA);
+            Bitmap photo = extras.getParcelable(Constants.KEY_DATA);
             CameraUtils.saveFile(photo, file);
             return photo;
         }
@@ -88,7 +88,7 @@ public class CameraUtils {
         // 设置文件类型
         intentFromGallery.setType("image/*");
 
-        activity.startActivityForResult(intentFromGallery, ConstantValues.CODE_GALLERY_REQUEST);
+        activity.startActivityForResult(intentFromGallery, Constants.CODE_GALLERY_REQUEST);
     }
 
     /**
@@ -103,7 +103,7 @@ public class CameraUtils {
                     .fromFile(file));
         }
 
-        activity.startActivityForResult(intentFromCapture, ConstantValues.CODE_CAMERA_REQUEST);
+        activity.startActivityForResult(intentFromCapture, Constants.CODE_CAMERA_REQUEST);
         return intentFromCapture;
     }
 
@@ -115,7 +115,7 @@ public class CameraUtils {
         if (file.exists()) {
             ImageLoader.getInstance().displayImage("file://" + file.getPath(), img);
         } else if (url != null && (!url.trim().equals(""))) {
-            //  url = ConstantValues.IMG_HOST + url;
+            //  url = Constants.IMG_HOST + url;
             String url1 = url.replaceAll("\\\\", "/");
             ImageLoader.getInstance().displayImage(url1, img);
         }

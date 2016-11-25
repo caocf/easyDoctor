@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.utils.LogUtils;
 import com.easyhoms.easydoctor.common.view.CircleImageView;
@@ -140,7 +140,7 @@ public class HeadImageView extends CircleImageView {
         // 先显示默认头像
         setImageResource(R.drawable.doctors_default_head);
 
-        String teamUrl= ConstantValues.HOST_HEAD+"/"+team.getIcon();
+        String teamUrl= Constants.HOST_HEAD+"/"+team.getIcon();
         // 判断是否需要ImageLoader加载
         boolean needLoad = team != null && ImageLoaderKit.isImageUriValid(teamUrl);
         LogUtils.i("team.getIcon()  "+team.getIcon());

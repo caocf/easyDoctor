@@ -1,7 +1,7 @@
 package com.easyhoms.easydoctor.password.request;
 
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -16,7 +16,7 @@ public class ChangePasswordParams extends RequestParams {
     public ChangePasswordParams(String platformId, String mobile, String newPassword) {
 
         //更改路径即可
-        super(ConstantValues.HOST + "/api/register/register_sendsms.jhtml");
+        super(Constants.HOST + "/api/register/register_sendsms.jhtml");
         this.mobile = mobile;
         this.newPassword = newPassword;
         this.platformId = platformId;

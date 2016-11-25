@@ -33,6 +33,8 @@ public class TAdapter<T> extends BaseAdapter implements IViewReclaimer {
 
     private Set<IScrollStateListener> listeners;
 
+	protected String mLastMember="";
+
 	public TAdapter(Context context, List<T> items, TAdapterDelegate delegate) {
         this.context = context;
 		this.items = items;
@@ -154,6 +156,7 @@ public class TAdapter<T> extends BaseAdapter implements IViewReclaimer {
 		}
 		view = holder.getView(inflater);
 		view.setTag(holder);
+		holder.setLastMember(mLastMember);
 		holder.setContext(view.getContext());
 		return view;
 	}
@@ -164,5 +167,9 @@ public class TAdapter<T> extends BaseAdapter implements IViewReclaimer {
 
 	public void setTag(Object tag) {
 		this.tag = tag;
+	}
+
+	public void setLastMember(String lastMember) {
+		mLastMember = lastMember;
 	}
 }

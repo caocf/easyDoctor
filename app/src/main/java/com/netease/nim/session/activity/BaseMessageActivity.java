@@ -25,8 +25,6 @@ public abstract class BaseMessageActivity extends TActionBarActivity {
 
     @Override
     protected void initView() {
-
-
         parseIntent();
         messageFragment = (MessageFragment) switchContent(fragment());
     }

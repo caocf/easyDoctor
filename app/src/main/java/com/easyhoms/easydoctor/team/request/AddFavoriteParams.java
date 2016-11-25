@@ -1,6 +1,6 @@
 package com.easyhoms.easydoctor.team.request;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -11,7 +11,7 @@ public class AddFavoriteParams extends RequestParams {
     public  String yxId;
 
     public AddFavoriteParams(String yxId) {
-        super(ConstantValues.HOST+"/link/add_favorite.jhtml");
+        super(Constants.HOST+"/link/add_favorite.jhtml");
         this.yxId = yxId;
     }
 }

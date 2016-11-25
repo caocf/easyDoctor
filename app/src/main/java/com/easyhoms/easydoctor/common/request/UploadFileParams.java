@@ -1,7 +1,7 @@
 package com.easyhoms.easydoctor.common.request;
 
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -15,7 +15,7 @@ public class UploadFileParams extends RequestParams {
     public File file;
 
     public UploadFileParams(String fileType, File file) {
-        super(ConstantValues.HOST + "/mutual/upload.jhtml");
+        super(Constants.HOST + "/mutual/mobile_upload.jhtml");
         this.fileType = fileType;
         this.file = file;
     }

@@ -1,6 +1,9 @@
 package com.easyhoms.easydoctor.common.manager;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import android.text.TextUtils;
+
+import com.easyhoms.easydoctor.Constants;
+import com.easyhoms.easydoctor.common.bean.User;
 import com.easyhoms.easydoctor.common.request.UploadFileParams;
 import com.easyhoms.easydoctor.common.utils.HttpClient;
 import com.easyhoms.easydoctor.common.utils.LogUtils;
@@ -146,16 +149,16 @@ public class BaseManager {
      * 获取所有医院
      */
     public static void getAllHospital(NetCallback callback) {
-        RequestParams params = new RequestParams(ConstantValues.HOST + "/api/company/get_all.jhtml");
+        RequestParams params = new RequestParams(Constants.HOST + "/api/company/get_all.jhtml");
         params.addHeader(Token, UserManager.getUser().access_token);
-        HttpClient.post(params, callback);
+        HttpClient.get(params, callback);
     }
 
     /**
      * 获取我关注的医院
      */
     public static void getMyHospitals(NetCallback callback) {
-        RequestParams params = new RequestParams(ConstantValues.HOST + "/api/company/get_myhospitals.jhtml");
+        RequestParams params = new RequestParams(Constants.HOST + "/api/company/get_myhospitals.jhtml");
         params.addHeader(Token, UserManager.getUser().access_token);
         HttpClient.get(params, callback);
     }
@@ -164,7 +167,7 @@ public class BaseManager {
      * 关注该医院
      */
     public static void cancelFocusHosp(String hosId, NetCallback callback) {
-        FouseHosParams params = new FouseHosParams(ConstantValues.HOST + "/api/company/cancel_focus.jhtml", hosId);
+        FouseHosParams params = new FouseHosParams(Constants.HOST + "/api/company/cancel_focus.jhtml", hosId);
         params.addHeader(Token, UserManager.getUser().access_token);
         HttpClient.post(params, callback);
     }
@@ -173,7 +176,7 @@ public class BaseManager {
      * 取消关注此医院
      */
     public static void focusHosp(String hosId, NetCallback callback) {
-        FouseHosParams params = new FouseHosParams(ConstantValues.HOST + "/api/company/focus.jhtml", hosId);
+        FouseHosParams params = new FouseHosParams(Constants.HOST + "/api/company/focus.jhtml", hosId);
         params.addHeader(Token, UserManager.getUser().access_token);
         HttpClient.post(params, callback);
     }
@@ -222,7 +225,7 @@ public class BaseManager {
      * 获取医生认证信息
      */
     public static void getAuthInfo(NetCallback callback) {
-        RequestParams params = new RequestParams(ConstantValues.HOST + "/staff/get_authinfo.jhtml");
+        RequestParams params = new RequestParams(Constants.HOST + "/staff/get_authinfo.jhtml");
         params.addHeader(Token, UserManager.getUser().access_token);
         HttpClient.get(params, callback);
     }
@@ -231,7 +234,7 @@ public class BaseManager {
      * 获取医生认证状态
      */
     public static void getAuthStatus(NetCallback callback) {
-        RequestParams params = new RequestParams(ConstantValues.HOST + "/staff/get_authstatus.jhtml");
+        RequestParams params = new RequestParams(Constants.HOST + "/staff/get_authstatus.jhtml");
         params.addHeader(Token, UserManager.getUser().access_token);
         HttpClient.get(params, callback);
     }
@@ -276,6 +279,14 @@ public class BaseManager {
      * 用户信息修改
      */
     public static void userDetailInfoModify(String imagePath, String name, String gender, String birth, NetCallback callback) {
+
+        User user=UserManager.getUser();
+
+        imagePath= TextUtils.isEmpty(imagePath)?user.imagePath:imagePath;
+        name= TextUtils.isEmpty(name)?user.name:name;
+        gender= TextUtils.isEmpty(gender)?user.gender:gender;
+        birth= TextUtils.isEmpty(birth)?user.birth:birth;
+
         UserDetailInfoModifyParams params = new UserDetailInfoModifyParams(imagePath, name, gender, birth);
         params.addHeader(Token, UserManager.getUser().access_token);
         HttpClient.post(params, callback);
@@ -295,7 +306,7 @@ public class BaseManager {
      * 版本更新
      */
     public static void versionInfo(NetCallback callback){
-        RequestParams params = new RequestParams(ConstantValues.HOST+"/api/version/version_info.jhtml");
+        RequestParams params = new RequestParams(Constants.HOST+"/api/version/version_info.jhtml");
         params.addHeader(Token, UserManager.getUser().access_token);
         params.addBodyParameter("client", "2");
         HttpClient.get(params, callback);
@@ -385,6 +396,15 @@ public class BaseManager {
         params.addHeader(Token, UserManager.getUser().access_token);
         HttpClient.get(params, callback);
     }
+    /**
+     * 获取加入的队伍
+     */
+    public static void getJoinedGroup(String staffId,NetCallback callback){
+        RequestParams params=new RequestParams(Constants.HOST+"/staffGroup/get_joinedGroups.jhtml");
+        params.addHeader(Token, UserManager.getUser().access_token);
+        params.addBodyParameter("staffId",staffId);
+        HttpClient.get(params, callback);
+    }
 
     //***********************************staffAction*************************************
     /**
@@ -425,7 +445,7 @@ public class BaseManager {
      * 获取医生收藏的用户
      */
     public static void getFavorites(NetCallback callback) {
-        RequestParams params = new RequestParams(ConstantValues.HOST + "/link/get_favorites.jhtml");
+        RequestParams params = new RequestParams(Constants.HOST + "/link/get_favorites.jhtml");
         params.addHeader(Token, UserManager.getUser().access_token);
         HttpClient.get(params, callback);
     }
@@ -434,7 +454,7 @@ public class BaseManager {
      * 判断是否收藏该用户
      */
     public static void getFavoriteStatus(String yxId,NetCallback callback) {
-        RequestParams params = new RequestParams(ConstantValues.HOST + "/link/get_favoriteStatus.jhtml");
+        RequestParams params = new RequestParams(Constants.HOST + "/link/get_favoriteStatus.jhtml");
         params.addHeader(Token, UserManager.getUser().access_token);
         params.addBodyParameter("yxId", yxId);
         params.addBodyParameter("companyId", UserManager.getBindHos().id+"");

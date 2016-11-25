@@ -1,7 +1,7 @@
 package com.easyhoms.easydoctor.my.request;
 
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -14,7 +14,7 @@ public class UserDetailInfoModifyParams extends RequestParams {
     public String gender;
     public String birth;
     public UserDetailInfoModifyParams(String imagePath, String name, String gender, String birth ) {
-        super(ConstantValues.HOST + "/staff/user_detail_info_modify.jhtml");
+        super(Constants.HOST + "/staff/user_detail_info_modify.jhtml");
         this.imagePath = imagePath;
         this.name = name;
         this.gender = gender;

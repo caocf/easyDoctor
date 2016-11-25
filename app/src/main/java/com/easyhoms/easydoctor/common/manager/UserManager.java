@@ -1,5 +1,7 @@
 package com.easyhoms.easydoctor.common.manager;
 
+import android.text.TextUtils;
+
 import com.easyhoms.easydoctor.common.bean.User;
 import com.easyhoms.easydoctor.common.response.Hospital;
 import com.easyhoms.easydoctor.common.response.UserBean;
@@ -39,10 +41,11 @@ public class UserManager {
         if (bean.content.staffExtend != null) {
             dbUser.imagePath = bean.content.staffExtend.imagePath;
         }
-        dbUser.name = bean.content.staff.name;
-        dbUser.birth = bean.content.staff.birth;
-        dbUser.gender = bean.content.staff.gender;
+        dbUser.name = TextUtils.isEmpty(bean.content.staff.name)?"":bean.content.staff.name;
+        dbUser.birth = TextUtils.isEmpty(bean.content.staff.birth)?"":bean.content.staff.birth;
+        dbUser.gender = TextUtils.isEmpty(bean.content.staff.gender)?"1":bean.content.staff.gender;
         dbUser.Id = 1;
+        dbUser.id=bean.content.staff.id;
         try {
             x.db().delete(User.class);
             x.db().saveBindingId(dbUser);
@@ -79,6 +82,9 @@ public class UserManager {
         }
         if (key.equals("birth")) {
             user.birth = value;
+        }
+        if (key.equals("auth")) {
+            user.authState = Integer.valueOf(value);
         }
         try {
             x.db().saveOrUpdate(user);

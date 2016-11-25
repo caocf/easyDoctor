@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.view.MyActionbar;
+import com.easyhoms.easydoctor.common.view.MyAlertDialog;
 
 import org.xutils.view.annotation.BindView;
 import org.xutils.view.annotation.ContentView;
@@ -54,11 +55,28 @@ public class BindHospitalStateActivity extends BaseActivity {
         mBindHospMa.setRightTv(getString(R.string.unbind_hospital), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+               showUnBindDialog();
             }
         });
 
         mBindHospMa.setRightTvVisible(mBinded ? View.VISIBLE : View.GONE);
+    }
+
+    private void showUnBindDialog() {
+        String title=String.format(mResources.getString(R.string.unbind_hospital_confirm),mBindHospital);
+        new MyAlertDialog(mContext).builder().setTitle(title)
+                .setMsg(getResources().getString(R.string.unbind_hospital_detail))
+                .setLeftButton(getResources().getString(R.string.cancel), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                }).setRightButton(getResources().getString(R.string.make_sure), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        }).show();
     }
 
     @Override

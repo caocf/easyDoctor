@@ -1,6 +1,6 @@
 package com.easyhoms.easydoctor.team.request;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -14,7 +14,7 @@ public class GetHistoryMsgsParams extends RequestParams {
     public String endTime;
 
     public GetHistoryMsgsParams(long teamId, String beginTime, String endTime) {
-        super(ConstantValues.HOST+"/team/get_historymsgs.jhtml");
+        super(Constants.HOST+"/team/get_historymsgs.jhtml");
         this.teamId = teamId;
         this.beginTime = beginTime;
         this.endTime = endTime;

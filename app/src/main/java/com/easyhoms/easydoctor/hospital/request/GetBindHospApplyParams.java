@@ -1,6 +1,6 @@
 package com.easyhoms.easydoctor.hospital.request;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 
 import org.xutils.http.RequestParams;
 
@@ -11,6 +11,6 @@ import org.xutils.http.RequestParams;
 public class GetBindHospApplyParams extends RequestParams {
 
     public GetBindHospApplyParams() {
-        super(ConstantValues.HOST+"/staffAction/get_bindHosp_apply.jhtml");
+        super(Constants.HOST+"/staffAction/get_bindHosp_apply.jhtml");
     }
 }

@@ -2,8 +2,7 @@ package com.easyhoms.easydoctor.common.utils;
 
 import android.text.TextUtils;
 
-import com.netease.nim.uinfo.UserInfoHelper;
-import com.netease.nimlib.sdk.msg.model.RecentContact;
+import com.easyhoms.easydoctor.common.response.Hospital;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -12,30 +11,30 @@ import java.util.regex.Pattern;
 /**
  * 医院搜索
  */
-public class LocalSearch {
+public class LocalHospialSearch {
 
     /**
      * 按医院名-群名拼音搜索
      */
-    public static ArrayList<RecentContact> searchGroup(String str,
-                                                       ArrayList<RecentContact> allContacts) {
+    public static ArrayList<Hospital> searchGroup(String str,
+                                                       ArrayList<Hospital> allContacts) {
 
 
-        ArrayList<RecentContact> groupList = new ArrayList<RecentContact>();
+        ArrayList<Hospital> groupList = new ArrayList<Hospital>();
 
         if(TextUtils.isEmpty(str)){
             return groupList;
         }
         //如果含有中文->判断是否含有这个字段
         if (CommonUtils.isContainsChinese(str.toString())) {
-            for (RecentContact group : allContacts) {
-                String name=UserInfoHelper.getUserTitleName(group.getContactId(), group.getSessionType());
-                if (name.contains(str)) {
+            for (Hospital group : allContacts) {
+
+                if (group.companyName.contains(str)) {
                     groupList.add(group);
                 }
             }
         } else {
-            for (RecentContact group : allContacts) {
+            for (Hospital group : allContacts) {
                 if (contains(group, str.toString())) {
                     groupList.add(group);
                 }
@@ -47,9 +46,9 @@ public class LocalSearch {
     /**
      * 根据拼音搜索
      */
-    private static boolean contains(RecentContact group, String search) {
-        String name=UserInfoHelper.getUserTitleName(group.getContactId(), group.getSessionType());
-        if (TextUtils.isEmpty(name)) {
+    private static boolean contains(Hospital group, String search) {
+
+        if (TextUtils.isEmpty(group.companyName)) {
             return false;
         }
 
@@ -58,7 +57,7 @@ public class LocalSearch {
 
         CharacterParser finder = CharacterParser.getInstance();
 
-        LogUtils.i("  groupName:"+name+"简拼:"+firstLetters+"  全拼:"+finder.getSelling(getGroupName(group)));
+
         boolean flag = false;
 
         // 简拼匹配,如果输入在字符串长度大于6就不按首字母匹配了
@@ -92,11 +91,11 @@ public class LocalSearch {
         return flag;
     }
 
-    private static String getGroupName(RecentContact group) {
-        String name=UserInfoHelper.getUserTitleName(group.getContactId(), group.getSessionType());
+    private static String getGroupName(Hospital group) {
+
         String strName = "";
-        if (!TextUtils.isEmpty(name)) {
-            strName = name;
+        if (!TextUtils.isEmpty(group.companyName)) {
+            strName = group.companyName;
         }
 
         return strName;

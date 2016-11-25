@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.easyhoms.easydoctor.ConstantValues;
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.response.BaseArrayResp;
@@ -69,7 +69,7 @@ public class TeamManagerActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        mGroupId = getIntent().getIntExtra(ConstantValues.KEY_GROUP_ID, 0);
+        mGroupId = getIntent().getIntExtra(Constants.KEY_GROUP_ID, 0);
         mDoctors.add(new Doctor("zhang"));
         mDoctors.add(new Doctor("来"));
         mDoctors.add(new Doctor("爱"));
@@ -102,7 +102,7 @@ public class TeamManagerActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mContext,AddMembersActivity.class);
-              //  intent.putExtra(ConstantValues.KEY_GROUP_ID,mGroupId);
+              //  intent.putExtra(Constants.KEY_GROUP_ID,mGroupId);
                 startActivity(intent);
             }
         });

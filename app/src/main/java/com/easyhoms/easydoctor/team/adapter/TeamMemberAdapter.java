@@ -35,7 +35,7 @@ public class TeamMemberAdapter extends CommAdapter<Doctor> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-      //  CommonUtils.loadImg(ConstantValues.HOST_HEAD+doctor.imagePath,viewHolder.mHeadHiv);
+      //  CommonUtils.loadImg(Constants.HOST_HEAD+doctor.imagePath,viewHolder.mHeadHiv);
         viewHolder.mNameTv.setText(doctor.name);
         return convertView;
     }
