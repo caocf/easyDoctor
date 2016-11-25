@@ -23,6 +23,7 @@ import com.easyhoms.easydoctor.common.utils.LogUtils;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.common.utils.PinyinComparator;
 import com.easyhoms.easydoctor.common.view.MyActionbar;
+import com.easyhoms.easydoctor.common.view.MyTransforMemberDialog;
 import com.easyhoms.easydoctor.common.view.SearchLayout;
 import com.easyhoms.easydoctor.common.view.SideBar;
 import com.easyhoms.easydoctor.message.adapter.TransforMemberAdapter;
@@ -228,15 +229,26 @@ public class TransforMemberActivity extends BaseActivity implements SearchLayout
         mHospitalLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
-                showAddStaffDlg();
                 GroupMember member=mGroupMembers.get(position);
-                BaseManager.addStaff(Constants.IM_DOCTOR+member.id,Long.valueOf(mYxTeamId), UserManager.getBindHos().id,mAddStaffCallback);
+                showAddStaffDlg(member);
+
+
             }
         });
     }
 
-    private void showAddStaffDlg() {
+    private void showAddStaffDlg(final GroupMember member) {
+        new MyTransforMemberDialog(mContext).builder().setDoctorHeadUrl(member.imagePath).setDoctorName(member.name).setLeftButton(getString(R.string.cancel), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        }).setRightButton("发送", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BaseManager.addStaff(Constants.IM_DOCTOR+member.id,Long.valueOf(mYxTeamId), UserManager.getBindHos().id,mAddStaffCallback);
+            }
+        }).show();
     }
 
     @Override

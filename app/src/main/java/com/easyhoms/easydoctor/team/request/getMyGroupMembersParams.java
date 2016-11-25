@@ -7,10 +7,10 @@ import org.xutils.http.RequestParams;
 /**
  * 获取群组的成员列表
  */
-public class GetMyGroupMembersParams extends RequestParams {
+public class getMyGroupMembersParams extends RequestParams {
     public long groupId;
 
-    public GetMyGroupMembersParams(long groupId) {
+    public getMyGroupMembersParams(long groupId) {
         super(Constants.HOST+"/staffGroup/get_groupMembers.jhtml");
         this.groupId = groupId;
     }

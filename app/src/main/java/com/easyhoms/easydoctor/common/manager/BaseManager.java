@@ -34,7 +34,7 @@ import com.easyhoms.easydoctor.team.request.AddStaffParams;
 import com.easyhoms.easydoctor.team.request.CancelFavoriteParams;
 import com.easyhoms.easydoctor.team.request.GetHistoryMsgsParams;
 import com.easyhoms.easydoctor.team.request.GetMembersParams;
-import com.easyhoms.easydoctor.team.request.GetMyGroupMembersParams;
+import com.easyhoms.easydoctor.team.request.getMyGroupMembersParams;
 import com.easyhoms.easydoctor.team.request.GetMyGroupParams;
 import com.easyhoms.easydoctor.team.request.GetMyTeamParams;
 import com.easyhoms.easydoctor.team.request.GetTeamInfoParams;
@@ -384,7 +384,7 @@ public class BaseManager {
      * 添加同事
      */
     public static void getMyGroupMembers(long groupId,NetCallback callback){
-        GetMyGroupMembersParams params=new GetMyGroupMembersParams(groupId);
+        getMyGroupMembersParams params=new getMyGroupMembersParams(groupId);
         params.addHeader(Token, UserManager.getUser().access_token);
         HttpClient.get(params, callback);
     }

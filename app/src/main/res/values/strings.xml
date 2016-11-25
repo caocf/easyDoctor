@@ -441,6 +441,7 @@
     <string name="save_ok">保存成功</string>
     <string name="store_user">收藏用户</string>
     <string name="transfer_member_describe">将你与此用户的聊天记录及会话转发给同事</string>
+    <string name="transfor_to">转发给:</string>
 
 
 </resources>
