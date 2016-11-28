@@ -12,8 +12,10 @@ import com.easyhoms.easydoctor.common.view.MenuItem;
 import com.easyhoms.easydoctor.common.view.MyActionbar;
 
 import org.xutils.view.annotation.BindView;
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 
+@ContentView(R.layout.activity_bind_hospital)
 public class BindHospitalActivity extends BaseActivity {
 
     @BindView(R.id.bind_hospital_ma)
