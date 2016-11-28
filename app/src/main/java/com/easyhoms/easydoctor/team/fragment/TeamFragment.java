@@ -24,6 +24,7 @@ import com.easyhoms.easydoctor.common.view.SearchLayout;
 import com.easyhoms.easydoctor.message.listener.OnItemClickListener;
 import com.easyhoms.easydoctor.team.activity.doctor.DoctorDataActivity;
 import com.easyhoms.easydoctor.team.activity.myTeam.TeamManagerActivity;
+import com.easyhoms.easydoctor.team.activity.user.UserMoreActivity;
 import com.easyhoms.easydoctor.team.adapter.MedicalRecordExpandAdapter;
 import com.easyhoms.easydoctor.team.adapter.StoreUserAdapter;
 import com.easyhoms.easydoctor.team.adapter.TeamMemberAdapter;
@@ -302,7 +303,7 @@ public class TeamFragment extends BaseFragment implements MedicalRecordExpandAda
     private OnItemClickListener onItemClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(int position) {
-            Intent intent = new Intent(getContext(), DoctorDataActivity.class);
+            Intent intent = new Intent(getContext(), UserMoreActivity.class);
             startActivity(intent);
         }
     };

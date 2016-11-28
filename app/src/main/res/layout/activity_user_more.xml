@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_user_more"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        android:id="@+id/user_more_ma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ma_title="@string/more"/>
+    <com.easyhoms.easydoctor.common.view.MenuItem
+        android:id="@+id/user_more_remark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        app:mi_title="@string/remark"
+        app:mi_type="single"/>
+    <View style="@style/style_line"
+        android:layout_marginTop="17dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:text="@string/store_user"
+            android:textSize="16sp"/>
+        <ImageView
+            android:id="@+id/user_more_switch"
+            android:layout_marginRight="5dp"
+            android:layout_width="52dp"
+            android:layout_height="31dp"
+            android:src="@drawable/icon_on"/>
+    </LinearLayout>
+    <View style="@style/style_line" />
+</LinearLayout>

@@ -28,11 +28,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".login.activity.LoginActivity"></activity>
+        <activity android:name=".login.activity.LoginActivity" />
         <activity
             android:name=".main.activity.MainActivity"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".login.activity.WelcomeActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -49,25 +49,25 @@
         </activity>
         <activity
             android:name=".login.activity.GuideActivity"
-            android:launchMode="singleTask"></activity>
-        <activity android:name=".register.activity.RegisterActivity"></activity>
-        <activity android:name=".team.activity.myTeam.TeamManagerActivity"></activity>
-        <activity android:name=".team.activity.myTeam.AddMembersActivity"></activity>
-        <activity android:name=".team.activity.myTeam.MemberSettingActivity"></activity>
-        <activity android:name=".team.activity.otherTeam.OtherTeamActivity"></activity>
-        <activity android:name=".team.activity.otherTeam.OtherTeamSettingActivity"></activity>
-        <activity android:name=".team.activity.doctor.DoctorDataActivity"></activity>
-        <activity android:name=".team.activity.user.UserDataActivity"></activity>
-        <activity android:name=".team.activity.user.UserSettingActivity"></activity>
-        <activity android:name=".team.activity.user.UserNoteActivity"></activity>
-        <activity android:name=".team.activity.doctor.DoctorNoteActivity"></activity>
-        <activity android:name=".team.activity.doctor.DoctorSettingActivity"></activity>
-        <activity android:name=".my.activity.personal.MyDataActivity"></activity>
-        <activity android:name=".my.activity.personal.MyIntroduceActivity"></activity>
-        <activity android:name=".my.activity.personal.RealNameActivity"></activity>
-        <activity android:name=".my.activity.personal.SexActivity"></activity>
-        <activity android:name=".my.activity.approve.ApplyApproveActivity"></activity>
-        <activity android:name=".my.activity.approve.ApproveDetailActivity"></activity>
+            android:launchMode="singleTask" />
+        <activity android:name=".register.activity.RegisterActivity" />
+        <activity android:name=".team.activity.myTeam.TeamManagerActivity" />
+        <activity android:name=".team.activity.myTeam.AddMembersActivity" />
+        <activity android:name=".team.activity.myTeam.MemberSettingActivity" />
+        <activity android:name=".team.activity.otherTeam.OtherTeamActivity" />
+        <activity android:name=".team.activity.otherTeam.OtherTeamSettingActivity" />
+        <activity android:name=".team.activity.doctor.DoctorDataActivity" />
+        <activity android:name=".team.activity.user.UserDataActivity" />
+        <activity android:name=".team.activity.user.UserSettingActivity" />
+        <activity android:name=".team.activity.user.UserNoteActivity" />
+        <activity android:name=".team.activity.doctor.DoctorNoteActivity" />
+        <activity android:name=".team.activity.doctor.DoctorSettingActivity" />
+        <activity android:name=".my.activity.personal.MyDataActivity" />
+        <activity android:name=".my.activity.personal.MyIntroduceActivity" />
+        <activity android:name=".my.activity.personal.RealNameActivity" />
+        <activity android:name=".my.activity.personal.SexActivity" />
+        <activity android:name=".my.activity.approve.ApplyApproveActivity" />
+        <activity android:name=".my.activity.approve.ApproveDetailActivity" />
         <activity android:name=".my.activity.setting.SettingActivity" />
         <activity android:name="com.netease.nim.session.activity.TeamMessageActivity" />
         <activity android:name="com.netease.nim.session.activity.P2PMessageActivity" />
@@ -110,17 +110,18 @@
             android:name="com.netease.cosine.target.receiver"
             android:value="com.netease.nimlib.service.NimReceiver" />
         <!-- 云信配置  end -->
-        <activity android:name=".team.activity.doctor.ChatSettingActivity"></activity>
-        <activity android:name=".my.activity.password.UpdatePasswordFirstActivity"></activity>
+        <activity android:name=".team.activity.doctor.ChatSettingActivity" />
+        <activity android:name=".my.activity.password.UpdatePasswordFirstActivity" />
         <activity android:name=".my.activity.password.UpdatePasswordSecondActivity" />
-        <activity android:name=".my.activity.phone.UpdatePhoneFirstActivity"></activity>
+        <activity android:name=".my.activity.phone.UpdatePhoneFirstActivity" />
         <activity
             android:name=".team.activity.myTeam.SearchMemberActivity"
-            android:theme="@style/MyDialogStyle"></activity>
-        <activity android:name=".message.activity.TransforMemberActivity"></activity>
-        <activity android:name=".hospital.activity.BindHospitalStateActivity"></activity>
-        <activity android:name=".my.activity.chooseHospital.MyChooseHospitalActivity"></activity>
-        <activity android:name=".my.activity.chooseHospital.BindHospitalActivity"></activity>
+            android:theme="@style/MyDialogStyle" />
+        <activity android:name=".message.activity.TransforMemberActivity" />
+        <activity android:name=".hospital.activity.BindHospitalStateActivity" />
+        <activity android:name=".my.activity.chooseHospital.MyChooseHospitalActivity" />
+        <activity android:name=".my.activity.chooseHospital.BindHospitalActivity" />
+        <activity android:name=".team.activity.user.UserMoreActivity"></activity>
     </application>
 
 </manifest>

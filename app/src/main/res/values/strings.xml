@@ -466,4 +466,6 @@
 
     <string name="auth_from">认证来源</string>
     <string name="send_message">发送信息</string>
+    <string name="more">更多</string>
+    <string name="just_sixteen">16字以内</string>
 </resources>
