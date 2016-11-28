@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.easyhoms.easydoctor.my.activity.chooseHospital.MyChooseHospialActivity">
+    tools:context="com.easyhoms.easydoctor.my.activity.chooseHospital.MyChooseHospitalActivity">
 
     <com.easyhoms.easydoctor.common.view.MyActionbar
         android:id="@+id/choose_hospital_ma"

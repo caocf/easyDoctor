@@ -29,7 +29,7 @@ import java.util.Locale;
 
 
 @ContentView(R.layout.activity_my_choose_hospial)
-public class MyChooseHospialActivity extends BaseActivity implements MyChooseHospitalAdapter.ChooseCallback,SearchLayout.SearchCallback {
+public class MyChooseHospitalActivity extends BaseActivity implements MyChooseHospitalAdapter.ChooseCallback,SearchLayout.SearchCallback {
 
     @BindView(R.id.hospital_lv)
     ListView mHospitalLv;
@@ -39,7 +39,7 @@ public class MyChooseHospialActivity extends BaseActivity implements MyChooseHos
     SearchLayout mSearchSl;
     private MyChooseHospitalAdapter mAdapter;
     private ArrayList<Hospital> mHospitals=new ArrayList<>();
-    private ArrayList<Hospital> mSearchHosipals=new ArrayList<>();
+    private ArrayList<Hospital> mSearchHospitals =new ArrayList<>();
     private boolean mIsSearch=false;
     private NetCallback mCallback = new NetCallback(this) {
         @Override
@@ -95,7 +95,7 @@ public class MyChooseHospialActivity extends BaseActivity implements MyChooseHos
 
     @Override
     public void choose(int hosId) {
-        for (Hospital hospital : mSearchHosipals) {
+        for (Hospital hospital : mSearchHospitals) {
             if(hospital.id==hosId){
                 hospital.isChecked=true;
             }else{
@@ -110,7 +110,7 @@ public class MyChooseHospialActivity extends BaseActivity implements MyChooseHos
             }
         }
         if(mIsSearch){
-            mAdapter.setData(mSearchHosipals);
+            mAdapter.setData(mSearchHospitals);
         }else{
             mAdapter.setData(mHospitals);
         }
@@ -121,8 +121,8 @@ public class MyChooseHospialActivity extends BaseActivity implements MyChooseHos
     public void fillData(String filterStr) {
 
         ArrayList<Hospital> filterDateList = LocalHospialSearch.searchGroup(filterStr, mHospitals);
-        mSearchHosipals=filterDateList;
-        mAdapter.setData(mSearchHosipals);
+        mSearchHospitals =filterDateList;
+        mAdapter.setData(mSearchHospitals);
     }
 
     @Override

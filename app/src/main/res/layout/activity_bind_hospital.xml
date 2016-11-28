@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_bind_hospital"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        android:id="@+id/bind_hospital_ma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ma_title="@string/bind_hospital">
+    </com.easyhoms.easydoctor.common.view.MyActionbar>
+    <com.easyhoms.easydoctor.common.view.MenuItem
+        android:id="@+id/bind_hospital_mi"
+        android:layout_marginTop="17dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mi_describe="@string/choose_hospital"
+        app:mi_title="@string/hospital"
+        app:mi_type="single">
+    </com.easyhoms.easydoctor.common.view.MenuItem>
+    <Button
+        android:id="@+id/bind_hospital_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/shape_round_bg_blue_tv"
+        android:text="@string/apply_bind"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+</LinearLayout>

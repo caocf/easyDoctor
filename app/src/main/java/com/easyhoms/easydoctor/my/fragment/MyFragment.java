@@ -15,7 +15,7 @@ import com.easyhoms.easydoctor.common.response.BaseResp;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.common.view.MenuItem;
-import com.easyhoms.easydoctor.my.activity.chooseHospital.MyChooseHospialActivity;
+import com.easyhoms.easydoctor.my.activity.chooseHospital.MyChooseHospitalActivity;
 import com.easyhoms.easydoctor.my.activity.password.UpdatePasswordFirstActivity;
 import com.easyhoms.easydoctor.my.activity.personal.MyDataActivity;
 import com.easyhoms.easydoctor.my.activity.phone.UpdatePhoneFirstActivity;
@@ -80,12 +80,16 @@ public class MyFragment extends BaseFragment {
                 switch (mAuthState){
                     case Constants.AUTH_UNAUTHED:
                        mApplyApproveImg.setImageResource(R.drawable.icon_apply_approve);
+                        break;
                     case Constants.AUTH_AUTHING:
                        mApplyApproveImg.setImageResource(R.drawable.icon_approving);
+                        break;
                     case Constants.AUTH_FAIL:
                        mApplyApproveImg.setImageResource(R.drawable.icon_approve_fail);
+                        break;
                     case Constants.AUTH_SUCCESS:
                        mApplyApproveImg.setImageResource(R.drawable.icon_approve_ok);
+                        break;
                 }
 
                 UserManager.setUser("auth",mAuthState+"");
@@ -137,7 +141,7 @@ public class MyFragment extends BaseFragment {
 
     @Event(R.id.unbind_tv)
     private void toBindHospital(View view) {
-        Intent intent = new Intent(mContext, MyChooseHospialActivity.class);
+        Intent intent = new Intent(mContext, MyChooseHospitalActivity.class);
         startActivity(intent);
     }
 

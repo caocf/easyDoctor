@@ -10,7 +10,7 @@
     <string name="cancel">取消</string>
     <string name="exit_app">账号提示</string>
     <string name="whether_exit_app">是否退出当前账号</string>
-    <string name="empty"/>
+    <string name="empty" />
 
     <string name="cure_uncured">未开始</string>
     <string name="cure_curing">进行中</string>
@@ -445,9 +445,21 @@
     <string name="transfor_to">转发给:</string>
 
 
-
     <string name="hundred_num">/100</string>
     <string name="hundred">0/100</string>
     <string name="enter_right_idcard">请输入正确的身份证号码</string>
     <string name="enter_all_photos">请上传全部资格证照片</string>
+    <string name="id_check">证件审核</string>
+    <string name="unauthed">未认证</string>
+    <string name="authing">审核中</string>
+    <string name="auth_fail">审核失败</string>
+    <string name="auth_suc">审核通过</string>
+
+    <string name="uncertificate">未认证</string>
+    <string name="certificating">认证中</string>
+    <string name="certificate_fail">认证失败</string>
+    <string name="certificate_suc">认证成功</string>
+
+    <string name="apply_bind">申请绑定</string>
+    <string name="hospital">医院</string>
 </resources>

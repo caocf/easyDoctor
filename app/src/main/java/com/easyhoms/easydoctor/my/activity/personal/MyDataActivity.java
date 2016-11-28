@@ -24,6 +24,7 @@ import com.easyhoms.easydoctor.common.view.ActionSheetDialog;
 import com.easyhoms.easydoctor.common.view.MenuItem;
 import com.easyhoms.easydoctor.common.view.MyActionbar;
 import com.easyhoms.easydoctor.my.activity.approve.ApplyApproveActivity;
+import com.easyhoms.easydoctor.my.activity.approve.ApproveDetailActivity;
 import com.easyhoms.pickview.TimePickerView;
 import com.google.gson.Gson;
 import com.netease.nim.common.ui.imageview.HeadImageView;
@@ -123,6 +124,8 @@ public class MyDataActivity extends BaseActivity {
     @Override
     protected void initView() {
         CommonUtils.loadImg(Constants.HOST_HEAD+"/"+UserManager.getUser().imagePath,mHeadHiv);
+
+
     }
 
     @Override
@@ -247,8 +250,13 @@ public class MyDataActivity extends BaseActivity {
     @Event(R.id.doctor_protactol_mi)
     private void startprotactol(View view) {
 
-        Intent intent = new Intent(mContext, ApplyApproveActivity.class);
-        startActivity(intent);
+        if (mUser.authState == Constants.AUTH_UNAUTHED){
+            Intent intent = new Intent(mContext, ApplyApproveActivity.class);
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(mContext, ApproveDetailActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Event(R.id.set_name_mi)
@@ -272,7 +280,20 @@ public class MyDataActivity extends BaseActivity {
         mBirth = mUser.birth;
         setBirth();
         mSetNameMi.setRightText(mUser.name);
-
+        switch (mUser.authState){
+            case Constants.AUTH_UNAUTHED:
+                mDoctorProtactolMi.setRightText(getString(R.string.unauthed));
+                break;
+            case Constants.AUTH_AUTHING:
+                mDoctorProtactolMi.setRightText(getString(R.string.certificating));
+                break;
+            case Constants.AUTH_FAIL:
+                mDoctorProtactolMi.setRightText(getString(R.string.certificate_fail));
+                break;
+            case Constants.AUTH_SUCCESS:
+                mDoctorProtactolMi.setRightText(getString(R.string.certificate_suc));
+                break;
+        }
         if (!TextUtils.isEmpty(mUser.gender) && mUser.gender.equals("0")) {
             mSetSexMi.setRightText("女");
         } else {

@@ -31,6 +31,7 @@
         android:id="@+id/applay_state_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:text="@string/approving"
@@ -38,27 +39,27 @@
         android:textSize="20sp"/>
 
     <com.easyhoms.easydoctor.common.view.MenuItem
+        android:id="@+id/approve_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mi_describe="zhang"
         app:mi_next_visible="gone"
         app:mi_title="@string/real_name"
         app:mi_type="top"/>
 
     <com.easyhoms.easydoctor.common.view.MenuItem
+        android:id="@+id/approve_idCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mi_describe="zhang"
         app:mi_next_visible="gone"
-        app:mi_title="@string/real_name"
+        app:mi_title="@string/idcard_num"
         app:mi_type="center"/>
 
     <com.easyhoms.easydoctor.common.view.MenuItem
+        android:id="@+id/approve_idCheck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mi_describe="zhang"
         app:mi_next_visible="gone"
-        app:mi_title="@string/real_name"
+        app:mi_title="@string/id_check"
         app:mi_type="bottom"/>
 
 </LinearLayout>
