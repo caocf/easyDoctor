@@ -47,11 +47,14 @@
                     android:textSize="@dimen/text_16"/>
 
                 <EditText
+                    android:id="@+id/apply_et"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/trans"
                     android:gravity="center_vertical"
                     android:hint="@string/enter_idcard"
+                    android:maxLength="18"
+                    android:maxLines="1"
                     android:textColor="@color/text_body_strong"
                     android:textColorHint="@color/text_body_weak"
                     android:textSize="@dimen/text_16"/>

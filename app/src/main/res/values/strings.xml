@@ -87,6 +87,7 @@
     <string name="my_change_phone">更换绑定手机</string>
     <string name="my_email">我的邮箱</string>
     <string name="my_hospital">我的医院</string>
+    <string name="my_introduce">个人简介</string>
     <string name="auth_send_fail">验证码发送失败,请稍后重试</string>
     <string name="net_error">网络异常,请连接网络</string>
     <string name="auth_time_out">短信验证码过期</string>
@@ -444,4 +445,9 @@
     <string name="transfor_to">转发给:</string>
 
 
+
+    <string name="hundred_num">/100</string>
+    <string name="hundred">0/100</string>
+    <string name="enter_right_idcard">请输入正确的身份证号码</string>
+    <string name="enter_all_photos">请上传全部资格证照片</string>
 </resources>

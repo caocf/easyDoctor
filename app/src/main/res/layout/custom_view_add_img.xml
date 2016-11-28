@@ -20,6 +20,7 @@
     <ImageView
         android:visibility="invisible"
         android:id="@+id/top_img"
+        android:scaleType="fitXY"
         android:layout_width="136dp"
         android:layout_height="76dp"/>
 

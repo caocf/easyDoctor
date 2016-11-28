@@ -258,6 +258,12 @@ public class MyDataActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    @Event(R.id.introduce_mi)
+    private void startIntroduce(View view){
+        Intent intent = new Intent(mContext,MyIntroduceActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();

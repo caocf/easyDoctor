@@ -11,6 +11,8 @@ import org.xutils.view.annotation.ContentView;
 @ContentView(R.layout.activity_approve_detail)
 public class ApproveDetailActivity extends BaseActivity {
 
+
+
     @Override
     protected void initView() {
 
