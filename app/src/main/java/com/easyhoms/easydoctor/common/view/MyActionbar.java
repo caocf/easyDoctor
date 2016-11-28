@@ -102,10 +102,17 @@ public class MyActionbar extends FrameLayout {
         });
 
         //设置背景颜色
-        int style = a.getColor(R.styleable.MyActionbar_ma_style, 1);  //1  blue  2 white
-        mBarRl.setBackgroundColor(style==1?resources.getColor(R.color.main_color_blue):resources.getColor(R.color.white));
-        mTitleTv.setTextColor(style==1?resources.getColor(R.color.white):resources.getColor(R.color.text_body_strong));
-        mBackImg.setImageResource(style==1?R.drawable.icon_back_white:R.drawable.icon_back_blue);
+        int style = a.getColor(R.styleable.MyActionbar_ma_style, 1);  //1  blue  2 white 3 gray
+        if (style == 3){
+            mBarRl.setBackgroundColor(resources.getColor(R.color.bg_main_color));
+            mTitleTv.setTextColor(resources.getColor(R.color.main_color_blue));
+            mRightTv.setTextColor(resources.getColor(R.color.main_color_blue));
+            mBackImg.setImageResource(R.drawable.icon_back_blue);
+        }else {
+            mBarRl.setBackgroundColor(style==1?resources.getColor(R.color.main_color_blue):resources.getColor(R.color.white));
+            mTitleTv.setTextColor(style==1?resources.getColor(R.color.white):resources.getColor(R.color.text_body_strong));
+            mBackImg.setImageResource(style==1?R.drawable.icon_back_white:R.drawable.icon_back_blue);
+        }
     }
 
     public void setRightClick(OnClickListener onClickListener) {

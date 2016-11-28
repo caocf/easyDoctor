@@ -462,4 +462,8 @@
 
     <string name="apply_bind">申请绑定</string>
     <string name="hospital">医院</string>
+    <string name="nickname">昵称：</string>
+
+    <string name="auth_from">认证来源</string>
+    <string name="send_message">发送信息</string>
 </resources>
