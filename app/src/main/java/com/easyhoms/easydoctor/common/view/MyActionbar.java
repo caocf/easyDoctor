@@ -202,7 +202,7 @@ public class MyActionbar extends FrameLayout {
         String str = "擅长项目\n最多选择三项";
         SpannableString styledText = new SpannableString(str);
         styledText.setSpan(new TextAppearanceSpan(mContext, R.style.style_text_18), 0, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        styledText.setSpan(new TextAppearanceSpan(mContext, R.style.style_text_12), 5, str.length() - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        styledText.setSpan(new TextAppearanceSpan(mContext, R.style.style_text_12), 5, str.length() , Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         mTitleTv.setText(styledText, TextView.BufferType.SPANNABLE);
     }

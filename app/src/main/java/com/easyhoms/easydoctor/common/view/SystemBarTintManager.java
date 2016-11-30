@@ -35,12 +35,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout.LayoutParams;
 
+import java.io.Serializable;
 import java.lang.reflect.Method;
 
 /**
  * 状态栏一体化
  */
-public class SystemBarTintManager {
+public class SystemBarTintManager implements Serializable{
 
     static {
         // Android allows a system property to override the presence of the navigation bar.

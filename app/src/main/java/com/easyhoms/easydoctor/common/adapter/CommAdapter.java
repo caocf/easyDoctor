@@ -7,16 +7,17 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/2/23.
  */
 public abstract class CommAdapter<T> extends BaseAdapter {
-    protected ArrayList<T> mList;
+    protected List<T> mList;
     protected Context mContext;
     protected int mLayoutId;
 
-    public CommAdapter(Context context, ArrayList<T> list) {
+    public CommAdapter(Context context, List<T> list) {
         mList = list;
         mContext = context;
     }

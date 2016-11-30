@@ -121,7 +121,8 @@
         <activity android:name=".hospital.activity.BindHospitalStateActivity" />
         <activity android:name=".my.activity.chooseHospital.MyChooseHospitalActivity" />
         <activity android:name=".my.activity.chooseHospital.BindHospitalActivity" />
-        <activity android:name=".team.activity.user.UserMoreActivity"></activity>
+        <activity android:name=".team.activity.user.UserMoreActivity" />
+        <activity android:name=".my.activity.personal.SpecialActivity"></activity>
     </application>
 
 </manifest>

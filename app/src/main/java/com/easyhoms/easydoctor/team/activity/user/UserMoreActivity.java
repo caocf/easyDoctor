@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
@@ -19,6 +20,8 @@ public class UserMoreActivity extends BaseActivity {
 
     @BindView(R.id.user_more_remark)
     private MenuItem mMoreRemark;
+    @BindView(R.id.user_more_switch)
+    private ImageView mMoreSwitch;
 
 
     @Override

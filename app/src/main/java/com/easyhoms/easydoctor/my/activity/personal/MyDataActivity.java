@@ -272,6 +272,12 @@ public class MyDataActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    @Event(R.id.special_project_mi)
+    private void startSpecial(View view){
+        Intent intent = new Intent(mContext,SpecialActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();

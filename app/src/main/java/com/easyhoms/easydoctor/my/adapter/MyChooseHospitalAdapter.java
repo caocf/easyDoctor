@@ -14,6 +14,7 @@ import org.xutils.view.annotation.BindView;
 import org.xutils.x;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 我的-选择医院
@@ -26,7 +27,7 @@ public class MyChooseHospitalAdapter extends CommAdapter<Hospital> {
         super(context, list);
     }
 
-    public MyChooseHospitalAdapter(Context context, ArrayList<Hospital> list, ChooseCallback callback) {
+    public MyChooseHospitalAdapter(Context context, List<Hospital> list, ChooseCallback callback) {
         super(context, list);
         mCallback = callback;
     }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_special"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@color/bg_main_color"
+    tools:context="com.easyhoms.easydoctor.my.activity.personal.SpecialActivity">
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        android:id="@+id/special_ma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ma_title="@string/special_project" />
+    <View
+        style="@style/style_line"
+        android:layout_marginTop="17dp"/>
+    <ListView
+        android:id="@+id/special_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="0.5dp"
+        android:divider="@color/bg_main_color">
+    </ListView>
+    <View
+        style="@style/style_line"/>
+</LinearLayout>

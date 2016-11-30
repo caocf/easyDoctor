@@ -16,6 +16,7 @@
         style="@style/style_line"
         android:layout_marginTop="17dp"/>
     <EditText
+        android:id="@+id/user_note_et"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:paddingLeft="15dp"
