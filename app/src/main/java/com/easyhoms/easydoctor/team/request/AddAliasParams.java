@@ -10,10 +10,12 @@ import org.xutils.http.RequestParams;
 public class AddAliasParams extends RequestParams {
     public  String yxId;
     public  String alias;
+    public int companyId;
 
-    public AddAliasParams(String yxId,String alias) {
+    public AddAliasParams(String yxId,String alias,int companyId) {
         super(Constants.HOST+"/link/add_alias.jhtml");
         this.yxId = yxId;
         this.alias = alias;
+        this.companyId = companyId;
     }
 }

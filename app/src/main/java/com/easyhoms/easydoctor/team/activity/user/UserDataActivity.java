@@ -16,7 +16,6 @@ import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.common.utils.ToastUtils;
 import com.easyhoms.easydoctor.common.view.MyActionbar;
-import com.easyhoms.multi_image_selector.bean.Image;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.netease.nim.common.ui.imageview.HeadImageView;
@@ -56,6 +55,8 @@ public class UserDataActivity extends BaseActivity {
 
     private FavoritePatientDetail mDetail;
 
+    private String mYxId;
+
     private NetCallback mDetailCallback = new NetCallback(mContext) {
         @Override
         protected void requestOK(String result) {
@@ -79,7 +80,8 @@ public class UserDataActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        BaseManager.userDetailInfo(getIntent().getStringExtra("yxId"),false,mDetailCallback);
+        mYxId = getIntent().getStringExtra("yxId");
+
     }
 
     @Override
@@ -88,6 +90,7 @@ public class UserDataActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext,UserMoreActivity.class);
+                intent.putExtra("yxId",mYxId);
                 startActivity(intent);
             }
         });
@@ -108,5 +111,11 @@ public class UserDataActivity extends BaseActivity {
                 mSexImg.setImageResource(R.drawable.icon_grail);
             }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BaseManager.userDetailInfo(mYxId,false,mDetailCallback);
     }
 }

@@ -142,6 +142,7 @@ public class TeamFragment extends BaseFragment {
         @Override
         public void onItemClick(Closeable closeable, int adapterPosition, int menuPosition, int direction) {
             Intent intent = new Intent(mContext, UserNoteActivity.class);
+            intent.putExtra("yxId", Constants.IM_PATIENT+mStoreUsers.get(adapterPosition).user);
             startActivity(intent);
         }
     };

@@ -419,8 +419,8 @@ public class BaseManager {
     /**
      * 医生备注收藏用户
      */
-    public static void addALias(String yxId,String alias,NetCallback callback){
-        AddAliasParams params=new AddAliasParams(yxId, alias);
+    public static void addALias(String yxId,String alias,int companyId,NetCallback callback){
+        AddAliasParams params=new AddAliasParams(yxId, alias,companyId);
         params.addHeader(Token, UserManager.getUser().access_token);
         HttpClient.post(params, callback);
     }
