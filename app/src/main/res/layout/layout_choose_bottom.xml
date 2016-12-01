@@ -8,6 +8,8 @@
                 android:background="@color/white"
                 android:orientation="vertical">
 
+    <View
+       style="@style/style_line"/>
     <TextView
         android:id="@+id/choose_count_tv"
         android:layout_width="wrap_content"
@@ -31,7 +33,7 @@
 
 
     <TextView
-        android:id="@+id/confirm_tv"
+        android:id="@+id/num_confirm_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

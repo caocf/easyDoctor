@@ -5,16 +5,23 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.activity.BaseActivity;
+import com.easyhoms.easydoctor.common.manager.BaseManager;
 import com.easyhoms.easydoctor.common.response.BaseArrayResp;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
+import com.easyhoms.easydoctor.common.utils.LocalDoctorSearch;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.common.view.MyActionbar;
+import com.easyhoms.easydoctor.common.view.SearchLayout;
 import com.easyhoms.easydoctor.message.listener.OnItemClickListener;
 import com.easyhoms.easydoctor.message.view.ListViewDecoration;
+import com.easyhoms.easydoctor.team.activity.doctor.DoctorDataActivity;
+import com.easyhoms.easydoctor.team.adapter.MemberCheckAdapter;
 import com.easyhoms.easydoctor.team.adapter.MenuAdapter;
 import com.easyhoms.easydoctor.team.response.Doctor;
 import com.google.gson.Gson;
@@ -28,6 +35,7 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
 import org.xutils.view.annotation.BindView;
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -36,16 +44,26 @@ import java.util.ArrayList;
  * 我的团队管理
  */
 @ContentView(R.layout.activity_team_manager)
-public class TeamManagerActivity extends BaseActivity {
-
+public class MyTeamActivity extends BaseActivity implements MemberCheckAdapter.CheckCallBack, SearchLayout.SearchCallback {
     @BindView(R.id.team_manager_ma)
     MyActionbar mMyActionbar;
     @BindView(R.id.team_member_lv)
     SwipeMenuRecyclerView mMemberLv;
+    @BindView(R.id.team_sl)
+    SearchLayout mTeamSl;
+    @BindView(R.id.remove_tv)
+    TextView mRemoveTv;
+    @BindView(R.id.add_tv)
+    TextView mAddTv;
+    @BindView(R.id.check_lv)
+    ListView mCheckLv;
 
     private int mGroupId;
+    private boolean mEdit = true;
     private ArrayList<Doctor> mDoctors = new ArrayList<>();
+    private ArrayList<Doctor> mSearchDoctors = new ArrayList<>();
     private MenuAdapter mMemberAdapter;
+    private MemberCheckAdapter mCheckAdapter;
     private NetCallback mGroupCallback = new NetCallback(this) {
         @Override
         protected void requestOK(String result) {
@@ -56,6 +74,7 @@ public class TeamManagerActivity extends BaseActivity {
                 BaseArrayResp<Doctor> res = new Gson().fromJson(result, objectType);
                 mDoctors = res.content;
                 mMemberAdapter.setData(mDoctors);
+                mCheckAdapter.setData(mDoctors);
             } else {
 
             }
@@ -67,28 +86,46 @@ public class TeamManagerActivity extends BaseActivity {
         }
     };
 
+    private NetCallback mDelCallback = new NetCallback(this) {
+        @Override
+        protected void requestOK(String result) {
+            closeDialog();
+            if (CommonUtils.isResultOK(result)) {
+
+            } else {
+
+            }
+        }
+        @Override
+        protected void timeOut() {
+
+        }
+    };
+
+
     @Override
     protected void initView() {
         mGroupId = getIntent().getIntExtra(Constants.KEY_GROUP_ID, 0);
-        mDoctors.add(new Doctor("zhang"));
-        mDoctors.add(new Doctor("来"));
-        mDoctors.add(new Doctor("爱"));
-        mDoctors.add(new Doctor("学"));
-        mMemberAdapter=new MenuAdapter(mContext,mDoctors);
+        mMemberAdapter = new MenuAdapter(mContext, mDoctors);
 
         mMemberLv.setLayoutManager(new LinearLayoutManager(this));// 布局管理器。
         mMemberLv.setHasFixedSize(true);// 如果Item够简单，高度是确定的，打开FixSize将提高性能。
         mMemberLv.setItemAnimator(new DefaultItemAnimator());// 设置Item默认动画，加也行，不加也行。
         mMemberLv.addItemDecoration(new ListViewDecoration());// 添加分割线。
 
-        // 为SwipeRecyclerView的Item创建菜单就两句话，不错就是这么简单：
         // 设置菜单创建器。
         mMemberLv.setSwipeMenuCreator(swipeMenuCreator);
+
         // 设置菜单Item点击监听。
         mMemberLv.setSwipeMenuItemClickListener(menuItemClickListener);
 
         mMemberAdapter.setOnItemClickListener(onItemClickListener);
         mMemberLv.setAdapter(mMemberAdapter);
+
+
+        mCheckAdapter=new MemberCheckAdapter(mContext,mDoctors,this,false);
+        mCheckLv.setAdapter(mCheckAdapter);
+        mTeamSl.setCallback(this);
     }
 
     @Override
@@ -98,21 +135,27 @@ public class TeamManagerActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-        mMyActionbar.setRightTv(R.string.add_member, new View.OnClickListener() {
+        mMyActionbar.setRightTv(R.string.edit, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mContext,AddMembersActivity.class);
-              //  intent.putExtra(Constants.KEY_GROUP_ID,mGroupId);
-                startActivity(intent);
+                mMyActionbar.setRightTv(mEdit?R.string.complete:R.string.edit);
+                mRemoveTv.setVisibility(mEdit ? View.VISIBLE : View.INVISIBLE);
+                mAddTv.setVisibility(mEdit? View.INVISIBLE : View.VISIBLE);
+                mCheckLv.setVisibility(!mEdit? View.INVISIBLE : View.VISIBLE);
+                mMemberLv.setVisibility(mEdit? View.INVISIBLE : View.VISIBLE);
+
+                mEdit = !mEdit;
+
             }
         });
+        mMyActionbar.setRightTvVisible(View.INVISIBLE);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-     //   showdialog();
-     //   BaseManager.getMyGroupMembers(mGroupId + "", mGroupCallback);
+        showdialog();
+        BaseManager.getMyGroupMembers(mGroupId, mGroupCallback);
     }
 
     /**
@@ -143,7 +186,10 @@ public class TeamManagerActivity extends BaseActivity {
     private OnItemClickListener onItemClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(int position) {
-
+            Doctor doctor=mDoctors.get(position);
+            Intent intent=new Intent(mContext, DoctorDataActivity.class);
+            intent.putExtra(Constants.KEY_DATA,doctor);
+            startActivity(intent);
         }
     };
 
@@ -151,19 +197,55 @@ public class TeamManagerActivity extends BaseActivity {
      * 菜单点击监听。
      */
     private OnSwipeMenuItemClickListener menuItemClickListener = new OnSwipeMenuItemClickListener() {
-        /**
-         * Item的菜单被点击的时候调用。
-         * @param closeable       closeable. 用来关闭菜单。
-         * @param adapterPosition adapterPosition. 这个菜单所在的item在Adapter中position。
-         * @param menuPosition    menuPosition. 这个菜单的position。比如你为某个Item创建了2个MenuItem，那么这个position可能是是 0、1，
-         * @param direction       如果是左侧菜单，值是：SwipeMenuRecyclerView#LEFT_DIRECTION，如果是右侧菜单，值是：SwipeMenuRecyclerView#RIGHT_DIRECTION.
-         */
         @Override
         public void onItemClick(Closeable closeable, int adapterPosition, int menuPosition, int direction) {
             closeable.smoothCloseMenu();// 关闭被点击的菜单。
 
+            Doctor doctor=mDoctors.get(adapterPosition);
+            BaseManager.staffGroupDel(mGroupId+"",doctor.id+"",mDelCallback);
+
         }
     };
 
+    @Event(R.id.remove_tv)
+    private void remove(View view) {
 
+    }
+
+    @Event(R.id.add_tv)
+    private void addMember(View view) {
+
+        Intent intent = new Intent(mContext, AddMembersActivity.class);
+        intent.putExtra(Constants.KEY_GROUP_ID,mGroupId);
+        intent.putExtra(Constants.KEY_GROUP_DOCTOR,mDoctors);
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void check(int position) {
+
+    }
+
+    @Override
+    public void fillData(String filterStr) {
+
+        ArrayList<Doctor> filterDateList = LocalDoctorSearch.searchGroup(filterStr, mDoctors);
+        mSearchDoctors =filterDateList;
+        mMemberAdapter.setData(mSearchDoctors);
+    }
+
+    @Override
+    public void cancel() {
+
+        mMyActionbar.setVisibility(View.VISIBLE);
+        mMemberAdapter.setData(mDoctors);
+    }
+
+    @Override
+    public void showEditView() {
+
+        mMyActionbar.setVisibility(View.GONE);
+        mMemberAdapter.setData(new ArrayList<Doctor>());
+    }
 }

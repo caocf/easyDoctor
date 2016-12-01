@@ -22,9 +22,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
+import com.easyhoms.easydoctor.common.bean.FavoriteUser;
+import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.message.listener.OnItemClickListener;
-import com.easyhoms.easydoctor.team.response.StoreUser;
 import com.netease.nim.common.ui.imageview.HeadImageView;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuAdapter;
 
@@ -39,11 +41,11 @@ import java.util.List;
  */
 public class StoreUserAdapter extends SwipeMenuAdapter<StoreUserAdapter.DefaultViewHolder> {
 
-    private List<StoreUser> titles;
+    private List<FavoriteUser> titles;
     private Context mContext;
     private OnItemClickListener mOnItemClickListener;
 
-    public StoreUserAdapter(Context context, List<StoreUser> titles) {
+    public StoreUserAdapter(Context context, List<FavoriteUser> titles) {
         this.titles = titles;
         this.mContext=context;
     }
@@ -78,7 +80,7 @@ public class StoreUserAdapter extends SwipeMenuAdapter<StoreUserAdapter.DefaultV
         });
     }
 
-    public void setData(ArrayList<StoreUser> data) {
+    public void setData(ArrayList<FavoriteUser> data) {
         titles= data;
         notifyDataSetChanged();
     }
@@ -101,9 +103,9 @@ public class StoreUserAdapter extends SwipeMenuAdapter<StoreUserAdapter.DefaultV
             this.mOnItemClickListener = onItemClickListener;
         }
 
-        public void setData(StoreUser doctor) {
-           // CommonUtils.loadImg(Constants.HOST_HEAD+doctor.imagePath,this.mHeadHiv);
-            this.mNameTv.setText(doctor.staff.name);
+        public void setData(FavoriteUser doctor) {
+            CommonUtils.loadImg(Constants.HOST_HEAD+"/"+doctor.image_path,this.mHeadHiv);
+            this.mNameTv.setText(doctor.name);
         }
 
         @Override

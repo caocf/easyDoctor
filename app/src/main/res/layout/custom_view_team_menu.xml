@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+    <View
+        android:id="@+id/top_line"
+        style="@style/style_line"/>
+
+
+    <com.netease.nim.common.ui.imageview.HeadImageView
+        android:id="@+id/my_head_hiv"
+        style="@style/head_style"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_create_team"/>
+
+    <TextView
+        android:id="@+id/title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/team_item_height"
+        android:layout_toRightOf="@id/my_head_hiv"
+        android:gravity="center_vertical"
+        android:text="@string/create_team"
+        android:textColor="@color/text_body_strong"
+        android:textSize="@dimen/team_item_text"/>
+
+    <ImageView
+        android:id="@+id/my_team_selected_img"
+        android:layout_width="34dp"
+        android:layout_height="@dimen/team_item_height"
+        android:layout_alignParentRight="true"
+        android:scaleType="center"
+        android:src="@drawable/icon_arrow_blue"/>
+
+    <View
+        android:id="@+id/bottom_line"
+        style="@style/style_line"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

@@ -86,6 +86,12 @@
     <declare-styleable name="AddImgMenu">
         <attr name="aim_msg" format="string|reference"></attr>
     </declare-styleable>
+    <declare-styleable name="TeamItem">
+        <attr name="ti_img" format="reference"/>
+        <attr name="ti_title" format="string"></attr>
+    </declare-styleable>
+
+
 
 
 </resources>

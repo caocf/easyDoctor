@@ -6,6 +6,7 @@
                 >
 
     <View
+        android:visibility="invisible"
         android:id="@+id/line"
         style="@style/style_line"
         android:layout_marginLeft="@dimen/line_margin_left"/>

@@ -1,27 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_team_manager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".team.activity.myTeam.TeamManagerActivity"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical"
+    tools:context=".team.activity.myTeam.MyTeamActivity">
 
     <com.easyhoms.easydoctor.common.view.MyActionbar
-        app:ma_title="@string/my_team"
         android:id="@+id/team_manager_ma"
-        app:ma_right_title="@string/add_member"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:ma_right_title="@string/add_member"
+        app:ma_title="@string/my_team"/>
+
+    <com.easyhoms.easydoctor.common.view.SearchLayout
+        android:id="@+id/team_sl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/team_manager_ma"/>
+
+    <View
+        android:id="@+id/line"
+        style="@style/style_line"
+        android:layout_below="@+id/team_sl"/>
 
     <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
-        android:layout_marginTop="16dp"
         android:id="@+id/team_member_lv"
-        android:dividerHeight="0dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/remove_tv"
+        android:layout_below="@id/line"
+        android:dividerHeight="0dp"/>
+    
+    <ListView
+        android:visibility="invisible"
+        android:divider="@drawable/layer_recrent_lv_divider"
+        android:layout_above="@+id/remove_tv"
+        android:layout_below="@id/line"
+        android:id="@+id/check_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-</LinearLayout>
+    <TextView
+        android:background="@color/white"
+        android:visibility="invisible"
+        android:id="@+id/remove_tv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="@string/remove"
+        android:textColor="@color/letter_red"
+        android:textSize="@dimen/text_18"/>
+
+    <TextView
+        android:background="@color/white"
+        android:id="@+id/add_tv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="@string/add_member"
+        android:textColor="@color/main_color_blue"
+        android:textSize="@dimen/text_18"/>
+</RelativeLayout>

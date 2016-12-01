@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
@@ -12,6 +13,7 @@ import com.easyhoms.easydoctor.common.manager.BaseManager;
 import com.easyhoms.easydoctor.common.response.BaseResp;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
+import com.easyhoms.easydoctor.common.view.MyActionbar;
 import com.easyhoms.easydoctor.message.activity.TransforMemberActivity;
 import com.easyhoms.easydoctor.my.reponse.UserDetail;
 import com.google.gson.Gson;
@@ -27,7 +29,9 @@ import org.xutils.view.annotation.Event;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-
+/**
+ * 聊天设置
+ */
 @ContentView(R.layout.activity_chat_setting)
 public class ChatSettingActivity extends BaseActivity {
 
@@ -37,6 +41,14 @@ public class ChatSettingActivity extends BaseActivity {
     ImageView mStoreImg;
     @BindView(R.id.transfor_rl)
     RelativeLayout mTransforRl;
+    @BindView(R.id.chat_set_ma)
+    MyActionbar mChatSetMa;
+    @BindView(R.id.real_name_tv)
+    TextView mRealNameTv;
+    @BindView(R.id.nick_name_tv)
+    TextView mNickNameTv;
+    @BindView(R.id.age_tv)
+    TextView mAgeTv;
 
     private boolean mIsStored = false;
     private String mUserImId;
@@ -104,10 +116,17 @@ public class ChatSettingActivity extends BaseActivity {
                 }
             }
         } else if (mTeamMembers.size() > 2) {
-            mLastMember=mTeamMembers.get(mTeamMembers.size()-1);
+            mLastMember = mTeamMembers.get(mTeamMembers.size() - 1);
         }
-        mTransforRl.setVisibility(mLastMember.getAccount().equals(NimUIKit.getAccount())?View.VISIBLE:View.GONE);
+
+        mTransforRl.setVisibility(mLastMember.getAccount().equals(NimUIKit.getAccount()) ? View.VISIBLE : View.VISIBLE);
+
+        setText(mAgeTv,CommonUtils.getAge(mUser.birth)+"");
+        setText(mNickNameTv,mUser.name);
+        setText(mRealNameTv,mUser.name);
     }
+
+
 
     @Override
     protected void initActionbar() {
@@ -122,7 +141,7 @@ public class ChatSettingActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        showdialog();
+
         BaseManager.getFavoriteStatus(mUserImId, mStoreCallback);
     }
 
@@ -141,7 +160,7 @@ public class ChatSettingActivity extends BaseActivity {
         Intent intent = new Intent(mContext, TransforMemberActivity.class);
         // intent.putExtra(Constants.KEY_GROUP_ID,mGroupId);
         intent.putExtra(Constants.KEY_YX_TEAM_ID, mYxTeamId);
-        intent.putExtra(Constants.KEY_YX_TEAM_MEMBERS,mTeamMembers);
+        intent.putExtra(Constants.KEY_YX_TEAM_MEMBERS, mTeamMembers);
         startActivity(intent);
     }
 

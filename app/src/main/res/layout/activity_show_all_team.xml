@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.easyhoms.easydoctor.team.activity.myTeam.ShowAllTeamActivity">
+
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        android:id="@+id/all_team_ma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:ma_title="@string/all_team"/>
+
+    <com.easyhoms.easydoctor.common.view.TeamItem
+        android:id="@+id/create_ti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ti_title="@string/create_team"/>
+
+    <com.easyhoms.easydoctor.common.view.TeamItem
+        android:id="@+id/my_team_ti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ti_title="@string/create_team"/>
+
+    <com.easyhoms.easydoctor.common.view.NoScrollListView
+        android:layout_marginTop="20dp"
+        android:divider="@color/trans"
+        android:dividerHeight="20dp"
+        android:id="@+id/team_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

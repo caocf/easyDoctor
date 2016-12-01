@@ -2,14 +2,16 @@ package com.easyhoms.easydoctor.team.adapter;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.adapter.CommAdapter;
+import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.team.response.Doctor;
+import com.netease.nim.common.ui.imageview.HeadImageView;
 
 import org.xutils.view.annotation.BindView;
 import org.xutils.x;
@@ -22,9 +24,16 @@ import java.util.ArrayList;
 
 public class MemberCheckAdapter extends CommAdapter<Doctor> implements SectionIndexer {
     private CheckCallBack mCallBack;
-    public MemberCheckAdapter(Context context, ArrayList<Doctor> list,CheckCallBack checkCallBack) {
+    private boolean mSessionVisible;
+
+    public MemberCheckAdapter(Context context, ArrayList<Doctor> list,CheckCallBack checkCallBack,boolean sessionVisible) {
         super(context, list);
         this.mCallBack=checkCallBack;
+        this.mSessionVisible=sessionVisible;
+    }
+
+    public void setSessionVisible(boolean sessionVisible) {
+        mSessionVisible = sessionVisible;
     }
 
     @Override
@@ -34,28 +43,34 @@ public class MemberCheckAdapter extends CommAdapter<Doctor> implements SectionIn
             convertView = View.inflate(mContext, R.layout.item_member_check, null);
             viewHolder = new ViewHolder();
             x.view().inject(viewHolder, convertView);
-
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        // 根据position获取分类的首字母的Char ascii值
-        int section = getSectionForPosition(position);
+        if(mSessionVisible){
+            // 根据position获取分类的首字母的Char ascii值
+            int section = getSectionForPosition(position);
 
-        // 如果当前位置等于该分类首字母的Char的位置 ，则认为是第一次出现
-        if (position == getPositionForSection(section)) {
-            viewHolder.mLetterTv.setVisibility(View.VISIBLE);
-            viewHolder.mLetterTv.setText(doctor.sortLetters);
-        } else {
+            // 如果当前位置等于该分类首字母的Char的位置 ，则认为是第一次出现
+            if (position == getPositionForSection(section)) {
+                viewHolder.mLetterTv.setVisibility(View.VISIBLE);
+                viewHolder.mLetterTv.setText(doctor.sortLetters);
+            } else {
+                viewHolder.mLetterTv.setVisibility(View.GONE);
+            }
+        }else{
             viewHolder.mLetterTv.setVisibility(View.GONE);
         }
-        viewHolder.mCheckCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        viewHolder.mCheckCb.setSelected(doctor.isChoose);
+        viewHolder.mCheckCb.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mCallBack.check(position,isChecked);
+            public void onClick(View v) {
+                mCallBack.check(position);
             }
         });
         viewHolder.mNameTv.setText(doctor.name);
+        CommonUtils.loadImg(Constants.HOST_HEAD+"/"+doctor.imagePath,viewHolder.mHeadHiv,R.drawable.doctors_default_head);
         return convertView;
     }
 
@@ -63,13 +78,15 @@ public class MemberCheckAdapter extends CommAdapter<Doctor> implements SectionIn
         @BindView(R.id.member_name_tv)
         TextView mNameTv;
         @BindView(R.id.member_check_cb)
-        CheckBox mCheckCb;
+        ImageView mCheckCb;
         @BindView(R.id.treat_item_letter_tv)
         TextView mLetterTv;
+        @BindView(R.id.head_hiv)
+        HeadImageView mHeadHiv;
     }
 
     public interface CheckCallBack{
-        void check(int position,boolean checked);
+        void check(int position);
     }
 
     /**

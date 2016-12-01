@@ -46,8 +46,6 @@ import java.util.List;
 
 /**
  * 群聊界面
- * <p/>
- * Created by huangjun on 2015/3/5.
  */
 @ContentView(R.layout.nim_team_message_activity)
 public class TeamMessageActivity extends BaseMessageActivity {
@@ -135,8 +133,6 @@ public class TeamMessageActivity extends BaseMessageActivity {
             @Override
             public void onClick(View v) {
                 BaseManager.userDetailInfo(mUserImId,false,mUserCallback);
-
-
             }
         });
     }
@@ -211,10 +207,13 @@ public class TeamMessageActivity extends BaseMessageActivity {
                 .setCallback(new RequestCallback<List<TeamMember>>() {
                     @Override
                     public void onSuccess(List<TeamMember> members) {
-                        mLastJoinMember=members.get(members.size()-1).getAccount();
-                        fragment.setLastMember(mLastJoinMember);
-                        fragment.refreshMessageList();
-                        mTeamMembers=(ArrayList<TeamMember>) members;
+                        if(members.size()!=0){
+                            mLastJoinMember=members.get(members.size()-1).getAccount();
+                            fragment.setLastMember(mLastJoinMember);
+                            fragment.refreshMessageList();
+                            mTeamMembers=(ArrayList<TeamMember>) members;
+                        }
+
                         for (TeamMember member : members) {
 
                             if (member.getAccount().startsWith(Constants.IM_PATIENT)) {

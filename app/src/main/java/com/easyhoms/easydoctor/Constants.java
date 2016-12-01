@@ -24,6 +24,7 @@ public class Constants {
     public static final String KEY_COUNT = "count";
     public static final String KEY_USER_ID = "user_id";
     public static final String KEY_GROUP_ID = "group_id";
+    public static final String KEY_GROUP_DOCTOR = "group_doctor";
     public static final String KEY_YX_TEAM_ID = "team_id";
     public static final String KEY_YX_TEAM_MEMBERS = "team_members";
 

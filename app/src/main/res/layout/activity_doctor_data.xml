@@ -1,203 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_doctor_data"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
     <com.easyhoms.easydoctor.common.view.MyActionbar
         android:id="@+id/doctor_data_ma"
-        app:ma_style="gray"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:ma_style="gray"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@color/bg_main_color">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="202dp">
-        <com.netease.nim.common.ui.imageview.HeadImageView
-            android:id="@+id/doctor_data_head_hiv"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/user_head_default"
-            app:civ_border_color="#30ffffff"
-            app:civ_border_width="3dp"/>
 
-        <ImageView
-            android:id="@+id/doctor_data_approve_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/doctor_data_head_hiv"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/icon_approve_ok"/>
-        <TextView
-            android:id="@+id/doctor_data_name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/doctor_data_approve_img"
-            android:textSize="23sp"
-            android:text="李医生"/>
-        <ImageView
-            android:id="@+id/doctor_data_sex_img"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:layout_toEndOf="@id/doctor_data_name_tv"
-            android:layout_below="@id/doctor_data_head_hiv"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="4dp"
-            android:src="@drawable/icon_mail"/>
         <LinearLayout
-            android:id="@+id/doctor_data_nickname_ly"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/doctor_data_name_tv"
-            android:layout_centerHorizontal="true">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nickname"
-                android:textSize="16sp"
-                android:textColor="@color/text_body_weak"/>
-            <TextView
-                android:id="@+id/doctor_data_nickname_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/text_body_weak"
-                android:text="昵称昵称"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/doctor_data_nickname_ly"
-            android:layout_centerHorizontal="true">
-            <TextView
-                android:id="@+id/doctor_data_doctor_title_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/doctor_title"
-                android:textSize="16sp"
-                android:textColor="@color/text_body_weak"/>
-            <TextView
-                android:id="@+id/doctor_data_age_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp"
-                android:textColor="@color/text_body_weak"
-                android:text="26"/>
-        </LinearLayout>
-    </RelativeLayout>
-    <View style="@style/style_line"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:gravity="center_vertical"
-        android:background="@color/white">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="12dp"
-            android:src="@drawable/icon_hospital_head"/>
-        <TextView
-            android:id="@+id/doctor_data_hos_tv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:textSize="16sp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="厦门大学附属XXXX"
-            android:maxLines="1"
-            android:ellipsize="end" />
-    </LinearLayout>
-    <View style="@style/style_line"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/special_project"
-            android:textSize="16sp"/>
-        <TextView
-            android:id="@+id/doctor_data_special_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:textSize="14sp"
-            android:text="丰胸 无痛脱毛"
-            android:textColor="@color/text_body_weak"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/introduce"
-            android:textSize="16sp"/>
-        <TextView
-            android:id="@+id/doctor_data_introduce_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:textSize="14sp"
-            android:text="丰胸 无痛脱毛"
-            android:textColor="@color/text_body_weak"/>
-        <LinearLayout
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical">
-            <TextView
-                android:layout_width="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="202dp">
+
+                <com.netease.nim.common.ui.imageview.HeadImageView
+                    android:id="@+id/doctor_data_head_hiv"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/user_head_default"
+                    app:civ_border_color="#30ffffff"
+                    app:civ_border_width="3dp"/>
+
+                <ImageView
+                    android:id="@+id/doctor_data_approve_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/doctor_data_head_hiv"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/icon_approve_ok"/>
+
+                <TextView
+                    android:id="@+id/doctor_data_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/doctor_data_approve_img"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="李医生"
+                    android:textSize="23sp"/>
+
+                <ImageView
+                    android:id="@+id/doctor_data_sex_img"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_below="@id/doctor_data_head_hiv"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@id/doctor_data_name_tv"
+                    android:src="@drawable/icon_mail"/>
+
+                <LinearLayout
+                    android:id="@+id/doctor_data_nickname_ly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/doctor_data_name_tv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nickname"
+                        android:textColor="@color/text_body_weak"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/doctor_data_nickname_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="昵称昵称"
+                        android:textColor="@color/text_body_weak"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/doctor_data_nickname_ly"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/doctor_data_doctor_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/doctor_title"
+                        android:textColor="@color/text_body_weak"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/doctor_data_age_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="26"
+                        android:textColor="@color/text_body_weak"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View style="@style/style_line"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="12dp"
+                    android:src="@drawable/icon_hospital_head"/>
+
+                <TextView
+                    android:id="@+id/doctor_data_hos_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="厦门大学附属XXXX"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <View style="@style/style_line"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/auth_from"
-                android:textSize="16sp"/>
-            <ImageView
-                android:layout_marginLeft="7dp"
-                android:layout_width="17dp"
-                android:layout_height="17dp"
-                android:src="@drawable/icon_v"/>
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/special_project"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/doctor_data_special_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="丰胸 无痛脱毛"
+                    android:textColor="@color/text_body_weak"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/introduce"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/doctor_data_introduce_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="丰胸 无痛脱毛"
+                    android:textColor="@color/text_body_weak"
+                    android:textSize="14sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/auth_from"
+                        android:textSize="16sp"/>
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:layout_marginLeft="7dp"
+                        android:src="@drawable/icon_v"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/doctor_data_from_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="丰胸 无痛脱毛"
+                    android:textColor="@color/text_body_weak"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <View style="@style/style_line"/>
         </LinearLayout>
-        <TextView
-            android:id="@+id/doctor_data_from_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:textSize="14sp"
-            android:text="丰胸 无痛脱毛"
-            android:textColor="@color/text_body_weak"/>
-    </LinearLayout>
-    <View style="@style/style_line"/>
-    </LinearLayout>
     </ScrollView>
+
     <View style="@style/style_line"/>
+
     <TextView
         android:id="@+id/doctor_data_send_msg_btn"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:gravity="center"
         android:background="@color/white"
+        android:gravity="center"
+        android:text="@string/send_message"
         android:textColor="@color/main_color_blue"
-        android:textSize="16sp"
-        android:text="@string/send_message"/>
+        android:textSize="16sp"/>
 </LinearLayout>

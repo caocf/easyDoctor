@@ -99,7 +99,8 @@ public class MyTransforMemberDialog {
         mBtnPos.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                listener.onClick(v);
+                dialog.dismiss();
             }
         });
         return this;

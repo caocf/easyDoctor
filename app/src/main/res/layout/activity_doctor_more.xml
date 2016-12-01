@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_doctor_more"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main_color"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context="com.easyhoms.easydoctor.team.activity.doctor.DoctorMoreActivity">
+
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:ma_title="@string/more"/>
+
+    <View
+        style="@style/style_line"/>
+
+    <TextView
+        android:id="@+id/remove_doctor_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/team_head"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="@string/remove_member"
+        android:textColor="@color/letter_red"
+        android:textSize="@dimen/text_18"/>
+
+    <View
+        style="@style/style_line"/>
+</LinearLayout>

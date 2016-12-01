@@ -1,6 +1,7 @@
 package com.easyhoms.easydoctor.message.fragment;
 
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,12 +9,14 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.fragment.BaseFragment;
+import com.easyhoms.easydoctor.common.manager.UserManager;
+import com.easyhoms.easydoctor.common.response.Hospital;
 import com.easyhoms.easydoctor.common.utils.LocalRecentSearch;
 import com.easyhoms.easydoctor.common.utils.LogUtils;
 import com.easyhoms.easydoctor.common.view.MyActionbar;
@@ -22,6 +25,7 @@ import com.easyhoms.easydoctor.message.adapter.RecentContactAdapter;
 import com.easyhoms.easydoctor.message.adapter.SearchRecentContactAdapter;
 import com.easyhoms.easydoctor.message.listener.OnItemClickListener;
 import com.easyhoms.easydoctor.message.view.ListViewDecoration;
+import com.easyhoms.easydoctor.my.activity.chooseHospital.BindHospitalActivity;
 import com.netease.nim.cache.FriendDataCache;
 import com.netease.nim.reminder.ReminderManager;
 import com.netease.nim.session.SessionHelper;
@@ -47,6 +51,7 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
 import org.xutils.view.annotation.BindView;
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,7 +62,7 @@ import java.util.List;
  * 消息fragment
  */
 @ContentView(R.layout.fragment_commuicate)
-public class CommuicateFragment extends BaseFragment implements SearchLayout.SearchCallback{
+public class CommuicateFragment extends BaseFragment implements SearchLayout.SearchCallback {
     // 置顶功能可直接使用，也可作为思路，供开发者充分利用RecentContact的tag字段
     public static final long RECENT_TAG_STICKY = 1; // 联系人置顶tag
     public static final String SYSTEM_NOTICE = "0"; // 联系人置顶tag
@@ -67,18 +72,22 @@ public class CommuicateFragment extends BaseFragment implements SearchLayout.Sea
     ListView mSearchLv;
     @BindView(R.id.communicate_recent_lv)
     SwipeMenuRecyclerView swipeMenuRecyclerView;
-    @BindView(R.id.message_null_bg_tv)
-    TextView mNullBgTv;
     @BindView(R.id.communicate_ma)
     MyActionbar mMyActionbar;
+    @BindView(R.id.unbind_tv)
+    TextView mUnbindTv;
+    @BindView(R.id.unbind_rl)
+    LinearLayout mUnbindRl;
+    @BindView(R.id.no_message_tv)
+    TextView mNoMessageTv;
 
     private ArrayList<RecentContact> items;
     private List<RecentContact> loadedRecents;
-    private ArrayList<RecentContact> mSearchRecents=new ArrayList<>();
+    private ArrayList<RecentContact> mSearchRecents = new ArrayList<>();
     private RecentContactAdapter adapter;
     private SearchRecentContactAdapter mSearchAdapter;
     private boolean msgLoaded = false;
-
+    private Hospital mHospital;
     private UnreadCallback mUnreadCallback;
 
     public void setUnreadCallback(UnreadCallback unreadCallback) {
@@ -86,7 +95,6 @@ public class CommuicateFragment extends BaseFragment implements SearchLayout.Sea
     }
 
     private UserInfoObservable.UserInfoObserver userInfoObserver;
-
 
 
     public CommuicateFragment() {
@@ -97,7 +105,7 @@ public class CommuicateFragment extends BaseFragment implements SearchLayout.Sea
         initMessageList();
         initSwipeMenu();
         //获取所有的会话列表
-        requestMessages(true);//延迟
+        // requestMessages(true);//延迟
         registerObservers(true);
     }
 
@@ -145,7 +153,7 @@ public class CommuicateFragment extends BaseFragment implements SearchLayout.Sea
 
         swipeMenuRecyclerView.setAdapter(adapter);
 
-        mSearchAdapter=new SearchRecentContactAdapter(mContext,mSearchRecents);
+        mSearchAdapter = new SearchRecentContactAdapter(mContext, mSearchRecents);
         mSearchLv.setAdapter(mSearchAdapter);
 
         mSearchRecentSl.setCallback(this);
@@ -166,7 +174,13 @@ public class CommuicateFragment extends BaseFragment implements SearchLayout.Sea
 
     }
 
-    private void requestMessages(boolean delay) {
+    public void requestMessages(boolean delay) {
+        mHospital = UserManager.getBindHos();
+        if (mHospital == null) {
+            mUnbindRl.setVisibility(View.VISIBLE);
+            mNoMessageTv.setVisibility(View.INVISIBLE);
+            return;
+        }
         if (msgLoaded) {
             return;
         }
@@ -244,9 +258,9 @@ public class CommuicateFragment extends BaseFragment implements SearchLayout.Sea
         }
 
         if (items.size() == 0) {
-            mNullBgTv.setVisibility(View.VISIBLE);
+            mNoMessageTv.setVisibility(View.VISIBLE);
         } else {
-            mNullBgTv.setVisibility(View.GONE);
+            mNoMessageTv.setVisibility(View.GONE);
         }
     }
 
@@ -477,21 +491,42 @@ public class CommuicateFragment extends BaseFragment implements SearchLayout.Sea
         @Override
         public void onItemClick(Closeable closeable, int adapterPosition, int menuPosition, int direction) {
             closeable.smoothCloseMenu();// 关闭被点击的菜单。
+            RecentContact recent = items.get(adapterPosition);
 
-            if (direction == SwipeMenuRecyclerView.RIGHT_DIRECTION) {
-                Toast.makeText(mContext, "list第" + adapterPosition + "; 右侧菜单第" + menuPosition, Toast.LENGTH_SHORT).show();
-            } else if (direction == SwipeMenuRecyclerView.LEFT_DIRECTION) {
-                Toast.makeText(mContext, "list第" + adapterPosition + "; 左侧菜单第" + menuPosition, Toast.LENGTH_SHORT).show();
+            LogUtils.i("menuPosition  "+menuPosition);
+            if (recent.getSessionType()== SessionTypeEnum.Team) {
+                if(menuPosition==1){
+                    deleteRecent(recent);
+                }
+            }else if(recent.getSessionType()==SessionTypeEnum.P2P){
+                if(menuPosition==0){
+                    deleteRecent(recent);
+                }
             }
         }
     };
+
+    public void deleteRecent(RecentContact recent) {
+        NIMClient.getService(MsgService.class).deleteRecentContact(recent);
+        items.remove(recent);
+        if (recent.getUnreadCount() > 0) {
+            refreshMessages(true);
+        } else {
+            adapter.notifyDataSetChanged();
+        }
+        refreshNoMessage();
+    }
+
+    private void refreshNoMessage() {
+       mNoMessageTv.setVisibility(items.size()==0?View.VISIBLE:View.INVISIBLE);
+    }
 
 
     @Override
     public void fillData(String filterStr) {
 
         ArrayList<RecentContact> filterDateList = LocalRecentSearch.searchGroup(filterStr, items);
-        mSearchRecents=filterDateList;
+        mSearchRecents = filterDateList;
         mSearchAdapter.setData(mSearchRecents);
 //        if (filterDateList.size() == 0) {
 //            mNameTv.setVisibility(View.GONE);
@@ -510,20 +545,30 @@ public class CommuicateFragment extends BaseFragment implements SearchLayout.Sea
         mMyActionbar.setVisibility(View.VISIBLE);
         mSearchLv.setVisibility(View.GONE);
         swipeMenuRecyclerView.setVisibility(View.VISIBLE);
+        refreshNoMessage();
+
     }
 
     @Override
     public void showEditView() {
         mMyActionbar.setVisibility(View.GONE);
         mSearchLv.setVisibility(View.VISIBLE);
-        mNullBgTv.setVisibility(View.GONE);
+        mNoMessageTv.setVisibility(View.GONE);
         swipeMenuRecyclerView.setVisibility(View.GONE);
         mSearchAdapter.setData(new ArrayList<RecentContact>());
 
     }
 
+
     public interface UnreadCallback {
         void unread(int count);
     }
+
+    @Event(R.id.unbind_tv)
+    private void bindHos(View view) {
+        Intent intent=new Intent(mContext, BindHospitalActivity.class);
+        startActivity(intent);
+    }
+
 }
 

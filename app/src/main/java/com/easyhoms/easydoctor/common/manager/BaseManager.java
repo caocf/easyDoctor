@@ -428,7 +428,7 @@ public class BaseManager {
      * 医生收藏用户
      */
     public static void addFavorite(String yxId,NetCallback callback){
-        AddFavoriteParams params=new AddFavoriteParams(yxId);
+        AddFavoriteParams params=new AddFavoriteParams(yxId,UserManager.getBindHos().id);
         params.addHeader(Token, UserManager.getUser().access_token);
         HttpClient.post(params, callback);
     }
@@ -436,7 +436,7 @@ public class BaseManager {
      * 医生取消收藏用户
      */
     public static void cancelFavorite(String yxId,NetCallback callback){
-        CancelFavoriteParams params=new CancelFavoriteParams(yxId);
+        CancelFavoriteParams params=new CancelFavoriteParams(yxId,UserManager.getBindHos().id);
         params.addHeader(Token, UserManager.getUser().access_token);
         HttpClient.post(params, callback);
     }

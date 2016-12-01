@@ -3,7 +3,7 @@ package com.easyhoms.easydoctor.team.response;
 /**
  * Created by Administrator on 2016/3/30.
  */
-public class Group {
+public class TeamName {
 
 
     /**
@@ -19,7 +19,7 @@ public class Group {
     public String orderby;
     public String createDate;
 
-    public Group(String id, String groupName) {
+    public TeamName(String id, String groupName) {
         this.id = id;
         this.groupName = groupName;
     }

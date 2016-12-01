@@ -9,9 +9,12 @@ import org.xutils.http.RequestParams;
  */
 public class AddFavoriteParams extends RequestParams {
     public  String yxId;
+    public  long companyId;
 
-    public AddFavoriteParams(String yxId) {
+
+    public AddFavoriteParams(String yxId,long companyId) {
         super(Constants.HOST+"/link/add_favorite.jhtml");
         this.yxId = yxId;
+        this.companyId=companyId;
     }
 }

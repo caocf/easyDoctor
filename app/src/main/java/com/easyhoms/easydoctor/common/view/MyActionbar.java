@@ -123,6 +123,7 @@ public class MyActionbar extends FrameLayout {
         mRightFirstImg.setVisibility(visible);
     }
 
+
     public void setLeftbtnVisible(int visible) {
         mBackImg.setVisibility(visible);
     }
@@ -165,6 +166,12 @@ public class MyActionbar extends FrameLayout {
     public void setRightTv(int stringId, OnClickListener onClickListener) {
         this.setRightTv(mContext.getResources().getString(stringId), onClickListener);
     }
+    public void setRightTv(int stringId) {
+        mRightTv.setText(stringId);
+    }
+    public void setRightTv(String stringId) {
+        mRightTv.setText(stringId);
+    }
 
     public void setRightTv(String string, OnClickListener onClickListener) {
         mRightTv.setVisibility(VISIBLE);
@@ -198,11 +205,11 @@ public class MyActionbar extends FrameLayout {
         mCenterImg.setOnClickListener(listerer);
     }
 
-    public void setSubTitle() {
-        String str = "擅长项目\n最多选择三项";
+    public void setSubTitle(String str,int start) {
+       // String str = "擅长项目\n最多选择三项";   4
         SpannableString styledText = new SpannableString(str);
-        styledText.setSpan(new TextAppearanceSpan(mContext, R.style.style_text_18), 0, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        styledText.setSpan(new TextAppearanceSpan(mContext, R.style.style_text_12), 5, str.length() , Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        styledText.setSpan(new TextAppearanceSpan(mContext, R.style.style_text_18), 0, start, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        styledText.setSpan(new TextAppearanceSpan(mContext, R.style.style_text_12), start+1, str.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         mTitleTv.setText(styledText, TextView.BufferType.SPANNABLE);
     }

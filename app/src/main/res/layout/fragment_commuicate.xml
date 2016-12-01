@@ -16,46 +16,88 @@
         app:ma_title="@string/communication"/>
 
     <com.easyhoms.easydoctor.common.view.SearchLayout
-        android:layout_below="@id/communicate_ma"
         android:id="@+id/search_recent_sl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/communicate_ma"/>
+
     <View
-        android:layout_height="0.5dp"
         android:id="@+id/line"
-        android:layout_below="@id/search_recent_sl"
         style="@style/style_line"
-       />
+        android:layout_height="0.5dp"
+        android:layout_below="@id/search_recent_sl"
+        />
 
-    <ListView
-        android:layout_below="@id/line"
-        android:id="@+id/search_lv"
-        android:visibility="gone"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/line">
 
-    <TextView
-        android:id="@+id/message_null_bg_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/line"
-        android:layout_marginRight="8dp"
-        android:background="@drawable/null_bg"
-        android:gravity="center"
-        android:text="@string/message_contact_doctor_here"
-        android:textColor="@color/text_body_weak"
-        android:textSize="@dimen/text_16"/>
+        <ListView
+            android:id="@+id/search_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
 
-    <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
-        android:id="@+id/communicate_recent_lv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@drawable/layer_recrent_lv_divider"
-        android:dividerHeight="1dp"
-        android:layout_below="@id/line"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"/>
 
+        <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+            android:id="@+id/communicate_recent_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:divider="@drawable/layer_recrent_lv_divider"
+            android:dividerHeight="1dp"/>
+
+        <LinearLayout
+            android:visibility="invisible"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:id="@+id/unbind_rl"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_unbind_hos"/>
+
+            <TextView
+                android:textSize="@dimen/text_18"
+                android:layout_marginTop="4dp"
+                android:text="@string/bind_hos_to_find_patient"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+            
+            <TextView
+                android:id="@+id/unbind_tv"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/shape_bg_trans_border_blue"
+                android:textColor="@color/main_color_blue"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="@dimen/text_18"
+                android:gravity="center"
+                android:text="@string/bind_hospital"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+               />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/no_message_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableTop="@drawable/icon_no_message"
+            android:text="@string/no_message"
+            android:textColor="@color/text_body_weak"
+            android:textSize="@dimen/text_20"/>
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -1,7 +1,5 @@
 package com.easyhoms.easydoctor.my.activity.personal;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
@@ -40,7 +38,7 @@ public class SpecialActivity extends BaseActivity {
 
     @Override
     protected void initActionbar() {
-        mActionbar.setSubTitle();
+
         mActionbar.setRightTv(getString(R.string.complete), new View.OnClickListener() {
             @Override
             public void onClick(View v) {

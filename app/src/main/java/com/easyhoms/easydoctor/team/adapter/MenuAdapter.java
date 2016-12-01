@@ -22,7 +22,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
+import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.message.listener.OnItemClickListener;
 import com.easyhoms.easydoctor.team.response.Doctor;
 import com.netease.nim.common.ui.imageview.HeadImageView;
@@ -102,8 +104,9 @@ public class MenuAdapter extends SwipeMenuAdapter<MenuAdapter.DefaultViewHolder>
         }
 
         public void setData(Doctor doctor) {
-           // CommonUtils.loadImg(Constants.HOST_HEAD+doctor.imagePath,this.mHeadHiv);
+
             this.mNameTv.setText(doctor.name);
+            CommonUtils.loadImg(Constants.HOST_HEAD+"/"+doctor.imagePath,mHeadHiv);
         }
 
         @Override

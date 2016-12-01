@@ -111,8 +111,10 @@ public class UserManager {
         Type objectType = new TypeToken<ArrayList<Hospital>>() {
         }.getType();
         ArrayList<Hospital> res = new Gson().fromJson(hos, objectType);
+        if(res==null){
+           return null;
+        }
         hospital=(res.size()==0?null:res.get(0));
-        LogUtils.i("hosname:"+hospital==null?"null":hospital.companyName);
         return hospital;
     }
 

@@ -16,6 +16,7 @@ import com.easyhoms.easydoctor.common.activity.BaseActivity;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
 import com.easyhoms.easydoctor.common.manager.UserManager;
 import com.easyhoms.easydoctor.common.response.BaseArrayResp;
+import com.easyhoms.easydoctor.common.response.BaseResp;
 import com.easyhoms.easydoctor.common.utils.CharacterParser;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.common.utils.LocalTeamMemberSearch;
@@ -125,7 +126,15 @@ public class TransforMemberActivity extends BaseActivity implements SearchLayout
         protected void requestOK(String result) {
             closeDialog();
             if (CommonUtils.isResultOK(result)) {
-
+                Type objectType = new TypeToken<BaseResp<String>>() {
+                }.getType();
+                BaseResp<String> res = new Gson().fromJson(result, objectType);
+                if(res.content.equals("SUCESS")){
+                    showToast(R.string.add_staff_ok);
+                    finish();
+                }else{
+                    showToast(CommonUtils.getMsg(result));
+                }
             } else {
                 showToast(CommonUtils.getMsg(result));
             }
@@ -161,6 +170,7 @@ public class TransforMemberActivity extends BaseActivity implements SearchLayout
 
             }
         });
+        mMyActionbar.setSubTitle(getString(R.string.my_team_transfor),4);
     }
 
     @Override
@@ -254,12 +264,10 @@ public class TransforMemberActivity extends BaseActivity implements SearchLayout
     @Override
     protected void onResume() {
         super.onResume();
-//        mMyActionbar.setVisibility(View.VISIBLE);
-//        backgroundAlpha(1f);
+
         showdialog();
         LogUtils.i("mGroupId "+mGroupId);
         BaseManager.getMyGroup(UserManager.getBindHos().id+"", mMyGroupCallback);
-     //   BaseManager.getMy(UserManager.getUser(), mMyGroupCallback);
 
     }
 

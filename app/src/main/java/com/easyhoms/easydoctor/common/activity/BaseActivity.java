@@ -8,8 +8,10 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easyhoms.easydoctor.R;
@@ -146,5 +148,11 @@ public abstract class BaseActivity extends FragmentActivity {
     @TargetApi(17)
     private boolean isDestroyedCompatible17() {
         return super.isDestroyed();
+    }
+
+    protected void setText(TextView tv, String str) {
+        if (!TextUtils.isEmpty(str)) {
+            tv.setText(str);
+        }
     }
 }

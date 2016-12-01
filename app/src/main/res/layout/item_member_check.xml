@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
 
     <TextView
         android:id="@+id/treat_item_letter_tv"
@@ -14,26 +16,38 @@
         android:textColor="@color/tab_title_color"
         android:textSize="@dimen/text_12"/>
 
-    <CheckBox
-        android:layout_below="@+id/treat_item_letter_tv"
-        android:id="@+id/member_check_cb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="@dimen/team_item_height">
 
-    <com.netease.nim.common.ui.imageview.HeadImageView
-        android:layout_below="@+id/treat_item_letter_tv"
-        android:id="@+id/head_hiv"
-        android:layout_width="@dimen/team_head"
-        style="@style/head_style"
-        android:layout_toRightOf="@+id/member_check_cb"
-        android:src="@drawable/doctors_default_head"
-        android:layout_height="@dimen/team_head"/>
-    <TextView
-        android:text="HHHH"
-        android:layout_below="@+id/treat_item_letter_tv"
-        android:layout_toRightOf="@+id/head_hiv"
-        android:id="@+id/member_name_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/member_check_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/treat_item_letter_tv"
+            android:layout_marginLeft="12dp"
+            android:src="@drawable/selector_team_check"
+           />
 
-</RelativeLayout>
+        <com.netease.nim.common.ui.imageview.HeadImageView
+            android:id="@+id/head_hiv"
+            style="@style/head_style"
+            android:layout_width="@dimen/team_head"
+            android:layout_height="@dimen/team_head"
+            android:layout_below="@+id/treat_item_letter_tv"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/member_check_cb"
+            android:src="@drawable/doctors_default_head"/>
+
+        <TextView
+            android:id="@+id/member_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/team_item_height"
+            android:layout_below="@+id/treat_item_letter_tv"
+            android:layout_toRightOf="@+id/head_hiv"
+            android:gravity="center_vertical"
+            android:text="HHHH"/>
+    </LinearLayout>
+</LinearLayout>

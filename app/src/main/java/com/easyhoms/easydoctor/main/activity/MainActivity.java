@@ -67,7 +67,7 @@ public class MainActivity extends BaseActivity implements CommuicateFragment.Unr
                 BaseArrayResp<Hospital> res = new Gson().fromJson(result, objectType);
                 mBindHospitals=res.content;
                 UserManager.saveBindHosToDb(mBindHospitals);
-
+                mCommunicationFragment.requestMessages(true);
             } else {
 
             }

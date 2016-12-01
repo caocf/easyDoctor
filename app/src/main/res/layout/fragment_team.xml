@@ -11,6 +11,7 @@
         android:id="@+id/team_ma"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:ma_back_img_visible="false"
         app:ma_title="@string/team"/>
 
     <ScrollView
@@ -30,10 +31,10 @@
 
             <View
                 style="@style/style_line"
-                android:layout_marginTop="8dp"/>
+                />
 
             <LinearLayout
-                android:id="@+id/my_team_ll"
+                android:id="@+id/team_ll"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/team_item_height"
                 android:background="@color/white"
@@ -42,100 +43,65 @@
 
                 <com.netease.nim.common.ui.imageview.HeadImageView
                     android:id="@+id/my_head_hiv"
-                    android:src="@drawable/user_head_default"
-                    style="@style/head_style"/>
+                    style="@style/head_style"
+                    android:src="@drawable/icon_team"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="@string/my_team"
+                    android:text="@string/team"
                     android:textColor="@color/text_body_strong"
-                    android:textSize="@dimen/team_item_text"/>
-
-                <TextView
-                    android:id="@+id/team_manager_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_rec_white_bule"
-                    android:padding="8dp"
-                    android:text="@string/manager"
-                    android:textColor="@color/main_color_blue"
-                    />
+                    android:textSize="@dimen/team_item_text"
+                    android:id="@+id/textView3"/>
 
                 <ImageView
                     android:id="@+id/my_team_selected_img"
                     android:layout_width="34dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/selector_arrow_right_down"/>
+                    android:src="@drawable/icon_arrow_blue"/>
             </LinearLayout>
-
-            <com.easyhoms.easydoctor.common.view.NoScrollListView
-                android:id="@+id/my_team_nslv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@null"
-                android:visibility="gone"/>
-
             <View
-                style="@style/style_line"
-                />
-
-            <com.easyhoms.easydoctor.common.view.NoScrollExpandableListView
-                android:id="@+id/other_team_elv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:childDivider="@drawable/layer_recrent_lv_divider"
-                android:divider="@color/trans"
-                />
-
-            <View
-                android:layout_marginTop="@dimen/team_divider"
                 style="@style/style_line"
                 />
 
             <LinearLayout
-
-                android:id="@+id/my_store_ll"
+                android:visibility="gone"
+                android:id="@+id/favite_ll"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/team_item_height"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
+                android:id="@+id/favite_tv"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/special_concern"
+                android:textColor="@color/text_body_weak"
+                android:textSize="@dimen/team_item_text"/>
 
-                <com.netease.nim.common.ui.imageview.HeadImageView
-                    style="@style/head_style"
-                    android:src="@drawable/icon_team_store"/>
-
-                <TextView
-                    android:textColor="@color/text_body_strong"
-                    android:id="@+id/textView2"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/my_store"
-                    android:textSize="@dimen/team_item_text"/>
-
-                <ImageView
-                    android:id="@+id/store_selected_img"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/selector_arrow_right_down"/>
-            </LinearLayout>
-
+            <View
+                android:id="@+id/swipe_v"
+                android:layout_height="0.5dp"
+                style="@style/style_line"
+                />
             <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+                android:background="@color/white"
                 android:id="@+id/user_swip_smrv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:dividerHeight="0dp"
-                android:visibility="invisible"/>
+                />
+
             <View
+                android:layout_height="0.5dp"
                 style="@style/style_line"
                 />
-        </LinearLayout>
 
+            </LinearLayout>
+        </LinearLayout>
 
 
     </ScrollView>

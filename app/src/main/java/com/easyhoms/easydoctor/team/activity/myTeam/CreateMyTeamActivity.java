@@ -5,13 +5,9 @@ import com.easyhoms.easydoctor.common.activity.BaseActivity;
 
 import org.xutils.view.annotation.ContentView;
 
-/**
- * 成员设置
- */
 
-@ContentView(R.layout.activity_member_setting)
-public class MemberSettingActivity extends BaseActivity {
-
+@ContentView(R.layout.activity_create_my_team)
+public class CreateMyTeamActivity extends BaseActivity {
 
     @Override
     protected void initView() {

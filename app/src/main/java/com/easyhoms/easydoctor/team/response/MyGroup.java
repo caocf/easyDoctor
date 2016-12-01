@@ -19,6 +19,6 @@ public class MyGroup {
     public String modifyDate;
     public int id;
     public String name;
-    public Object memo;
-    public Object icon;
+    public String memo;
+    public String icon;
 }

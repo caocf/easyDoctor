@@ -325,7 +325,7 @@ public class CommonUtils {
             return 0;
         }
         //1986-06-06
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat(Constants.DATE_STANDED);
         Date date = new Date();
 
         try {
@@ -758,9 +758,21 @@ public class CommonUtils {
 
     public static void loadImg(String url, ImageView imageView) {
         DisplayImageOptions mConfig = new DisplayImageOptions.Builder()
-//                .showImageForEmptyUri(defImgId)
-//                .showImageOnFail(defImgId)
-//                .showImageOnLoading(defImgId)
+                .cacheInMemory(true)// 在内存中会缓存该图片
+                .cacheOnDisk(true)// 在硬盘中会缓存该图片
+                .considerExifParams(true)// 会识别图片的方向信息
+                .resetViewBeforeLoading(true)// 重设图片
+                .build();
+
+        url=url.startsWith("http://")?url:"http://"+url;
+        LogUtils.i("image: "+url);
+        ImageLoader.getInstance().displayImage(url, imageView, mConfig);
+    }
+    public static void loadImg(String url, ImageView imageView,int defImgId) {
+        DisplayImageOptions mConfig = new DisplayImageOptions.Builder()
+                .showImageForEmptyUri(defImgId)
+                .showImageOnFail(defImgId)
+                .showImageOnLoading(defImgId)
                 .cacheInMemory(true)// 在内存中会缓存该图片
                 .cacheOnDisk(true)// 在硬盘中会缓存该图片
                 .considerExifParams(true)// 会识别图片的方向信息

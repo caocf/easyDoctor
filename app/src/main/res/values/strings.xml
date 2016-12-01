@@ -10,7 +10,7 @@
     <string name="cancel">取消</string>
     <string name="exit_app">账号提示</string>
     <string name="whether_exit_app">是否退出当前账号</string>
-    <string name="empty" />
+    <string name="empty"/>
 
     <string name="cure_uncured">未开始</string>
     <string name="cure_curing">进行中</string>
@@ -302,7 +302,7 @@
     <string name="team_nickname">群昵称</string>
     <string name="team_nickname_none">未填写</string>
     <string name="team_identity">身份</string>
-    <string name="remove_member">移出本群</string>
+    <string name="remove_member">移出成员</string>
     <string name="team_member_info">成员信息</string>
     <string name="team_admin">管理员</string>
     <string name="team_creator">群主</string>
@@ -325,7 +325,7 @@
     <string name="team_invite">邀请他人权限</string>
     <string name="team_info_update">群资料修改权限</string>
     <string name="team_invitee_authentication">被邀请人身份验证</string>
-    <string name="create_team">创建群</string>
+    <string name="create_team">创建团队</string>
     <string name="over_team_member_capacity">邀请失败，成员人数上限为%1$d人</string>
     <string name="over_team_capacity">创建失败，创建群数量达到限制</string>
     <string name="create_team_failed">创建失败</string>
@@ -358,7 +358,7 @@
     <string name="normal_team">讨论组</string>
     <string name="team_name_toast">群名称不能为空</string>
     <string name="not_allow_empty">不能为空</string>
-    <string name="chat_setting">聊天信息</string>
+    <string name="chat_setting">聊天设置</string>
     <string name="team_settings_name">设置名称</string>
     <string name="normal_team_name">讨论组名称</string>
     <string name="remove_member_success">移除成员成功</string>
@@ -462,10 +462,18 @@
 
     <string name="apply_bind">申请绑定</string>
     <string name="hospital">医院</string>
+    <string name="special_concern">特别关注</string>
+    <string name="all_team">团队</string>
+
     <string name="nickname">昵称：</string>
 
     <string name="auth_from">认证来源</string>
     <string name="send_message">发送信息</string>
     <string name="more">更多</string>
     <string name="just_sixteen">16字以内</string>
+    <string name="no_message">无消息</string>
+    <string name="bind_hos_to_find_patient">绑定医院，能让患者轻松找到并联系您。</string>
+    <string name="my_team_transfor">我的团队\n选择转发成员</string>
+    <string name="my_Team">我的团队</string>
+
 </resources>
