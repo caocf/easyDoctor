@@ -475,5 +475,6 @@
     <string name="bind_hos_to_find_patient">绑定医院，能让患者轻松找到并联系您。</string>
     <string name="my_team_transfor">我的团队\n选择转发成员</string>
     <string name="my_Team">我的团队</string>
+    <string name="exit">退出</string>
 
 </resources>

@@ -125,7 +125,7 @@
         <activity android:name=".hospital.activity.BindHospitalStateActivity"/>
         <activity android:name=".my.activity.chooseHospital.MyChooseHospitalActivity"/>
         <activity android:name=".my.activity.chooseHospital.BindHospitalActivity"/>
-        <activity android:name=".team.activity.myTeam.ShowAllTeamActivity"/>
+        <activity android:name=".team.activity.myTeam.AllTeamActivity"/>
         <activity android:name=".team.activity.myTeam.CreateMyTeamActivity">
         </activity>
         <activity android:name=".team.activity.doctor.ChatSettingActivity"/>

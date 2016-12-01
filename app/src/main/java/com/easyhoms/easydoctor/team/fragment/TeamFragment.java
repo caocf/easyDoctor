@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.easyhoms.easydoctor.R;
-import com.easyhoms.easydoctor.common.bean.FavoriteUser;
+import com.easyhoms.easydoctor.common.bean.FavoritePatient;
 import com.easyhoms.easydoctor.common.fragment.BaseFragment;
 import com.easyhoms.easydoctor.common.manager.BaseManager;
 import com.easyhoms.easydoctor.common.manager.UserManager;
@@ -22,7 +22,7 @@ import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.common.view.SearchLayout;
 import com.easyhoms.easydoctor.message.listener.OnItemClickListener;
 import com.easyhoms.easydoctor.message.view.ListViewDecoration;
-import com.easyhoms.easydoctor.team.activity.myTeam.ShowAllTeamActivity;
+import com.easyhoms.easydoctor.team.activity.myTeam.AllTeamActivity;
 import com.easyhoms.easydoctor.team.activity.user.UserDataActivity;
 import com.easyhoms.easydoctor.team.adapter.StoreUserAdapter;
 import com.easyhoms.easydoctor.team.response.MyGroup;
@@ -64,16 +64,16 @@ public class TeamFragment extends BaseFragment {
     private MyGroup mMyGroup;
 
     private StoreUserAdapter mUserAdapter;
-    private ArrayList<FavoriteUser> mStoreUsers = new ArrayList<>();
+    private ArrayList<FavoritePatient> mStoreUsers = new ArrayList<>();
 
     private NetCallback mFavoriteCallback = new NetCallback(getActivity()) {
         @Override
         protected void requestOK(String result) {
             closeDialog();
             if (CommonUtils.isResultOK(result)) {
-                Type objectType = new TypeToken<BaseArrayResp<FavoriteUser>>() {
+                Type objectType = new TypeToken<BaseArrayResp<FavoritePatient>>() {
                 }.getType();
-                BaseArrayResp<FavoriteUser> res = new Gson().fromJson(result, objectType);
+                BaseArrayResp<FavoritePatient> res = new Gson().fromJson(result, objectType);
 
                 mStoreUsers=res.content;
                 mFaviteLl.setVisibility(mStoreUsers.size()==0?View.GONE:View.VISIBLE);
@@ -117,7 +117,7 @@ public class TeamFragment extends BaseFragment {
 
     @Event(R.id.team_ll)
     private void teamManager(View view) {
-        Intent intent = new Intent(getActivity(), ShowAllTeamActivity.class);
+        Intent intent = new Intent(getActivity(), AllTeamActivity.class);
         startActivity(intent);
     }
 

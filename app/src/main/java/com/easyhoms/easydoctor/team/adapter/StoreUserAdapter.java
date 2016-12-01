@@ -24,7 +24,7 @@ import android.widget.TextView;
 
 import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
-import com.easyhoms.easydoctor.common.bean.FavoriteUser;
+import com.easyhoms.easydoctor.common.bean.FavoritePatient;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.message.listener.OnItemClickListener;
 import com.netease.nim.common.ui.imageview.HeadImageView;
@@ -41,11 +41,11 @@ import java.util.List;
  */
 public class StoreUserAdapter extends SwipeMenuAdapter<StoreUserAdapter.DefaultViewHolder> {
 
-    private List<FavoriteUser> titles;
+    private List<FavoritePatient> titles;
     private Context mContext;
     private OnItemClickListener mOnItemClickListener;
 
-    public StoreUserAdapter(Context context, List<FavoriteUser> titles) {
+    public StoreUserAdapter(Context context, List<FavoritePatient> titles) {
         this.titles = titles;
         this.mContext=context;
     }
@@ -80,7 +80,7 @@ public class StoreUserAdapter extends SwipeMenuAdapter<StoreUserAdapter.DefaultV
         });
     }
 
-    public void setData(ArrayList<FavoriteUser> data) {
+    public void setData(ArrayList<FavoritePatient> data) {
         titles= data;
         notifyDataSetChanged();
     }
@@ -103,7 +103,7 @@ public class StoreUserAdapter extends SwipeMenuAdapter<StoreUserAdapter.DefaultV
             this.mOnItemClickListener = onItemClickListener;
         }
 
-        public void setData(FavoriteUser doctor) {
+        public void setData(FavoritePatient doctor) {
             CommonUtils.loadImg(Constants.HOST_HEAD+"/"+doctor.image_path,this.mHeadHiv);
             this.mNameTv.setText(doctor.name);
         }

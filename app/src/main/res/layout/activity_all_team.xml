@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.easyhoms.easydoctor.team.activity.myTeam.ShowAllTeamActivity">
+    tools:context="com.easyhoms.easydoctor.team.activity.myTeam.AllTeamActivity">
 
     <com.easyhoms.easydoctor.common.view.MyActionbar
         android:id="@+id/all_team_ma"

@@ -53,7 +53,7 @@ public abstract class NetCallback implements Callback.CommonCallback<String> {
         //如果是-10004  则直接到登录界面
         try {
             JSONObject object = new JSONObject(result.toString());
-            if (object.getInt("code") == -10004) {
+            if (object.getInt("code") == -10004||object.getInt("code") == 8006) {
                 timeOut();
                 return;
             }

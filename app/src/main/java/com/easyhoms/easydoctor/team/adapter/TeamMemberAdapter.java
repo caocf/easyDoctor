@@ -4,8 +4,10 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.adapter.CommAdapter;
+import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.team.response.Doctor;
 import com.netease.nim.common.ui.imageview.HeadImageView;
 
@@ -15,9 +17,8 @@ import org.xutils.x;
 import java.util.ArrayList;
 
 /**
- * Created by 德医互联 on 2016/11/2.
+ * 无侧滑  队员adapter
  */
-
 public class TeamMemberAdapter extends CommAdapter<Doctor> {
     public TeamMemberAdapter(Context context, ArrayList<Doctor> list) {
         super(context, list);
@@ -25,7 +26,7 @@ public class TeamMemberAdapter extends CommAdapter<Doctor> {
 
     @Override
     protected View convert(Doctor doctor, View convertView, Context context, int position, int layoutId) {
-        ViewHolder viewHolder=null;
+        ViewHolder viewHolder = null;
         if (convertView == null) {
             convertView = View.inflate(mContext, R.layout.item_team_member, null);
             viewHolder = new ViewHolder();
@@ -35,7 +36,7 @@ public class TeamMemberAdapter extends CommAdapter<Doctor> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-      //  CommonUtils.loadImg(Constants.HOST_HEAD+doctor.imagePath,viewHolder.mHeadHiv);
+        CommonUtils.loadImg(Constants.HOST_HEAD + "/" + doctor.imagePath, viewHolder.mHeadHiv, R.drawable.doctors_default_head);
         viewHolder.mNameTv.setText(doctor.name);
         return convertView;
     }

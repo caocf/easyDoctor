@@ -2,6 +2,7 @@ package com.easyhoms.easydoctor.team.activity.myTeam;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
@@ -15,6 +16,7 @@ import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.common.view.MyActionbar;
 import com.easyhoms.easydoctor.common.view.NoScrollListView;
 import com.easyhoms.easydoctor.common.view.TeamItem;
+import com.easyhoms.easydoctor.team.activity.otherTeam.OtherTeamActivity;
 import com.easyhoms.easydoctor.team.adapter.OtherTeamAdapter;
 import com.easyhoms.easydoctor.team.response.MyGroup;
 import com.google.gson.Gson;
@@ -28,10 +30,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 
-
-
-@ContentView(R.layout.activity_show_all_team)
-public class ShowAllTeamActivity extends BaseActivity {
+@ContentView(R.layout.activity_all_team)
+public class AllTeamActivity extends BaseActivity {
     @BindView(R.id.all_team_ma)
     MyActionbar mAllTeamMa;
     @BindView(R.id.create_ti)
@@ -99,7 +99,7 @@ public class ShowAllTeamActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        mOtherTeamAdapter=new OtherTeamAdapter(this,mOtherGroups);
+        mOtherTeamAdapter = new OtherTeamAdapter(this, mOtherGroups);
         mOtherTeamLv.setAdapter(mOtherTeamAdapter);
     }
 
@@ -110,7 +110,14 @@ public class ShowAllTeamActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+        mOtherTeamLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(mContext, OtherTeamActivity.class);
+                intent.putExtra(Constants.KEY_GROUP_ID, mOtherGroups.get(position).id);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -125,14 +132,14 @@ public class ShowAllTeamActivity extends BaseActivity {
 
     @Event(R.id.create_ti)
     private void createTeam(View view) {
-        Intent intent=new Intent(mContext, CreateMyTeamActivity.class);
+        Intent intent = new Intent(mContext, CreateMyTeamActivity.class);
         startActivity(intent);
     }
 
     @Event(R.id.my_team_ti)
     private void myTeam(View view) {
-        Intent intent=new Intent(mContext, MyTeamActivity.class);
-        intent.putExtra(Constants.KEY_GROUP_ID,mMyGroup.id);
+        Intent intent = new Intent(mContext, MyTeamActivity.class);
+        intent.putExtra(Constants.KEY_GROUP_ID, mMyGroup.id);
         startActivity(intent);
     }
 
