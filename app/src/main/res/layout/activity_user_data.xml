@@ -1,10 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_user_data"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_main_color"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".team.activity.user.UserDataActivity">
 
-</RelativeLayout>
+    <com.easyhoms.easydoctor.common.view.MyActionbar
+        android:id="@+id/user_data_ma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ma_style="white" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="202dp">
+
+                <com.netease.nim.common.ui.imageview.HeadImageView
+                    android:id="@+id/user_data_head_hiv"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/user_head_default"
+                    app:civ_border_color="#30ffffff"
+                    app:civ_border_width="3dp" />
+
+
+                <TextView
+                    android:id="@+id/user_data_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/user_data_head_hiv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/user_name"
+                    android:textSize="23sp" />
+
+                <ImageView
+                    android:id="@+id/user_data_sex_img"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_below="@id/user_data_head_hiv"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@id/user_data_name_tv"
+                    android:src="@drawable/icon_mail" />
+
+                <LinearLayout
+                    android:id="@+id/user_data_nickname_ly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/user_data_name_tv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nickname"
+                        android:textColor="@color/text_body_weak"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/user_data_nickname_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_body_weak"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/user_data_age_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/user_data_nickname_ly"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/age"
+                    android:textColor="@color/text_body_weak"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+            <View style="@style/style_line"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:paddingLeft="12dp"
+                android:gravity="center_vertical"
+                android:textSize="16sp"
+                android:textColor="@color/text_body_weak"
+                android:text="@string/treat_info"/>
+            <View style="@style/style_line"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_project"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/user_data_order_project_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="玻尿酸注射"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/user_data_order_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="预约日期：2016/7/7 周一 12:30"
+                    android:textColor="@color/text_body_weak"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/treat_project"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/user_data_treat_project_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="玻尿酸注射"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <View style="@style/style_line"/>
+        </LinearLayout>
+    </ScrollView>
+    <View style="@style/style_line"/>
+
+    <TextView
+        android:id="@+id/user_data_send_msg_btn"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="@string/send_message"
+        android:textColor="@color/main_color_blue"
+        android:textSize="16sp"/>
+</LinearLayout>

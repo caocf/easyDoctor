@@ -16,7 +16,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/bg_main_color">
 
@@ -47,7 +47,7 @@
                     android:src="@drawable/icon_approve_ok"/>
 
                 <TextView
-                    android:id="@+id/doctor_data_name_tv"
+                    android:id="@+id/user_data_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/doctor_data_approve_img"
@@ -57,20 +57,20 @@
                     android:textSize="23sp"/>
 
                 <ImageView
-                    android:id="@+id/doctor_data_sex_img"
+                    android:id="@+id/user_data_sex_img"
                     android:layout_width="17dp"
                     android:layout_height="17dp"
                     android:layout_below="@id/doctor_data_head_hiv"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="15dp"
-                    android:layout_toEndOf="@id/doctor_data_name_tv"
+                    android:layout_toEndOf="@id/user_data_name_tv"
                     android:src="@drawable/icon_mail"/>
 
                 <LinearLayout
                     android:id="@+id/doctor_data_nickname_ly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/doctor_data_name_tv"
+                    android:layout_below="@id/user_data_name_tv"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp">
 
@@ -82,7 +82,7 @@
                         android:textSize="16sp"/>
 
                     <TextView
-                        android:id="@+id/doctor_data_nickname_tv"
+                        android:id="@+id/user_data_nickname_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="昵称昵称"

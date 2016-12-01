@@ -10,6 +10,7 @@ public class FavoritePatient {
      * name : 丁路他了58
      * user : 65
      */
+
     public String image_path;
     public String name;
     public int user;

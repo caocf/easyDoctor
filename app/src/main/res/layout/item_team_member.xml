@@ -5,6 +5,10 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
+    <View
+        android:id="@+id/line"
+        style="@style/style_line"
+        android:layout_marginLeft="@dimen/line_margin_left"/>
 
     <com.netease.nim.common.ui.imageview.HeadImageView
         android:layout_marginTop="8dp"

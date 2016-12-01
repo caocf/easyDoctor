@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.easyhoms.easydoctor.Constants;
 import com.easyhoms.easydoctor.R;
 import com.easyhoms.easydoctor.common.bean.FavoritePatient;
 import com.easyhoms.easydoctor.common.fragment.BaseFragment;
@@ -22,8 +23,9 @@ import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.common.view.SearchLayout;
 import com.easyhoms.easydoctor.message.listener.OnItemClickListener;
 import com.easyhoms.easydoctor.message.view.ListViewDecoration;
-import com.easyhoms.easydoctor.team.activity.myTeam.AllTeamActivity;
+import com.easyhoms.easydoctor.team.activity.myTeam.ShowAllTeamActivity;
 import com.easyhoms.easydoctor.team.activity.user.UserDataActivity;
+import com.easyhoms.easydoctor.team.activity.user.UserNoteActivity;
 import com.easyhoms.easydoctor.team.adapter.StoreUserAdapter;
 import com.easyhoms.easydoctor.team.response.MyGroup;
 import com.google.gson.Gson;
@@ -117,7 +119,7 @@ public class TeamFragment extends BaseFragment {
 
     @Event(R.id.team_ll)
     private void teamManager(View view) {
-        Intent intent = new Intent(getActivity(), AllTeamActivity.class);
+        Intent intent = new Intent(getActivity(), ShowAllTeamActivity.class);
         startActivity(intent);
     }
 
@@ -131,6 +133,7 @@ public class TeamFragment extends BaseFragment {
         @Override
         public void onItemClick(int position) {
             Intent intent=new Intent(mContext(), UserDataActivity.class);
+            intent.putExtra("yxId", Constants.IM_PATIENT+mStoreUsers.get(position).user);
             startActivity(intent);
         }
     };
@@ -138,7 +141,8 @@ public class TeamFragment extends BaseFragment {
     private OnSwipeMenuItemClickListener menuItemClickListener = new OnSwipeMenuItemClickListener() {
         @Override
         public void onItemClick(Closeable closeable, int adapterPosition, int menuPosition, int direction) {
-
+            Intent intent = new Intent(mContext, UserNoteActivity.class);
+            startActivity(intent);
         }
     };
 

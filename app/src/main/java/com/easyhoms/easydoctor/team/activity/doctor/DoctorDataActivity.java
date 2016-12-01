@@ -32,11 +32,11 @@ public class DoctorDataActivity extends BaseActivity {
     HeadImageView mDoctorDataHeadHiv;
     @BindView(R.id.doctor_data_approve_img)
     ImageView mDoctorDataApproveImg;
-    @BindView(R.id.doctor_data_name_tv)
+    @BindView(R.id.user_data_name_tv)
     TextView mDoctorDataNameTv;
-    @BindView(R.id.doctor_data_sex_img)
+    @BindView(R.id.user_data_sex_img)
     ImageView mDoctorDataSexImg;
-    @BindView(R.id.doctor_data_nickname_tv)
+    @BindView(R.id.user_data_nickname_tv)
     TextView mDoctorDataNicknameTv;
     @BindView(R.id.doctor_data_doctor_title_tv)
     TextView mDoctorDataDoctorTitleTv;
