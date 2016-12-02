@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by 德医互联 on 2016/11/29.
+ * 选择擅长项目
  */
 
 public class ChooseSpecialAdapter extends CommAdapter<String> {

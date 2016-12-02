@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/bg_main_color"
     android:fitsSystemWindows="true">
     <com.easyhoms.easydoctor.common.view.MyActionbar
         android:id="@+id/bind_hospital_ma"
@@ -32,4 +33,24 @@
         android:text="@string/apply_bind"
         android:textColor="@color/white"
         android:textSize="16sp"/>
+    <TextView
+        android:id="@+id/bind_hospital_apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="15dp"
+        android:text="@string/apply_for_record"
+        android:textSize="16sp"
+        android:textColor="@color/text_body_weak" />
+    <View
+        style="@style/style_line"
+        android:layout_marginTop="10dp"/>
+    <ListView
+        android:id="@+id/bind_hospital_record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="0.5dp"
+        android:divider="#e5e5e5"/>
+    <View
+        style="@style/style_line" />
 </LinearLayout>

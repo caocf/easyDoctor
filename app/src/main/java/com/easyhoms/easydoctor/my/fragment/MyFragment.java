@@ -15,6 +15,7 @@ import com.easyhoms.easydoctor.common.response.BaseResp;
 import com.easyhoms.easydoctor.common.utils.CommonUtils;
 import com.easyhoms.easydoctor.common.utils.NetCallback;
 import com.easyhoms.easydoctor.common.view.MenuItem;
+import com.easyhoms.easydoctor.my.activity.chooseHospital.BindHospitalActivity;
 import com.easyhoms.easydoctor.my.activity.chooseHospital.MyChooseHospitalActivity;
 import com.easyhoms.easydoctor.my.activity.password.UpdatePasswordFirstActivity;
 import com.easyhoms.easydoctor.my.activity.personal.MyDataActivity;
@@ -141,7 +142,7 @@ public class MyFragment extends BaseFragment {
 
     @Event(R.id.unbind_tv)
     private void toBindHospital(View view) {
-        Intent intent = new Intent(mContext, MyChooseHospitalActivity.class);
+        Intent intent = new Intent(mContext, BindHospitalActivity.class);
         startActivity(intent);
     }
 
